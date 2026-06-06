@@ -1,0 +1,268 @@
+2026-06-06 13:13:59 DEBUG RoleModel:24 - Model add Started
+2026-06-06 13:13:59 DEBUG BaseModel:108 - Model findBy EmailId Started
+2026-06-06 13:14:00 INFO  MLog:80 - MLog clients using log4j logging.
+2026-06-06 13:14:00 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2026-06-06 13:14:00 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge162bi1794nrjejg9xj|1e13529a] registered.
+2026-06-06 13:14:00 DEBUG BasicResourcePool:404 - incremented pending_acquires: 1
+2026-06-06 13:14:00 DEBUG BasicResourcePool:289 - com.mchange.v2.resourcepool.BasicResourcePool@5a3bc7ed config: [start -> 1; min -> 1; max -> 5; inc -> 1; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 10000; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 2500; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+2026-06-06 13:14:00 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge162bi1794nrjejg9xj|1e13529a, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge162bi1794nrjejg9xj|1e13529a, idleConnectionTestPeriod -> 0, initialPoolSize -> 1, jdbcUrl -> jdbc:mysql://localhost:3306/p04, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 10, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 1, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {password=******, user=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2026-06-06 13:14:00 DEBUG BasicResourcePool:538 - acquire test -- pool size: 0; target_pool_size: 1; desired target? 1
+2026-06-06 13:14:00 DEBUG BasicResourcePool:404 - incremented pending_acquires: 2
+2026-06-06 13:14:00 DEBUG BasicResourcePool:1291 - awaitAvailable(): [unknown]
+2026-06-06 13:14:00 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@5a3bc7ed [managed: 0, unused: 0, excluded: 0]
+2026-06-06 13:14:01 DEBUG C3P0PooledConnectionPool:217 - com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@187a27d5.acquireResource() returning. 
+2026-06-06 13:14:01 DEBUG C3P0PooledConnectionPool:217 - com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@187a27d5.acquireResource() returning. 
+2026-06-06 13:14:01 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@5a3bc7ed [managed: 1, unused: 1, excluded: 0]
+2026-06-06 13:14:01 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@5a3bc7ed [managed: 1, unused: 0, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@60f530f0)
+2026-06-06 13:14:01 DEBUG BasicResourcePool:422 - decremented pending_acquires: 1
+2026-06-06 13:14:01 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@5a3bc7ed [managed: 2, unused: 1, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@60f530f0)
+2026-06-06 13:14:01 DEBUG BasicResourcePool:422 - decremented pending_acquires: 0
+2026-06-06 13:14:01 DEBUG NewPooledConnection:430 - com.mchange.v2.c3p0.impl.NewPooledConnection@60f530f0 handling a throwable.
+java.sql.SQLSyntaxErrorException: Table 'p04.st_product' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery(NewProxyPreparedStatement.java:76) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.model.BaseModel.findByUniqueColumn(BaseModel.java:118) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.findByName(ProductModel.java:169) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:28) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:14:01 DEBUG SqlUtils:85 - Attempted to convert SQLException to SQLException. Leaving it alone. [SQLState: 42S02; errorCode: 1146]
+java.sql.SQLSyntaxErrorException: Table 'p04.st_product' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery(NewProxyPreparedStatement.java:76) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.model.BaseModel.findByUniqueColumn(BaseModel.java:118) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.findByName(ProductModel.java:169) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:28) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:14:01 DEBUG DefaultConnectionTester:126 - Testing a Connection in response to an Exception:
+java.sql.SQLSyntaxErrorException: Table 'p04.st_product' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery(NewProxyPreparedStatement.java:76) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.model.BaseModel.findByUniqueColumn(BaseModel.java:118) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.findByName(ProductModel.java:169) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:28) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:14:01 ERROR BaseModel:125 - Database Exception..
+java.sql.SQLSyntaxErrorException: Table 'p04.st_product' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery(NewProxyPreparedStatement.java:76) ~[c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.model.BaseModel.findByUniqueColumn(BaseModel.java:118) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.findByName(ProductModel.java:169) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:28) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:14:01 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@5a3bc7ed [managed: 2, unused: 1, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@60f530f0)
+2026-06-06 13:16:54 DEBUG RoleModel:24 - Model add Started
+2026-06-06 13:16:54 INFO  MLog:80 - MLog clients using log4j logging.
+2026-06-06 13:16:55 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2026-06-06 13:16:55 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge162bi1798enc136n38n|6b0d80ed] registered.
+2026-06-06 13:16:55 DEBUG BasicResourcePool:404 - incremented pending_acquires: 1
+2026-06-06 13:16:55 DEBUG BasicResourcePool:289 - com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 config: [start -> 1; min -> 1; max -> 5; inc -> 1; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 10000; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 2500; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+2026-06-06 13:16:55 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge162bi1798enc136n38n|6b0d80ed, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge162bi1798enc136n38n|6b0d80ed, idleConnectionTestPeriod -> 0, initialPoolSize -> 1, jdbcUrl -> jdbc:mysql://localhost:3306/p04, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 10, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 1, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {password=******, user=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2026-06-06 13:16:55 DEBUG BasicResourcePool:538 - acquire test -- pool size: 0; target_pool_size: 1; desired target? 1
+2026-06-06 13:16:55 DEBUG BasicResourcePool:404 - incremented pending_acquires: 2
+2026-06-06 13:16:55 DEBUG BasicResourcePool:1291 - awaitAvailable(): [unknown]
+2026-06-06 13:16:55 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 0, unused: 0, excluded: 0]
+2026-06-06 13:16:55 DEBUG C3P0PooledConnectionPool:217 - com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@30924ec5.acquireResource() returning. 
+2026-06-06 13:16:55 DEBUG C3P0PooledConnectionPool:217 - com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@30924ec5.acquireResource() returning. 
+2026-06-06 13:16:55 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 1, unused: 1, excluded: 0]
+2026-06-06 13:16:55 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 1, unused: 0, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@300aa0d9)
+2026-06-06 13:16:55 DEBUG BaseModel:49 - Model nextPK Started
+2026-06-06 13:16:55 DEBUG BasicResourcePool:422 - decremented pending_acquires: 1
+2026-06-06 13:16:55 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 1, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@300aa0d9)
+2026-06-06 13:16:55 DEBUG BasicResourcePool:422 - decremented pending_acquires: 0
+2026-06-06 13:16:55 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 0, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@300aa0d9)
+2026-06-06 13:16:55 DEBUG NewPooledConnection:430 - com.mchange.v2.c3p0.impl.NewPooledConnection@24972c28 handling a throwable.
+java.sql.SQLSyntaxErrorException: Table 'p04.st_product' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery(NewProxyPreparedStatement.java:76) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.model.BaseModel.nextPK(BaseModel.java:56) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:36) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:16:55 DEBUG SqlUtils:85 - Attempted to convert SQLException to SQLException. Leaving it alone. [SQLState: 42S02; errorCode: 1146]
+java.sql.SQLSyntaxErrorException: Table 'p04.st_product' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery(NewProxyPreparedStatement.java:76) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.model.BaseModel.nextPK(BaseModel.java:56) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:36) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:16:55 DEBUG DefaultConnectionTester:126 - Testing a Connection in response to an Exception:
+java.sql.SQLSyntaxErrorException: Table 'p04.st_product' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery(NewProxyPreparedStatement.java:76) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.model.BaseModel.nextPK(BaseModel.java:56) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:36) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:16:55 ERROR BaseModel:63 - Database Exception..
+java.sql.SQLSyntaxErrorException: Table 'p04.st_product' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeQuery(NewProxyPreparedStatement.java:76) ~[c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.model.BaseModel.nextPK(BaseModel.java:56) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:36) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:16:55 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 0, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@300aa0d9)
+2026-06-06 13:16:55 ERROR RoleModel:53 - Database Exception..
+com.sunilos.p4.exception.DatabaseException: Exception : Exception in getting PK
+	at com.sunilos.p4.model.BaseModel.nextPK(BaseModel.java:64) ~[classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:36) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:16:55 DEBUG NewPooledConnection:430 - com.mchange.v2.c3p0.impl.NewPooledConnection@300aa0d9 handling a throwable.
+java.sql.SQLNonTransientConnectionException: Can't call rollback when autocommit=true
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ConnectionImpl.rollback(ConnectionImpl.java:1820) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyConnection.rollback(NewProxyConnection.java:855) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:55) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:16:55 DEBUG SqlUtils:85 - Attempted to convert SQLException to SQLException. Leaving it alone. [SQLState: 08003; errorCode: 0]
+java.sql.SQLNonTransientConnectionException: Can't call rollback when autocommit=true
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ConnectionImpl.rollback(ConnectionImpl.java:1820) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyConnection.rollback(NewProxyConnection.java:855) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:55) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:16:55 DEBUG DefaultConnectionTester:126 - Testing a Connection in response to an Exception:
+java.sql.SQLNonTransientConnectionException: Can't call rollback when autocommit=true
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.ConnectionImpl.rollback(ConnectionImpl.java:1820) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyConnection.rollback(NewProxyConnection.java:855) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:55) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:16:55 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 1, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@300aa0d9)
+2026-06-06 13:25:04 DEBUG RoleModel:24 - Model add Started
+2026-06-06 13:25:04 DEBUG BaseModel:108 - Model findBy EmailId Started
+2026-06-06 13:25:04 INFO  MLog:80 - MLog clients using log4j logging.
+2026-06-06 13:25:04 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2026-06-06 13:25:04 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge162bi179iwew1veemmo|6b0d80ed] registered.
+2026-06-06 13:25:04 DEBUG BasicResourcePool:404 - incremented pending_acquires: 1
+2026-06-06 13:25:04 DEBUG BasicResourcePool:289 - com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 config: [start -> 1; min -> 1; max -> 5; inc -> 1; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 10000; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 2500; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+2026-06-06 13:25:04 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge162bi179iwew1veemmo|6b0d80ed, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge162bi179iwew1veemmo|6b0d80ed, idleConnectionTestPeriod -> 0, initialPoolSize -> 1, jdbcUrl -> jdbc:mysql://localhost:3306/p04, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 10, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 1, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {password=******, user=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2026-06-06 13:25:04 DEBUG BasicResourcePool:538 - acquire test -- pool size: 0; target_pool_size: 1; desired target? 1
+2026-06-06 13:25:04 DEBUG BasicResourcePool:404 - incremented pending_acquires: 2
+2026-06-06 13:25:04 DEBUG BasicResourcePool:1291 - awaitAvailable(): [unknown]
+2026-06-06 13:25:04 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 0, unused: 0, excluded: 0]
+2026-06-06 13:25:05 DEBUG C3P0PooledConnectionPool:217 - com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1ed8a88d.acquireResource() returning. 
+2026-06-06 13:25:05 DEBUG C3P0PooledConnectionPool:217 - com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@1ed8a88d.acquireResource() returning. 
+2026-06-06 13:25:05 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 1, unused: 1, excluded: 0]
+2026-06-06 13:25:05 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 1, unused: 0, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1e108c33)
+2026-06-06 13:25:05 DEBUG BasicResourcePool:422 - decremented pending_acquires: 1
+2026-06-06 13:25:05 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 1, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1e108c33)
+2026-06-06 13:25:05 DEBUG BasicResourcePool:422 - decremented pending_acquires: 0
+2026-06-06 13:25:05 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 1, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1e108c33)
+2026-06-06 13:25:05 DEBUG BaseModel:130 - Model findBy EmailId End
+2026-06-06 13:25:05 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 1, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1e108c33)
+2026-06-06 13:25:05 DEBUG BaseModel:49 - Model nextPK Started
+2026-06-06 13:25:05 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 0, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1e108c33)
+2026-06-06 13:25:05 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 0, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1e108c33)
+2026-06-06 13:25:05 DEBUG BaseModel:68 - Model nextPK End
+2026-06-06 13:25:05 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 1, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1e108c33)
+2026-06-06 13:25:05 DEBUG RoleModel:65 - Model add Successfully and Code End
+2026-06-06 13:26:12 DEBUG RoleModel:24 - Model add Started
+2026-06-06 13:26:12 DEBUG BaseModel:108 - Model findBy EmailId Started
+2026-06-06 13:26:12 INFO  MLog:80 - MLog clients using log4j logging.
+2026-06-06 13:26:12 INFO  C3P0Registry:204 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2026-06-06 13:26:12 DEBUG DynamicPooledDataSourceManagerMBean:236 - MBean: com.mchange.v2.c3p0:type=PooledDataSource[1hge162bi179kcp31b1r53s|6b0d80ed] registered.
+2026-06-06 13:26:12 DEBUG BasicResourcePool:404 - incremented pending_acquires: 1
+2026-06-06 13:26:12 DEBUG BasicResourcePool:289 - com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 config: [start -> 1; min -> 1; max -> 5; inc -> 1; num_acq_attempts -> 30; acq_attempt_delay -> 1000; check_idle_resources_delay -> 0; mox_resource_age -> 0; max_idle_time -> 10000; excess_max_idle_time -> 0; destroy_unreturned_resc_time -> 0; expiration_enforcement_delay -> 2500; break_on_acquisition_failure -> false; debug_store_checkout_exceptions -> false]
+2026-06-06 13:26:12 INFO  AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge162bi179kcp31b1r53s|6b0d80ed, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.cj.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge162bi179kcp31b1r53s|6b0d80ed, idleConnectionTestPeriod -> 0, initialPoolSize -> 1, jdbcUrl -> jdbc:mysql://localhost:3306/p04, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 10, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 1, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {password=******, user=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+2026-06-06 13:26:12 DEBUG BasicResourcePool:538 - acquire test -- pool size: 0; target_pool_size: 1; desired target? 1
+2026-06-06 13:26:12 DEBUG BasicResourcePool:404 - incremented pending_acquires: 2
+2026-06-06 13:26:12 DEBUG BasicResourcePool:1291 - awaitAvailable(): [unknown]
+2026-06-06 13:26:12 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 0, unused: 0, excluded: 0]
+2026-06-06 13:26:13 DEBUG C3P0PooledConnectionPool:217 - com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@3ad433c5.acquireResource() returning. 
+2026-06-06 13:26:13 DEBUG C3P0PooledConnectionPool:217 - com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager@3ad433c5.acquireResource() returning. 
+2026-06-06 13:26:13 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 1, unused: 1, excluded: 0]
+2026-06-06 13:26:13 DEBUG BasicResourcePool:422 - decremented pending_acquires: 1
+2026-06-06 13:26:13 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 1, unused: 0, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1ae4d240)
+2026-06-06 13:26:13 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 1, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1ae4d240)
+2026-06-06 13:26:13 DEBUG BasicResourcePool:422 - decremented pending_acquires: 0
+2026-06-06 13:26:13 DEBUG NewPooledConnection:430 - com.mchange.v2.c3p0.impl.NewPooledConnection@1ae4d240 handling a throwable.
+java.sql.SQLException: Column 'oder_date' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getDate(ResultSetImpl.java:798) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyResultSet.getDate(NewProxyResultSet.java:3212) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.bean.ProductBean.setResultset(ProductBean.java:63) [classes/:?]
+	at com.sunilos.p4.model.BaseModel.findByUniqueColumn(BaseModel.java:121) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.findByName(ProductModel.java:170) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:28) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:26:13 DEBUG SqlUtils:85 - Attempted to convert SQLException to SQLException. Leaving it alone. [SQLState: S0022; errorCode: 0]
+java.sql.SQLException: Column 'oder_date' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getDate(ResultSetImpl.java:798) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyResultSet.getDate(NewProxyResultSet.java:3212) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.bean.ProductBean.setResultset(ProductBean.java:63) [classes/:?]
+	at com.sunilos.p4.model.BaseModel.findByUniqueColumn(BaseModel.java:121) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.findByName(ProductModel.java:170) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:28) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:26:13 DEBUG DefaultConnectionTester:126 - Testing a Connection in response to an Exception:
+java.sql.SQLException: Column 'oder_date' not found.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.result.ResultSetImpl.findColumn(ResultSetImpl.java:584) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mysql.cj.jdbc.result.ResultSetImpl.getDate(ResultSetImpl.java:798) ~[mysql-connector-java-8.0.30.jar:8.0.30]
+	at com.mchange.v2.c3p0.impl.NewProxyResultSet.getDate(NewProxyResultSet.java:3212) [c3p0-0.9.1.2.jar:0.9.1.2]
+	at com.sunilos.p4.bean.ProductBean.setResultset(ProductBean.java:63) [classes/:?]
+	at com.sunilos.p4.model.BaseModel.findByUniqueColumn(BaseModel.java:121) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.findByName(ProductModel.java:170) [classes/:?]
+	at com.sunilos.p4.model.ProductModel.add(ProductModel.java:28) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.testAdd(TestProductModel.java:30) [classes/:?]
+	at com.sunilos.p4.model.test.TestProductModel.main(TestProductModel.java:13) [classes/:?]
+2026-06-06 13:26:13 DEBUG BasicResourcePool:1644 - trace com.mchange.v2.resourcepool.BasicResourcePool@6f44a157 [managed: 2, unused: 1, excluded: 0] (e.g. com.mchange.v2.c3p0.impl.NewPooledConnection@1ae4d240)
+2026-06-06 13:26:13 DEBUG NewProxyConnection:1260 - com.mchange.v2.c3p0.impl.NewProxyConnection@76a2ddf3: close() called more than once.
+2026-06-06 13:26:13 DEBUG BaseModel:130 - Model findBy EmailId End

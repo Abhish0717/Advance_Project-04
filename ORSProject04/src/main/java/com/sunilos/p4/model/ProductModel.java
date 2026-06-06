@@ -1,5 +1,4 @@
 package com.sunilos.p4.model;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -51,6 +50,7 @@ public class ProductModel extends BaseModel<ProductBean> {
 			conn.commit(); // End transaction
 			pstmt.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 			log.error("Database Exception..", e);
 			try {
 				conn.rollback();

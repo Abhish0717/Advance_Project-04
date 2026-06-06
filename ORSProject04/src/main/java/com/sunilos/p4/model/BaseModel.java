@@ -105,7 +105,7 @@ public abstract class BaseModel<T extends BaseBean> {
 
 	public T findByUniqueColumn(String column, String value) throws ApplicationException {
 
-		log.debug("Model findBy EmailId Started");
+		log.debug("Model findBy Unique Column Started");
 
 		StringBuffer sql = new StringBuffer("SELECT * FROM " + getTable() + " WHERE " + column + "='" + value + "'");
 
@@ -123,11 +123,11 @@ public abstract class BaseModel<T extends BaseBean> {
 			rs.close();
 		} catch (Exception e) {
 			log.error("Database Exception..", e);
-			throw new ApplicationException("Exception : Exception in getting User by emailId");
+			throw new ApplicationException("Exception : Exception in getting User by Unique Column");
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}
-		log.debug("Model findBy EmailId End");
+		log.debug("Model findBy Unique Column End");
 		return bean;
 	}
 
