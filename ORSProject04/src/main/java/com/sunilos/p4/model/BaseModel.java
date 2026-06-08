@@ -295,7 +295,7 @@ public abstract class BaseModel<T extends BaseBean> {
 	public List<T> list(int pageNo, int pageSize) throws ApplicationException {
 
 		log.debug("Model list Started");
-		ArrayList list = new ArrayList();
+		ArrayList<T> list = new ArrayList<T>();
 
 		StringBuffer sql = new StringBuffer("select * from " + getTable());
 

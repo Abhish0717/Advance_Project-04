@@ -60,7 +60,7 @@ public class ProductBean extends BaseBean{
 		super.setResultset(rs);
 			this.setProductName(rs.getString("name"));
 			this.setProductCategory(rs.getString("category"));
-			this.setOrderDate(rs.getDate("oder_date"));
+			this.setOrderDate(rs.getDate("order_date"));
 			this.setPrice(rs.getInt("price"));
 		} catch (SQLException e) {
 			e.printStackTrace();

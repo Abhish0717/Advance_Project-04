@@ -80,7 +80,7 @@ public class ProductModel extends BaseModel<ProductBean> {
 
 		ProductBean existbean = findByName(bean.getProductName());
 
-		if (existbean != null) {
+		if (existbean != null && existbean.getId() != bean.getId()) {
 			throw new DuplicateRecordException("product Name already exists");
 		}
 
@@ -88,7 +88,7 @@ public class ProductModel extends BaseModel<ProductBean> {
 			conn = JDBCDataSource.getConnection();
 			pk = nextPK();
 			// Get auto-generated next primary key
-			conn.setAutoCommit(false); // Begin transaction
+			conn.setAutoCommit(false); // Begin transaction`
 			PreparedStatement pstmt = conn.prepareStatement(
 					"update st_product set name=?,category=?,order_date=?,price=?,CREATED_BY=?,MODIFIED_BY=?,CREATED_DATETIME=?,MODIFIED_DATETIME=? WHERE ID=?");
 			pstmt.setString(1, bean.getProductName());
@@ -104,6 +104,7 @@ public class ProductModel extends BaseModel<ProductBean> {
 			conn.commit(); // End transaction
 			pstmt.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 			log.error("Database Exception..", e);
 			try {
 				conn.rollback();
