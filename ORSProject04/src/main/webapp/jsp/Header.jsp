@@ -80,6 +80,39 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 							href="<%=ORSView.ROLE_LIST_CTL%>"> <i
 								class="bi bi-shield-fill-check me-2 text-primary"></i> Role List
 						</a></li>
+
+						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- Product -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-person-gear me-1"></i> Product
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="#"> <%-- <%=ORSView.PRODUCT_CTL%> --%>
+								<i class="bi bi-person-plus me-2 text-success"></i> Add Product
+						</a></li>
+						<li><a class="dropdown-item" href="#"> <i
+								class="bi bi-person-lines-fill me-2 text-primary"></i> Product
+								List
+						</a></li>
+
+						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- API Info -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-person-gear me-1"></i> Product
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.API_CTL%>">
+								<i class="bi bi-person-plus me-2 text-success"></i> Add API Info
+						</a></li>
+						<li><a class="dropdown-item" href="#"> <i
+								class="bi bi-person-lines-fill me-2 text-primary"></i> API Info
+								List
+						</a></li>
+
 					</ul></li>
 
 				<!-- ---- Reports (Admin only) ---- -->

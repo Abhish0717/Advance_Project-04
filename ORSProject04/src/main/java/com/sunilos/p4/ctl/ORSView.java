@@ -90,5 +90,16 @@ public interface ORSView {
 	public String SUBJECT_REPORT_VIEW = "/reports/SubjectListReport.jrxml";
 	public String MARKSHEET_REPORT_VIEW = "/reports/MarksheetListReport.jrxml";
 	public String FACULTY_REPORT_VIEW = "/reports/FacultyListReport.jrxml";
+	
+	
+	/** Api View JSP */
+	public String API_VIEW = PAGE_FOLDER + "/ApiView.jsp";
+	/** Api Controller URL */
+	public String API_CTL = APP_CONTEXT + "/ctl/ApiCtl";
+	
+	/** Api List JSP */
+	public String API_LIST_VIEW = PAGE_FOLDER + "/ApiListView.jsp";
+	/** Api List Controller URL */
+	public String API_LIST_CTL = APP_CONTEXT + "/ctl/ApiListCtl";
 
 }
