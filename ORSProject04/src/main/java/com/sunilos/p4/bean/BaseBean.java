@@ -19,7 +19,7 @@ public abstract class BaseBean implements Serializable, DropdownListBean, Compar
 	/**
 	 * Non Business primary key इसमें नॉन बिज़नेस के स्टोर की जाती है
 	 */
-	protected long id;
+	protected long id=0L;
 
 	/**
 	 * Contains USER ID who created this database record. इसमें रिकॉर्ड क्रिएट करने

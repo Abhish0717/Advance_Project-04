@@ -212,8 +212,9 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 			ServletUtility.setSuccessMessage("Data is successfully updated", request);
 		} else {
 			long pk = getModel().add(bean);
+			
 			ServletUtility.setSuccessMessage("Data is successfully saved", request);
-			bean.setId(pk);
+			bean.setId(0L);
 		}
 		ServletUtility.setBean(bean, request);
 		ServletUtility.forwardPage(getView(), request, response);

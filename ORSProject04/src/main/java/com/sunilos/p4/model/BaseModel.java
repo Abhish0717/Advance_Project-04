@@ -20,7 +20,7 @@ import com.sunilos.p4.util.JDBCDataSource;
  * It contains generalized methods for a Model class. �All Model classes in the
  * application must inherit BasModel class.
  * 
- * @author Sunil Sahu
+ * @author Rays EdTech
  *
  * @param <T>
  */

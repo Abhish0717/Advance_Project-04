@@ -89,10 +89,10 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 								<i class="bi bi-person-gear me-1"></i> Product
 							</h6>
 						</li>
-						<li><a class="dropdown-item" href="#"> <%-- <%=ORSView.PRODUCT_CTL%> --%>
+						<li><a class="dropdown-item" href="<%=ORSView.PRODUCT_CTL%>"> <%-- <%=ORSView.PRODUCT_CTL%> --%>
 								<i class="bi bi-person-plus me-2 text-success"></i> Add Product
 						</a></li>
-						<li><a class="dropdown-item" href="#"> <i
+						<li><a class="dropdown-item" href="<%=ORSView.PRODUCT_LIST_CTL%>"> <i
 								class="bi bi-person-lines-fill me-2 text-primary"></i> Product
 								List
 						</a></li>
@@ -108,9 +108,9 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						<li><a class="dropdown-item" href="<%=ORSView.API_CTL%>">
 								<i class="bi bi-person-plus me-2 text-success"></i> Add API Info
 						</a></li>
-						<li><a class="dropdown-item" href="#"> <i
-								class="bi bi-person-lines-fill me-2 text-primary"></i> API Info
-								List
+						<li><a class="dropdown-item" href="<%=ORSView.API_LIST_CTL%>">
+								<i class="bi bi-person-lines-fill me-2 text-primary"></i> API
+								Info List
 						</a></li>
 
 					</ul></li>

@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Contains REST response
  * 
- * @author Sunil Sahu
+ * @author Rays EdTech
  * 
  *
  */

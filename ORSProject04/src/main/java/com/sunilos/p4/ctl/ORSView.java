@@ -92,6 +92,16 @@ public interface ORSView {
 	public String FACULTY_REPORT_VIEW = "/reports/FacultyListReport.jrxml";
 	
 	
+	/** Product View JSP */
+	public String PRODUCT_VIEW = PAGE_FOLDER + "/ProductView.jsp";
+	/** Product Controller URL */
+	public String PRODUCT_CTL = APP_CONTEXT + "/ctl/ProductCtl";
+	
+	/** Product List JSP */
+	public String PRODUCT_LIST_VIEW = PAGE_FOLDER + "/ProductListView.jsp";
+	/** Product List Controller URL */
+	public String PRODUCT_LIST_CTL = APP_CONTEXT + "/ctl/ProductListCtl";
+	
 	/** Api View JSP */
 	public String API_VIEW = PAGE_FOLDER + "/ApiView.jsp";
 	/** Api Controller URL */

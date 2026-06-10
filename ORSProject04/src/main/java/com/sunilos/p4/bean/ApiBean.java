@@ -51,16 +51,16 @@ public class ApiBean extends BaseBean {
 		return apiName;
 	}
 
-//	@Override
-//	public void setResultset(ResultSet rs) {
-//		try {
-//			super.setResultset(rs);
-//			this.setApiName(rs.getString("api"));
-//			this.setVersion(rs.getString("version"));
-//			this.setEndPoint(rs.getString("end_Point"));
-//			this.setStatus(rs.getString("status"));
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	@Override
+	public void setResultset(ResultSet rs) {
+		try {
+			super.setResultset(rs);
+			this.setApiName(rs.getString("name"));
+			this.setVersion(rs.getString("version"));
+			this.setEndPoint(rs.getString("end_Point"));
+			this.setStatus(rs.getString("status"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
