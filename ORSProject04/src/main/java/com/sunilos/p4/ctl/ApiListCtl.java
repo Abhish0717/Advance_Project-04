@@ -22,11 +22,11 @@ public class ApiListCtl extends BaseListCtl<ApiBean, ApiModel> {
         bean.setEndPoint(DataUtility.getString(request.getParameter("end_point")));
         bean.setStatus(DataUtility.getString(request.getParameter("status")));
         return bean;
-    }
+    }  
 
     @Override
     protected String getView() {
-        return ORSView.API_LIST_VIEW;
+        return ORSView.API_VIEW;
     }
 
     @Override

@@ -104,7 +104,7 @@ String _err = ServletUtility.getErrorMessage(request);
 					<%
 					}
 					%>
-					<a href="ApiCtl" class="btn btn-secondary ms-auto"> <i
+					<a href="ApiListCtl" class="btn btn-secondary ms-auto"> <i
 						class="bi bi-x-circle me-1"></i> Cancel
 					</a>
 				</div>

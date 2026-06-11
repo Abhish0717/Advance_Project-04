@@ -38,10 +38,114 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 			if (loggedIn) {
 			%>
 			<ul class="navbar-nav me-auto gap-0">
+
+				<!-- ---- Marksheet ---- -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle px-3 py-3" href="#"
+					data-bs-toggle="dropdown" aria-expanded="false"> <i
+						class="bi bi-file-earmark-text me-1"></i> Marksheet
+				</a>
+					<ul
+						class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3"
+						style="min-width: 200px; background: #1a2e4a;">
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-search me-1"></i> Query
+							</h6>
+						</li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.GET_MARKSHEET_CTL%>"> <i
+								class="bi bi-search me-2 text-info"></i> Get Marksheet
+						</a></li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"> <i
+								class="bi bi-trophy me-2 text-warning"></i> Merit List
+						</a></li>
+						<%
+						if (isAdmin) {
+						%>
+						<li>
+							<hr class="dropdown-divider border-secondary">
+						</li>
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-gear me-1"></i> Manage
+							</h6>
+						</li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.MARKSHEET_CTL%>"> <i
+								class="bi bi-plus-circle me-2 text-success"></i> Add Marksheet
+						</a></li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.MARKSHEET_LIST_CTL%>"> <i
+								class="bi bi-list-ul me-2 text-primary"></i> Marksheet List
+						</a></li>
+
+						<%
+						}
+						%>
+					</ul></li>
+
 				<!-- ---- Academics: Colleges / Courses / Subjects (Admin only) ---- -->
 				<%
 				if (isAdmin) {
 				%>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle px-3 py-3" href="#"
+					data-bs-toggle="dropdown" aria-expanded="false"> <i
+						class="bi bi-mortarboard me-1"></i> Academics
+				</a>
+					<ul
+						class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3"
+						style="min-width: 210px; background: #1a2e4a;">
+
+						<!-- Colleges -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-bank2 me-1"></i> Colleges
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.COLLEGE_CTL%>">
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add College
+						</a></li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.COLLEGE_LIST_CTL%>"> <i
+								class="bi bi-building me-2 text-primary"></i> College List
+						</a></li>
+
+						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- Courses -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-journal-bookmark me-1"></i> Courses
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.COURSE_CTL%>">
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add Course
+						</a></li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.COURSE_LIST_CTL%>"> <i
+								class="bi bi-list-ul me-2 text-primary"></i> Course List
+						</a></li>
+
+						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- Subjects -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-card-text me-1"></i> Subjects
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.SUBJECT_CTL%>">
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add Subject
+						</a></li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.SUBJECT_LIST_CTL%>"> <i
+								class="bi bi-list-ul me-2 text-primary"></i> Subject List
+						</a></li>
+					</ul></li>
+
 				<!-- ---- People: Students / Faculty / Users / Roles (Admin only) ---- -->
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle px-3 py-3" href="#"
@@ -51,6 +155,40 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 					<ul
 						class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3"
 						style="min-width: 210px; background: #1a2e4a;">
+
+						<!-- Students -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-mortarboard me-1"></i> Students
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.STUDENT_CTL%>">
+								<i class="bi bi-person-plus me-2 text-success"></i> Add Student
+						</a></li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.STUDENT_LIST_CTL%>"> <i
+								class="bi bi-people me-2 text-primary"></i> Student List
+						</a></li>
+
+						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- Faculty -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-person-badge me-1"></i> Faculty
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.FACULTY_CTL%>">
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add Faculty
+						</a></li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.FACULTY_LIST_CTL%>"> <i
+								class="bi bi-person-lines-fill me-2 text-primary"></i> Faculty
+								List
+						</a></li>
+
+						<li><hr class="dropdown-divider border-secondary"></li>
+
 						<!-- Users -->
 						<li>
 							<h6 class="dropdown-header text-uppercase text-info small">
@@ -81,38 +219,6 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 								class="bi bi-shield-fill-check me-2 text-primary"></i> Role List
 						</a></li>
 
-						<li><hr class="dropdown-divider border-secondary"></li>
-
-						<!-- Product -->
-						<li>
-							<h6 class="dropdown-header text-uppercase text-info small">
-								<i class="bi bi-person-gear me-1"></i> Product
-							</h6>
-						</li>
-						<li><a class="dropdown-item" href="<%=ORSView.PRODUCT_CTL%>"> <%-- <%=ORSView.PRODUCT_CTL%> --%>
-								<i class="bi bi-person-plus me-2 text-success"></i> Add Product
-						</a></li>
-						<li><a class="dropdown-item" href="<%=ORSView.PRODUCT_LIST_CTL%>"> <i
-								class="bi bi-person-lines-fill me-2 text-primary"></i> Product
-								List
-						</a></li>
-
-						<li><hr class="dropdown-divider border-secondary"></li>
-
-						<!-- API Info -->
-						<li>
-							<h6 class="dropdown-header text-uppercase text-info small">
-								<i class="bi bi-person-gear me-1"></i> Product
-							</h6>
-						</li>
-						<li><a class="dropdown-item" href="<%=ORSView.API_CTL%>">
-								<i class="bi bi-person-plus me-2 text-success"></i> Add API Info
-						</a></li>
-						<li><a class="dropdown-item" href="<%=ORSView.API_LIST_CTL%>">
-								<i class="bi bi-person-lines-fill me-2 text-primary"></i> API
-								Info List
-						</a></li>
-
 					</ul></li>
 
 				<!-- ---- Reports (Admin only) ---- -->
@@ -125,12 +231,46 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3"
 						style="min-width: 230px; background: #1a2e4a;">
 
+						<!-- Academics -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-warning small">
+								<i class="bi bi-mortarboard me-1"></i> Academics
+							</h6>
+						</li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.COLLEGE_REPORT_CTL%>" target="_blank"> <i
+								class="bi bi-file-earmark-pdf me-2 text-warning"></i> College
+								List
+						</a></li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.COURSE_REPORT_CTL%>" target="_blank"> <i
+								class="bi bi-file-earmark-pdf me-2 text-warning"></i> Course
+								List
+						</a></li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.SUBJECT_REPORT_CTL%>" target="_blank"> <i
+								class="bi bi-file-earmark-pdf me-2 text-warning"></i> Subject
+								List
+						</a></li>
+
+						<li><hr class="dropdown-divider border-secondary"></li>
+
 						<!-- People -->
 						<li>
 							<h6 class="dropdown-header text-uppercase text-warning small">
 								<i class="bi bi-people me-1"></i> People
 							</h6>
 						</li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.STUDENT_REPORT_CTL%>" target="_blank"> <i
+								class="bi bi-file-earmark-pdf me-2 text-warning"></i> Student
+								List
+						</a></li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.FACULTY_REPORT_CTL%>" target="_blank"> <i
+								class="bi bi-file-earmark-pdf me-2 text-warning"></i> Faculty
+								List
+						</a></li>
 						<li><a class="dropdown-item"
 							href="<%=ORSView.USER_REPORT_CTL%>" target="_blank"> <i
 								class="bi bi-file-earmark-pdf me-2 text-warning"></i> User List
@@ -141,17 +281,90 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						</a></li>
 
 						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- Results -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-warning small">
+								<i class="bi bi-clipboard-data me-1"></i> Results
+							</h6>
+						</li>
+						<li><a class="dropdown-item"
+							href="<%=ORSView.MARKSHEET_REPORT_CTL%>" target="_blank"> <i
+								class="bi bi-file-earmark-pdf me-2 text-warning"></i> Marksheet
+								List
+						</a></li>
+
+					</ul></li>
+
+				<!-- ---- Daily Module : New Modules ---- -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle px-3 py-3" href="#"
+					data-bs-toggle="dropdown" aria-expanded="false"> <i
+						class="bi bi-motherboard-fill me-1"></i> Daily Module
+				</a>
+					<ul
+						class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3"
+						style="min-width: 210px; background: #1a2e4a;">
+
+						<!-- Product -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-basket2 me-1"></i> Product
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.PRODUCT_CTL%>">
+								<i class="bi bi-basket2 me-2 text-success"></i> Add Product
+						</a></li>
+						<li><a class="dropdown-item" href="<%=ORSView.PRODUCT_LIST_CTL%>"> <i
+								class="bi bi-basket2 me-2 text-primary"></i> Product
+								List
+						</a></li>
+
+						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- API Info -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-hdd-rack-fill me-1"></i> Product
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.API_CTL%>">
+								<i class="bi bi-hdd-rack-fill me-2 text-success"></i> Add API
+								Info
+						</a></li>
+						<li><a class="dropdown-item" href="<%=ORSView.API_LIST_CTL%>">
+								<i class="bi bi-hdd-rack-fill me-2 text-primary"></i> API Info
+								List
+						</a></li>
+
+						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- Citizen Management -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-person-arms-up me-1"></i>Citizen Management
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.CITIZEN_CTL%>">
+								<i class="bi bi-person-arms-up me-2 text-success"></i> Add
+								Citizen Management
+						</a></li>
+						<li><a class="dropdown-item" href="<%=ORSView.CITIZEN_LIST_CTL%>">
+								<i class="bi bi-person-arms-up me-2 text-primary"></i>
+								Citizen Management List
+						</a></li>
+
 					</ul></li>
 				<%
 				}
 				%>
 				<%-- end isAdmin --%>
-
 			</ul>
 			<%
 			} else {
 			%>
 			<ul class="navbar-nav me-auto"></ul>
+
 			<%
 			}
 			%>

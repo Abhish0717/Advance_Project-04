@@ -21,12 +21,13 @@ public class ProductListCtl extends BaseListCtl<ProductBean, ProductModel> {
         bean.setProductCategory(DataUtility.getString(request.getParameter("category")));
         bean.setOrderDate(DataUtility.getDate(request.getParameter("order_date")));
         bean.setPrice(DataUtility.getInt(request.getParameter("price")));
+        populateDTO(bean, request);
         return bean;
     }
 
     @Override
     protected String getView() {
-        return ORSView.PRODUCT_LIST_VIEW;
+        return ORSView.PRODUCT_VIEW;
     }
 
     @Override

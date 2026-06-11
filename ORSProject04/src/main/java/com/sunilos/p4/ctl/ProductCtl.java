@@ -17,30 +17,24 @@ public class ProductCtl extends BaseCtl<ProductBean, ProductModel> {
 
 		boolean pass = true;
 
-		if (DataValidator.isNull(request.getParameter("product"))) {
-			request.setAttribute("product", PropertyReader.getValue("error.require", "Product Name"));
+		if (DataValidator.isNull(request.getParameter("productName"))) {
+			request.setAttribute("productName", PropertyReader.getValue("error.require", "productName"));
 			pass = false;
 		}
 
-		if (DataValidator.isNull(request.getParameter("category"))) {
-			request.setAttribute("category", PropertyReader.getValue("error.require", "Product Category"));
+		if (DataValidator.isNull(request.getParameter("productCategory"))) {
+			request.setAttribute("productCategory", PropertyReader.getValue("error.require", "productCategory"));
 			pass = false;
 		}
 
-		if (DataValidator.isNull(request.getParameter("order_date"))) {
-			request.setAttribute("order_date", PropertyReader.getValue("error.require", "Order Date"));
+		if (DataValidator.isNull(request.getParameter("orderDate"))) {
+			request.setAttribute("orderDate", PropertyReader.getValue("error.require", "orderDate"));
 			pass = false;
-		} else if (!DataValidator.isDate(request.getParameter("order_date"))) {
-			request.setAttribute("order_date", "Invalid Order Date");
-
 		}
 
 		if (DataValidator.isNull(request.getParameter("price"))) {
-			request.setAttribute("price", PropertyReader.getValue("error.require", "Price"));
+			request.setAttribute("price", PropertyReader.getValue("error.require", "price"));
 			pass = false;
-		} else if (!DataValidator.isInteger(request.getParameter("price"))) {
-			request.setAttribute("price", "Invalid Price Value");
-
 		}
 
 		return pass;
@@ -50,10 +44,10 @@ public class ProductCtl extends BaseCtl<ProductBean, ProductModel> {
 	protected ProductBean populateBean(HttpServletRequest request) {
 
 		ProductBean bean = new ProductBean();
-
-		bean.setProductName(DataUtility.getString(request.getParameter("product")));
-		bean.setProductCategory(DataUtility.getString(request.getParameter("category")));
-		bean.setOrderDate(DataUtility.getDate(request.getParameter("order_date")));
+		bean.setId(DataUtility.getLong(request.getParameter("id")));
+		bean.setProductName(DataUtility.getString(request.getParameter("productName")));
+		bean.setProductCategory(DataUtility.getString(request.getParameter("productCategory")));
+		bean.setOrderDate(DataUtility.getDate(request.getParameter("orderDate")));
 		bean.setPrice(DataUtility.getInt(request.getParameter("price")));
 
 		populateDTO(bean, request);
@@ -69,10 +63,14 @@ public class ProductCtl extends BaseCtl<ProductBean, ProductModel> {
 	@Override
 	protected String getView(String op) {
 
-		if (OP_CANCEL.equalsIgnoreCase(op)) {
-			return ORSView.PRODUCT_CTL;
+		if (OP_CANCEL.equalsIgnoreCase(op) || OP_DELETE.equalsIgnoreCase(op)) {
+			return ORSView.PRODUCT_LIST_CTL;
+
+		} else if (OP_RESET.equalsIgnoreCase(op)) {
+			return ORSView.PRODUCT_VIEW;
+		} else {
+			return ORSView.PRODUCT_VIEW;
 		}
-		return ORSView.PRODUCT_VIEW;
 	}
 
 	@Override

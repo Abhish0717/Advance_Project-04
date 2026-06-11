@@ -90,26 +90,36 @@ public interface ORSView {
 	public String SUBJECT_REPORT_VIEW = "/reports/SubjectListReport.jrxml";
 	public String MARKSHEET_REPORT_VIEW = "/reports/MarksheetListReport.jrxml";
 	public String FACULTY_REPORT_VIEW = "/reports/FacultyListReport.jrxml";
-	
-	
-	/** Product View JSP */
+
+	/*-- ---- Daily Module : New Modules ---- --*/
+ 	/** Product View JSP */
 	public String PRODUCT_VIEW = PAGE_FOLDER + "/ProductView.jsp";
 	/** Product Controller URL */
 	public String PRODUCT_CTL = APP_CONTEXT + "/ctl/ProductCtl";
-	
+
 	/** Product List JSP */
 	public String PRODUCT_LIST_VIEW = PAGE_FOLDER + "/ProductListView.jsp";
 	/** Product List Controller URL */
 	public String PRODUCT_LIST_CTL = APP_CONTEXT + "/ctl/ProductListCtl";
-	
+
 	/** Api View JSP */
 	public String API_VIEW = PAGE_FOLDER + "/ApiView.jsp";
 	/** Api Controller URL */
 	public String API_CTL = APP_CONTEXT + "/ctl/ApiCtl";
-	
+
 	/** Api List JSP */
 	public String API_LIST_VIEW = PAGE_FOLDER + "/ApiListView.jsp";
 	/** Api List Controller URL */
 	public String API_LIST_CTL = APP_CONTEXT + "/ctl/ApiListCtl";
+
+	/** Citizen View JSP */
+	public String CITIZEN_VIEW = PAGE_FOLDER + "/CitizenView.jsp";
+	/** Citizen Controller URL */
+	public String CITIZEN_CTL = APP_CONTEXT + "/ctl/CitizenCtl";
+
+	/** Citizen List JSP */
+	public String CITIZEN_LIST_VIEW = PAGE_FOLDER + "/CitizenListView.jsp";
+	/** Citizen List Controller URL */
+	public String CITIZEN_LIST_CTL = APP_CONTEXT + "/ctl/CitizenListCtl";
 
 }

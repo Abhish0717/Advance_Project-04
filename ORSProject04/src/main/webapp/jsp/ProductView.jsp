@@ -1,8 +1,10 @@
+<%@page import="com.sunilos.p4.ctl.SubjectCtl"%>
 <%@page import="com.sunilos.p4.ctl.BaseCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
 <%@page import="com.sunilos.p4.util.DataUtility"%>
 <%@page import="com.sunilos.p4.util.ServletUtility"%>
 <%@page import="java.util.List"%>
+<%@page import="com.sunilos.p4.bean.CourseBean"%>
 
 <jsp:useBean id="bean" class="com.sunilos.p4.bean.ProductBean"
 	scope="request"></jsp:useBean>
@@ -54,27 +56,27 @@ String _err = ServletUtility.getErrorMessage(request);
 
 				<div class="mb-3">
 					<label class="form-label fw-semibold">Product Name <span
-						class="text-danger">*</span></label> <input type="text" name="product"
+						class="text-danger">*</span></label> <input type="text" name="productName"
 						class="form-control" maxlength="100"
 						value="<%=DataUtility.getStringData(bean.getProductName())%>">
-					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("product", request)%></div>
+					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("productName", request)%></div>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label fw-semibold">Product Category <span
 						class="text-danger">*</span></label> <input type="text"
-						name="category" class="form-control" maxlength="200"
+						name="productCategory" class="form-control" maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getProductCategory())%>">
-					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("category", request)%></div>
+					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("productCategory", request)%></div>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label fw-semibold">Order Date <span
-						class="text-danger">*</span></label> <input type="text" name="order_date"
-						id="udate" readonly="readonly" class="form-control"
+						class="text-danger">*</span></label> <input type="text" name="orderDate"
+						id="udatee" readonly="readonly" class="form-control"
 						maxlength="200"
-						value="<%=DataUtility.getStringData(bean.getOrderDate())%>">
-					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("order_date", request)%></div>
+						value="<%=DataUtility.getDateString(bean.getOrderDate())%>">
+					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("orderDate", request)%></div>
 				</div>
 
 				<div class="mb-3">
@@ -90,6 +92,34 @@ String _err = ServletUtility.getErrorMessage(request);
 						class="btn btn-primary">
 						<i class="bi bi-save me-1"></i> Save
 					</button>
+					<%
+					if (bean.getId() > 0) {
+					%>
+					<button type="submit" name="operation"
+						value="<%=BaseCtl.OP_DELETE%>" class="btn btn-danger"
+						onclick="return confirm('Delete this user?')">
+						<i class="bi bi-trash me-1"></i> Delete
+					</button>
+					<%
+					}
+					%>
+					<%
+					if (bean.getId() == 0) {
+					%>
+					<button type="submit" name="operation"
+						value="<%=BaseCtl.OP_RESET%>" class="btn btn-danger">
+						<i class="bi bi-arrow-clockwise me-1"></i> Reset
+					</button>
+					<%
+					} else {
+					%>
+
+					<a href="ProductListCtl" class="btn btn-secondary ms-auto"> <i
+						class="bi bi-x-circle me-1"></i> Cancel
+					</a>
+					<%
+					}
+					%>
 				</div>
 			</form>
 		</div>

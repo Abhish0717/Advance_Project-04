@@ -32,6 +32,7 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 
 	public static final String OP_SAVE = "Save";
 	public static final String OP_CANCEL = "Cancel";
+	public static final String OP_RESET = "Reset";
 	public static final String OP_DELETE = "Delete";
 	public static final String OP_LIST = "List";
 	public static final String OP_SEARCH = "Search";
@@ -142,10 +143,8 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 		if (OP_CANCEL.equalsIgnoreCase(op)) {
 			ServletUtility.redirect(getView(op), request, response);
 			return;
-		} else if (OP_DELETE.equalsIgnoreCase(op) && !(this instanceof BaseListCtl)) {
-			// Handle Delete operation
-			doDelete(request, response);
-			return;
+		} else if(OP_RESET.equalsIgnoreCase(op)) {
+			ServletUtility.forwardPage(getView(op), request, response);
 		}
 
 		BaseBean bean = populateBean(request);
@@ -160,7 +159,6 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 		try {
 			super.service(request, response);
 		} catch (DuplicateRecordException e) {
-			// Handle if any duplicate record exception
 			ServletUtility.setBean(bean, request);
 			ServletUtility.setErrorMessage(e.getMessage(), request);
 			ServletUtility.forwardPage(getView(), request, response);
@@ -203,7 +201,6 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 		// get model
 
 		long id = DataUtility.getLong(request.getParameter("id"));
-
 		B bean = populateBean(request);
 
 		// If primary key does exist then update the record of save the record
@@ -212,9 +209,8 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 			ServletUtility.setSuccessMessage("Data is successfully updated", request);
 		} else {
 			long pk = getModel().add(bean);
-			
-			ServletUtility.setSuccessMessage("Data is successfully saved", request);
 			bean.setId(0L);
+			ServletUtility.setSuccessMessage("Data is successfully saved", request);
 		}
 		ServletUtility.setBean(bean, request);
 		ServletUtility.forwardPage(getView(), request, response);
