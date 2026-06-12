@@ -297,6 +297,7 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 					</ul></li>
 
 				<!-- ---- Daily Module : New Modules ---- -->
+				
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle px-3 py-3" href="#"
 					data-bs-toggle="dropdown" aria-expanded="false"> <i
@@ -352,6 +353,24 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						<li><a class="dropdown-item" href="<%=ORSView.CITIZEN_LIST_CTL%>">
 								<i class="bi bi-person-arms-up me-2 text-primary"></i>
 								Citizen Management List
+						</a></li>
+
+						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- Payment -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-currency-rupee me-1"></i>Payment
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.PAYMENT_CTL%>">
+								<i class="bi bi-currency-rupee me-2 text-success"></i> Add
+								Payment
+						</a></li>
+						
+						<li><a class="dropdown-item" href="<%=ORSView.PAYMENT_LIST_CTL%>">
+								<i class="bi bi-currency-rupee me-2 text-primary"></i>
+								Payment List
 						</a></li>
 
 					</ul></li>

@@ -122,4 +122,14 @@ public interface ORSView {
 	/** Citizen List Controller URL */
 	public String CITIZEN_LIST_CTL = APP_CONTEXT + "/ctl/CitizenListCtl";
 
+	/** Payment View JSP */
+	public String PAYMENT_VIEW = PAGE_FOLDER + "/PaymentView.jsp";
+	/** Payment Controller URL */
+	public String PAYMENT_CTL = APP_CONTEXT + "/ctl/PaymentCtl";
+	
+	/** Payment List JSP */
+	public String PAYMENT_LIST_VIEW = PAGE_FOLDER + "/PaymentListView.jsp";
+	/** Payment List Controller URL */
+	public String PAYMENT_LIST_CTL = APP_CONTEXT + "/ctl/PaymentListCtl";
+
 }
