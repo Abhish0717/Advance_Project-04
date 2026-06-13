@@ -61,7 +61,7 @@ public class StudentModel extends BaseModel<StudentBean> {
 
 		// get College Name
 		CollegeModel cModel = new CollegeModel();
-		CollegeBean collegeBean = cModel.findByPK(bean.getCollegeId());
+		CollegeBean collegeBean = cModel.findByPk(bean.getCollegeId());
 		bean.setCollegeName(collegeBean.getName());
 
 		StudentBean duplicateName = findByEmailId(bean.getEmail());
@@ -127,7 +127,7 @@ public class StudentModel extends BaseModel<StudentBean> {
 		// get College Name
 		CollegeModel cModel = new CollegeModel();
 
-		CollegeBean collegeBean = cModel.findByPK(bean.getCollegeId());
+		CollegeBean collegeBean = cModel.findByPk(bean.getCollegeId());
 
 		bean.setCollegeName(collegeBean.getName());
 

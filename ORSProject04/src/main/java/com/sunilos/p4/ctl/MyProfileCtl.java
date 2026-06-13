@@ -117,7 +117,7 @@ public class MyProfileCtl extends BaseCtl<UserBean, UserModel> {
 
 		UserModel model = getModel();
 
-		UserBean bean = model.findByPK(id);
+		UserBean bean = model.findByPk(id);
 
 		ServletUtility.setBean(bean, request);
 

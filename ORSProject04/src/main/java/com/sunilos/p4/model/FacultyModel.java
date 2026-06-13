@@ -29,7 +29,7 @@ public class FacultyModel extends BaseModel<FacultyBean> {
         }
 
         CollegeModel cModel = new CollegeModel();
-        CollegeBean college = cModel.findByPK(bean.getCollegeId());
+        CollegeBean college = cModel.findByPk(bean.getCollegeId());
         bean.setCollegeName(college.getName());
 
         Connection conn = null;
@@ -77,7 +77,7 @@ public class FacultyModel extends BaseModel<FacultyBean> {
         }
 
         CollegeModel cModel = new CollegeModel();
-        CollegeBean college = cModel.findByPK(bean.getCollegeId());
+        CollegeBean college = cModel.findByPk(bean.getCollegeId());
         bean.setCollegeName(college.getName());
 
         Connection conn = null;

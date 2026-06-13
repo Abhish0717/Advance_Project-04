@@ -280,7 +280,7 @@ public class UserModel extends BaseModel<UserBean> {
 
 		boolean flag = false;
 		UserBean beanExist = null;
-		beanExist = findByPK(id);
+		beanExist = findByPk(id);
 		if (beanExist != null && beanExist.getPassword().equals(oldPassword)) {
 			beanExist.setPassword(newPassword);
 			update(beanExist);
@@ -372,7 +372,7 @@ public class UserModel extends BaseModel<UserBean> {
 	public boolean resetPassword(UserBean bean) throws ApplicationException {
 
 		String newPassword = String.valueOf(new Date().getTime()).substring(0, 4);
-		UserBean userData = findByPK(bean.getId());
+		UserBean userData = findByPk(bean.getId());
 		userData.setPassword(newPassword);
 
 		try {
@@ -468,7 +468,7 @@ public class UserModel extends BaseModel<UserBean> {
 				sql.append(" AND PASSWORD like '" + bean.getPassword() + "%'");
 			}
 			if (bean.getDob() != null && bean.getDob().getDate() > 0) {
-				sql.append(" AND DOB = " + bean.getGender());
+				sql.append(" AND DOB = " + bean.getDob());
 			}
 			if (bean.getMobileNo() != null && bean.getMobileNo().length() > 0) {
 				sql.append(" AND MOBILE_NO = " + bean.getMobileNo());

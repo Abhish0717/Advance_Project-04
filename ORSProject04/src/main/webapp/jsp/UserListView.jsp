@@ -1,3 +1,5 @@
+<%@page import="com.sunilos.p4.bean.RoleBean"%>
+<%@page import="com.sunilos.p4.model.RoleModel"%>
 <%@page import="com.sunilos.p4.ctl.UserListCtl"%>
 <%@page import="com.sunilos.p4.ctl.BaseCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
@@ -58,8 +60,9 @@ String _suc = ServletUtility.getSuccessMessage(request);
 				</button>
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_DELETE%>"
-					class="btn btn-danger btn-sm ms-auto">
-					<i class="bi bi-trash me-1"></i> Delete Selected
+					class="btn btn-danger btn-sm ms-auto"
+					onclick="return confirm('Delete this user?')">
+					> <i class="bi bi-trash me-1"></i> Delete Selected
 				</button>
 			</div>
 
@@ -107,6 +110,7 @@ String _suc = ServletUtility.getSuccessMessage(request);
 							<th>Login ID</th>
 							<th>Gender</th>
 							<th>Date of Birth</th>
+							<th>Role ID</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -114,17 +118,24 @@ String _suc = ServletUtility.getSuccessMessage(request);
 						<%
 						while (it.hasNext()) {
 							UserBean bean = it.next();
+							UserBean user = (UserBean) session.getAttribute("user");
+							RoleModel model = new RoleModel();
+							RoleBean roleBean = model.findByPk(bean.getRoleId());
 						%>
 						<tr>
 							<td><input type="checkbox" name="ids"
-								value="<%=bean.getId()%>"></td>
+								value="<%=bean.getId()%>"
+								<%=(user.getId() == bean.getId() || bean.getRoleId() == RoleBean.ADMIN) ? "disabled" : ""%>></td>
 							<td class="text-muted small"><%=index++%></td>
 							<td class="fw-semibold"><%=bean.getFirstName()%></td>
 							<td><%=bean.getLastName()%></td>
 							<td><%=bean.getLogin()%></td>
 							<td><%=bean.getGender()%></td>
 							<td class="text-muted small"><%=bean.getDob()%></td>
+							<td><%=roleBean.getName()%></td>
+
 							<td><a href="UserCtl?id=<%=bean.getId()%>"
+								<%=(user.getId() == bean.getId() || bean.getRoleId() == RoleBean.ADMIN) ? "onclick='return false;'" : ""%>
 								class="btn btn-sm btn-outline-primary"> <i
 									class="bi bi-pencil"></i> Edit
 							</a></td>

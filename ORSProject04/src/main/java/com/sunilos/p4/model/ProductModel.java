@@ -25,7 +25,7 @@ public class ProductModel extends BaseModel<ProductBean> {
 		ProductBean existbean = findByProductName(bean.getProductName());
 
 		if (existbean != null) {
-			throw new DuplicateRecordException("productName already exists");
+			throw new DuplicateRecordException("product Name already exists");
 		}
 
 		try {
@@ -76,8 +76,8 @@ public class ProductModel extends BaseModel<ProductBean> {
 			conn = JDBCDataSource.getConnection();
 			pk = nextPK();
 			conn.setAutoCommit(false); // Begin transaction`
-			PreparedStatement pstmt = conn.prepareStatement(
-					"update " + getTable() + " set name = ?, category = ?, order_date = ?, price = ?, created_by = ?, modified_by = ?, created_datetime = ?, modified_datetime = ? where id = ?");
+			PreparedStatement pstmt = conn.prepareStatement("update " + getTable()
+					+ " set name = ?, category = ?, order_date = ?, price = ?, created_by = ?, modified_by = ?, created_datetime = ?, modified_datetime = ? where id = ?");
 			pstmt.setString(1, bean.getProductName());
 			pstmt.setString(2, bean.getProductCategory());
 			pstmt.setDate(3, new java.sql.Date(bean.getOrderDate().getTime()));
@@ -114,7 +114,16 @@ public class ProductModel extends BaseModel<ProductBean> {
 				sql.append(" AND id = " + bean.getId());
 			}
 			if (bean.getProductName() != null && bean.getProductName().length() > 0) {
-				sql.append(" AND PRODUCT_NAME like '" + bean.getProductName() + "%'");
+				sql.append(" AND name like '" + bean.getProductName() + "%'");
+			}
+			if (bean.getProductCategory() != null && bean.getProductCategory().length() > 0) {
+				sql.append(" AND category like '" + bean.getProductCategory() + "%'");
+			}
+			if (bean.getOrderDate() != null && bean.getOrderDate().getTime() > 0) {
+				sql.append(" AND order_date = " + bean.getOrderDate());
+			}
+			if (bean.getPrice() > 0) {
+				sql.append(" AND price = " + bean.getProductName());
 			}
 		}
 
@@ -122,7 +131,7 @@ public class ProductModel extends BaseModel<ProductBean> {
 	}
 
 	public ProductBean findByProductName(String productName) {
-		return findByUniqueColumn("PRODUCT_NAME", productName);
+		return findByUniqueColumn("name", productName);
 	}
 
 	@Override

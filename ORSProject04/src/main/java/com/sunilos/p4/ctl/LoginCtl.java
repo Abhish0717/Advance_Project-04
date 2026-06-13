@@ -137,7 +137,7 @@ public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 
 		long rollId = bean.getRoleId();
 		RoleModel role = new RoleModel();
-		RoleBean rolebean = role.findByPK(rollId);
+		RoleBean rolebean = role.findByPk(rollId);
 		if (rolebean != null) {
 			session.setAttribute("role", rolebean.getName());
 		} else {

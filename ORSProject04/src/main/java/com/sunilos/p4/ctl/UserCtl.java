@@ -40,7 +40,6 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 		} catch (ApplicationException e) {
 			log.error(e);
 		}
-
 	}
 
 	@Override
@@ -52,14 +51,21 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 
 		String login = request.getParameter("login");
 		String dob = request.getParameter("dob");
+		String password = request.getParameter("password");
 
 		if (DataValidator.isNull(request.getParameter("firstName"))) {
 			request.setAttribute("firstName", PropertyReader.getValue("error.require", "First Name"));
+			pass = false;
+		} else if (!DataValidator.isName(request.getParameter("firstName"))) {
+			request.setAttribute("firstName", "Invalid First Name");
 			pass = false;
 		}
 
 		if (DataValidator.isNull(request.getParameter("lastName"))) {
 			request.setAttribute("lastName", PropertyReader.getValue("error.require", "Last Name"));
+			pass = false;
+		} else if (!DataValidator.isName(request.getParameter("lastName"))) {
+			request.setAttribute("lastName", "Invalid Last Name");
 			pass = false;
 		}
 
@@ -71,8 +77,14 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 			pass = false;
 		}
 
-		if (DataValidator.isNull(request.getParameter("password"))) {
+		if (DataValidator.isNull(password)) {
 			request.setAttribute("password", PropertyReader.getValue("error.require", "Password"));
+			pass = false;
+		} else if (!DataValidator.isPasswordLength(password)) {
+			request.setAttribute("password", "Password should be 8 to 12 characters");
+			pass = false;
+		} else if (!DataValidator.isPassword(password)) {
+			request.setAttribute("password", "Must contain uppercase, lowercase, digit & special character");
 			pass = false;
 		}
 
@@ -92,7 +104,7 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 			request.setAttribute("dob", PropertyReader.getValue("error.date", "Date Of Birth"));
 			pass = false;
 		}
-		if (!request.getParameter("password").equals(request.getParameter("confirmPassword"))
+		if (!(password).equals(request.getParameter("confirmPassword"))
 				&& !"".equals(request.getParameter("confirmPassword"))) {
 			ServletUtility.setErrorMessage("Confirm  Password  should not be matched.", request);
 			pass = false;

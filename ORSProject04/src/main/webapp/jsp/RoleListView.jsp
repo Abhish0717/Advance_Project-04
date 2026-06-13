@@ -54,7 +54,8 @@ String _suc = ServletUtility.getSuccessMessage(request);
 				</button>
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_DELETE%>"
-					class="btn btn-danger btn-sm ms-auto">
+					class="btn btn-danger btn-sm ms-auto"
+					onclick="return confirm('Delete this Role?')">
 					<i class="bi bi-trash me-1"></i> Delete Selected
 				</button>
 			</div>

@@ -104,7 +104,7 @@ public abstract class BaseRestController<B extends BaseBean, M extends BaseModel
 		long pk = DataUtility.getLong((String) request.getAttribute("data"));
 
 		M model = getModel();
-		B bean = (B) model.findByPK(pk);
+		B bean = (B) model.findByPk(pk);
 
 		if (bean == null) {
 			res = new ORSResponse(false, "Record does not exist");
@@ -157,10 +157,10 @@ public abstract class BaseRestController<B extends BaseBean, M extends BaseModel
 				}
 			} else if ("add".equals(operation)) {
 				long pk = model.add(bean);
-				bean = (B) model.findByPK(pk);
+				bean = (B) model.findByPk(pk);
 			} else if ("update".equals(operation)) {
 				model.update(bean);
-				bean = (B) model.findByPK(bean.getId());
+				bean = (B) model.findByPk(bean.getId());
 			} else if ("search".equals(operation)) {
 				List l = model.search(bean);
 				res = new ORSResponse(true);

@@ -43,7 +43,7 @@ public class MarksheetModel extends BaseModel<MarksheetBean> {
 
 		// get Student Name
 		StudentModel sModel = new StudentModel();
-		StudentBean studentbean = sModel.findByPK(bean.getStudentId());
+		StudentBean studentbean = sModel.findByPk(bean.getStudentId());
 		bean.setName(studentbean.getFirstName() + " " + studentbean.getLastName());
 
 		MarksheetBean duplicateMarksheet = findByRollNo(bean.getRollNo());
@@ -123,7 +123,7 @@ public class MarksheetModel extends BaseModel<MarksheetBean> {
 
 		// get Student Name
 		StudentModel sModel = new StudentModel();
-		StudentBean studentbean = sModel.findByPK(bean.getStudentId());
+		StudentBean studentbean = sModel.findByPk(bean.getStudentId());
 		bean.setName(studentbean.getFirstName() + " " + studentbean.getLastName());
 
 		try {
