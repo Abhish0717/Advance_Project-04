@@ -133,7 +133,6 @@ String _suc = ServletUtility.getSuccessMessage(request);
 							<td><%=bean.getGender()%></td>
 							<td class="text-muted small"><%=bean.getDob()%></td>
 							<td><%=roleBean.getName()%></td>
-
 							<td><a href="UserCtl?id=<%=bean.getId()%>"
 								<%=(user.getId() == bean.getId() || bean.getRoleId() == RoleBean.ADMIN) ? "onclick='return false;'" : ""%>
 								class="btn btn-sm btn-outline-primary"> <i
