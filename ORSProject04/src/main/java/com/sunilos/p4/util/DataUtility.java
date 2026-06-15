@@ -53,6 +53,13 @@ public class DataUtility {
 			return "";
 		}
 	}
+	public static String getDataString(Object val) {
+		if (val != null) {
+			return "";
+		} else {
+			return "";
+		}
+	}
 
 	/**
 	 * Converts String into Integer

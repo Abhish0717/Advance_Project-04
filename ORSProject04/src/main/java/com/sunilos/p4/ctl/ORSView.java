@@ -122,6 +122,16 @@ public interface ORSView {
 	/** Citizen List Controller URL */
 	public String CITIZEN_LIST_CTL = APP_CONTEXT + "/ctl/CitizenListCtl";
 
+	/** Hospital View JSP */
+	public String HOSPITAL_VIEW = PAGE_FOLDER + "/HospitalView.jsp";
+	/** Hospital Controller URL */
+	public String HOSPITAL_CTL = APP_CONTEXT + "/ctl/HospitalCtl";
+	
+	/** Hospital List JSP */
+	public String HOSPITAL_LIST_VIEW = PAGE_FOLDER + "/HospitalListView.jsp";
+	/** Hospital List Controller URL */
+	public String HOSPITAL_LIST_CTL = APP_CONTEXT + "/ctl/HospitalListCtl";
+
 	/** Payment View JSP */
 	public String PAYMENT_VIEW = PAGE_FOLDER + "/PaymentView.jsp";
 	/** Payment Controller URL */

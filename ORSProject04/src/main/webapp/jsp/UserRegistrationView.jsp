@@ -107,6 +107,7 @@ genderMap.put("F", "Female");
 					<div class="col-md-6">
 						<label class="form-label fw-semibold">Gender</label>
 						<%=HTMLUtility.getList("gender", bean.getGender(), genderMap)%>
+						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("gender", request)%></div>
 					</div>
 					<div class="col-md-6">
 						<label class="form-label fw-semibold">Date of Birth

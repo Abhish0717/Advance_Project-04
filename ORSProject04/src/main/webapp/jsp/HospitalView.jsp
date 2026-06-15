@@ -4,7 +4,7 @@
 <%@page import="com.sunilos.p4.util.ServletUtility"%>
 <%@page import="java.util.List"%>
 
-<jsp:useBean id="bean" class="com.sunilos.p4.bean.CitizenBean"
+<jsp:useBean id="bean" class="com.sunilos.p4.bean.HospitalBean"
 	scope="request"></jsp:useBean>
 
 <%
@@ -18,8 +18,8 @@ String _err = ServletUtility.getErrorMessage(request);
 		<div class="card-header text-white border-0 py-3 px-4"
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
-				<i class="bi bi-bookmark-star-fill me-2"></i>
-				<%=bean.getId() > 0 ? "Edit Citizen Management" : "Add Citizen Management"%>
+				<i class="bi bi-hospital-fill me-2"></i>
+				<%=bean.getId() > 0 ? "Edit Hospital Record" : "Add Hospital Record"%>
 			</h5>
 		</div>
 
@@ -48,7 +48,7 @@ String _err = ServletUtility.getErrorMessage(request);
 			}
 			%>
 
-			<form action="<%=ORSView.CITIZEN_CTL%>" method="POST">
+			<form action="<%=ORSView.HOSPITAL_CTL%>" method="POST">
 				<input type="hidden" name="id" value="<%=bean.getId()%>"> <input
 					type="hidden" name="createdBy" value="<%=bean.getCreatedBy()%>">
 				<input type="hidden" name="modifiedBy"
@@ -59,38 +59,38 @@ String _err = ServletUtility.getErrorMessage(request);
 					value="<%=DataUtility.getTimestamp(bean.getModifiedDatetime())%>">
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold">Name <span
-						class="text-danger">*</span></label> <input type="text" name="name"
-						placeholder="Enter your Name" class="form-control" maxlength="100"
-						value="<%=DataUtility.getStringData(bean.getName())%>">
-					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("name", request)%></div>
+					<label class="form-label fw-semibold">Patient Name <span
+						class="text-danger">*</span></label> <input type="text" name="patient"
+						placeholder="Enter Patient Name" class="form-control"
+						maxlength="100"
+						value="<%=DataUtility.getStringData(bean.getPatientName())%>">
+					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("patient", request)%></div>
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold">Mobile No<span
-						class="text-danger">*</span></label> <input type="text" name="mobile_no"
-						placeholder="Enter your Mobile No" class="form-control"
+					<label class="form-label fw-semibold">Doctor Name<span
+						class="text-danger">*</span></label> <input type="text" name="doctor"
+						placeholder="Enter Doctor Name" class="form-control"
 						maxlength="200"
-						value="<%=DataUtility.getStringData(bean.getMobileNo())%>">
-					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("mobile_no", request)%></div>
+						value="<%=DataUtility.getStringData(bean.getDoctorName())%>">
+					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("doctor", request)%></div>
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold">Address<span
-						class="text-danger">*</span></label> <input type="text" name="address"
-						placeholder="Enter your Address" class="form-control"
-						maxlength="200"
-						value="<%=DataUtility.getStringData(bean.getAddress())%>">
-					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("address", request)%></div>
+					<label class="form-label fw-semibold">Disease<span
+						class="text-danger">*</span></label> <input type="text" name="disease"
+						placeholder="Enter Disease Name" class="form-control" maxlength="200"
+						value="<%=DataUtility.getStringData(bean.getDisease())%>">
+					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("disease", request)%></div>
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold">Reward Points<span
+					<label class="form-label fw-semibold">Room Number<span
 						class="text-danger">*</span></label> <input type="text"
-						name="reward_points" placeholder="Enter your Reward Points"
-						class="form-control" maxlength="200"
-						value="<%=DataUtility.getStringData(bean.getRewardPoints())%>">
-					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("reward_points", request)%></div>
+						name="room" placeholder="Enter Room Number" class="form-control"
+						maxlength="200"
+						value="<%=DataUtility.getDataString(bean.getRoomNumber())%>">
+					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("room", request)%></div>
 				</div>
 
 				<div class="d-flex gap-2 pt-2 border-top">
@@ -103,18 +103,18 @@ String _err = ServletUtility.getErrorMessage(request);
 					%>
 					<button type="submit" name="operation"
 						value="<%=BaseCtl.OP_DELETE%>" class="btn btn-danger"
-						onclick="return confirm('Delete this user?')">
+						onclick="return confirm('Delete this Hospital Record?')">
 						<i class="bi bi-trash me-1"></i> Delete
 					</button>
 
-					<a href="CitizenListCtl" class="btn btn-secondary ms-auto"> <i
+					<a href="HospitalListCtl" class="btn btn-secondary ms-auto"> <i
 						class="bi bi-x-circle me-1"></i> Cancel
 					</a>
 					<%
 					} else if (bean.getId() == 0) {
 					%>
 
-					<a href="CitizenCtl" class="btn btn-secondary ms-auto"> <i
+					<a href="HospitalCtl" class="btn btn-secondary ms-auto"> <i
 						class="bi bi-arrow-clockwise me-1"></i> Reset
 					</a>
 					<%

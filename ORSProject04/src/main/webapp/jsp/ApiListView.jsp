@@ -12,6 +12,7 @@ int pageSize = ServletUtility.getPageSize(request);
 int index = ((pageNo - 1) * pageSize) + 1;
 List list = ServletUtility.getList(request);
 Iterator<ApiBean> it = list.iterator();
+String _suc = ServletUtility.getSuccessMessage(request);
 String _err = ServletUtility.getErrorMessage(request);
 %>
 
@@ -48,12 +49,26 @@ String _err = ServletUtility.getErrorMessage(request);
 				<i class="bi bi-trash me-1"></i> Delete Selected
 			</button>
 		</div>
-
 		<%
 		if (_err != null && !_err.isEmpty()) {
 		%>
-		<div class="alert alert-danger py-2 mx-3 mt-3">
-			<i class="bi bi-exclamation-triangle-fill me-2"></i><%=_err%></div>
+		<div class="alert alert-danger py-2">
+			<i class="bi bi-exclamation-triangle-fill me-2"></i><%=_err%><button
+				type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+
+		<%
+		}
+		%>
+		<%
+		if (_suc != null && !_suc.isEmpty()) {
+		%>
+		<div class="alert alert-success py-2">
+			<i class="bi bi-check-circle-fill me-2"></i><%=_suc%><button
+				type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
 		<%
 		}
 		%>

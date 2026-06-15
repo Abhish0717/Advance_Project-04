@@ -137,7 +137,7 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 				<div
 					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-success">
 					<div class="fs-1 text-success mb-2">
-						<i class="bi bi-bank2"></i>
+						<i class="bi bi-building"></i>
 					</div>
 					<h6 class="fw-bold mb-1">Colleges</h6>
 					<p class="text-muted small mb-0">Manage college records</p>
@@ -148,9 +148,9 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<div class="col-6 col-md-4 col-lg-3">
 			<a href="<%=ORSView.STUDENT_LIST_CTL%>" class="text-decoration-none">
 				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card"
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-dark"
 					style="border-top: 4px solid #7c3aed;">
-					<div class="fs-1 mb-2" style="color: #7c3aed;">
+					<div class="fs-1 mb-2" style="color: black;">
 						<i class="bi bi-mortarboard-fill"></i>
 					</div>
 					<h6 class="fw-bold mb-1">Students</h6>
@@ -178,7 +178,7 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 				<div
 					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-danger">
 					<div class="fs-1 text-danger mb-2">
-						<i class="bi bi-shield-fill-check"></i>
+						<i class="bi bi-person-lines-fill"></i>
 					</div>
 					<h6 class="fw-bold mb-1">Roles</h6>
 					<p class="text-muted small mb-0">Manage user roles</p>
@@ -190,7 +190,7 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 			<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"
 				class="text-decoration-none">
 				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card"
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-success"
 					style="border-top: 4px solid #0d9488;">
 					<div class="fs-1 mb-2" style="color: #0d9488;">
 						<i class="bi bi-trophy-fill"></i>
@@ -217,8 +217,7 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<div class="col-6 col-md-4 col-lg-3">
 			<a href="<%=ORSView.MY_PROFILE_CTL%>" class="text-decoration-none">
 				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card"
-					style="border-top: 4px solid #374151;">
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-secondary">
 					<div class="fs-1 mb-2" style="color: #374151;">
 						<i class="bi bi-person-gear"></i>
 					</div>
@@ -231,13 +230,25 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<div class="col-6 col-md-4 col-lg-3">
 			<a href="<%=ORSView.FACULTY_LIST_CTL%>" class="text-decoration-none">
 				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card"
-					style="border-top: 4px solid #0891b2;">
-					<div class="fs-1 mb-2" style="color: #0891b2;">
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-info">
+					<div class="fs-1 text-info mb-2">
 						<i class="bi bi-person-badge-fill"></i>
 					</div>
 					<h6 class="fw-bold mb-1">Faculty</h6>
 					<p class="text-muted small mb-0">Manage faculty records</p>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-6 col-md-4 col-lg-3">
+			<a href="<%=ORSView.HOSPITAL_LIST_CTL%>" class="text-decoration-none">
+				<div
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-danger">
+					<div class="fs-1 mb-2" style="color: red;">
+						<i class="bi bi-hospital-fill"></i>
+					</div>
+					<h6 class="fw-bold mb-1">Hospital Record</h6>
+					<p class="text-muted small mb-0">Manage Hospital records</p>
 				</div>
 			</a>
 		</div>

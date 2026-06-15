@@ -373,6 +373,24 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 								Payment List
 						</a></li>
 
+						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- Hospital Record -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-hospital me-1"></i>Hospital Record
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.HOSPITAL_CTL%>">
+								<i class="bi bi-hospital me-2 text-success"></i> Add
+								Hospital Record
+						</a></li>
+						
+						<li><a class="dropdown-item" href="<%=ORSView.HOSPITAL_LIST_CTL%>">
+								<i class="bi bi-hospital-fill me-2 text-primary"></i>
+								Hospital Record List
+						</a></li>
+
 					</ul></li>
 				<%
 				}
