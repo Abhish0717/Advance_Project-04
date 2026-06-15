@@ -65,14 +65,14 @@ genderMap.put("F", "Female");
 					<div class="col-md-6">
 						<label class="form-label fw-semibold">First Name <span
 							class="text-danger">*</span></label> <input type="text" name="firstName"
-							class="form-control"
+							placeholder="Enter First Name" class="form-control"
 							value="<%=DataUtility.getStringData(bean.getFirstName())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("firstName", request)%></div>
 					</div>
 					<div class="col-md-6">
 						<label class="form-label fw-semibold">Last Name <span
 							class="text-danger">*</span></label> <input type="text" name="lastName"
-							class="form-control"
+							placeholder="Enter Last Name" class="form-control"
 							value="<%=DataUtility.getStringData(bean.getLastName())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("lastName", request)%></div>
 					</div>
@@ -81,7 +81,8 @@ genderMap.put("F", "Female");
 				<div class="mb-3">
 					<label class="form-label fw-semibold">Login ID (Email) <span
 						class="text-danger">*</span></label> <input type="text" name="login"
-						class="form-control" placeholder="Must be Email ID"
+						placeholder="Enter Login ID" class="form-control"
+						placeholder="Must be Email ID"
 						value="<%=DataUtility.getStringData(bean.getLogin())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("login", request)%></div>
 				</div>
@@ -90,14 +91,15 @@ genderMap.put("F", "Female");
 					<div class="col-md-6">
 						<label class="form-label fw-semibold">Password <span
 							class="text-danger">*</span></label> <input type="password"
-							name="password" class="form-control"
+							placeholder="Enter Password" name="password" class="form-control"
 							value="<%=DataUtility.getStringData(bean.getPassword())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("password", request)%></div>
 					</div>
 					<div class="col-md-6">
 						<label class="form-label fw-semibold">Confirm Password <span
 							class="text-danger">*</span></label> <input type="password"
-							name="confirmPassword" class="form-control"
+							name="confirmPassword" placeholder="Enter Confirm Password"
+							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getConfirmPassword())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("confirmPassword", request)%></div>
 					</div>
@@ -113,7 +115,7 @@ genderMap.put("F", "Female");
 						<label class="form-label fw-semibold">Date of Birth
 							(mm/dd/yyyy)</label>
 						<div class="input-group">
-							<input type="text" name="dob" id="udate" class="form-control"
+							<input type="text" name="dob" placeholder="Select Date Of Birth" id="udate" class="form-control"
 								readonly value="<%=DataUtility.getDateString(bean.getDob())%>">
 							<!-- <a class="btn btn-outline-secondary"> <img
 								src="../img/cal.jpg" width="16" height="15" alt="Calendar">

@@ -27,7 +27,6 @@ import com.sunilos.p4.util.ServletUtility;
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
-
 @WebServlet("/LoginCtl")
 public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 
@@ -51,8 +50,6 @@ public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 		String login = request.getParameter("login");
 
 		if (DataValidator.isNull(login)) {
-			// request.setAttribute("login", PropertyReader.getValue("error.require", "Login
-			// Id"));
 			request.setAttribute("login", PropertyReader.getValue("error.require", "LoginId"));
 //			request.setAttribute("login", ms.get("valid.required"));
 			pass = false;
@@ -144,7 +141,7 @@ public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 			session.setAttribute("role", "invalid role id " + rollId);
 		}
 
-		ServletUtility.forwardPage(ORSView.WELCOME_VIEW, request, response);
+		ServletUtility.redirect(ORSView.WELCOME_CTL, request, response);
 
 	}
 

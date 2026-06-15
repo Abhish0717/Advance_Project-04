@@ -301,7 +301,7 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<%
 		}
 		%>
-
 	</div>
+
 	<!-- /row -->
 </div>

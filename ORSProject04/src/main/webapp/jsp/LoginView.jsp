@@ -117,7 +117,7 @@ MessageSource ms = MessageSource.getInstance();
 		</div>
 
 		<!-- Below card -->
-		<p class="text-center text-muted small mt-3">&copy; 2024 Rays
+		<p class="text-center text-muted small mt-3">&copy; 2026 Rays
 			Technologies &mdash; Online Result System</p>
 
 	</div>

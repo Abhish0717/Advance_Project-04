@@ -22,7 +22,7 @@ String _err = ServletUtility.getErrorMessage(request);
 			class="card-header text-white border-0 py-3 px-4 d-flex justify-content-between align-items-center"
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
-				<i class="bi bi-bookmark-star-fill me-2"></i>API Info List
+				<i class="bi bi-hdd-rack-fill me-2"></i>API Info List
 			</h5>
 			<a href="<%=ORSView.API_CTL%>"
 				class="btn btn-sm btn-light text-primary fw-semibold"> <i

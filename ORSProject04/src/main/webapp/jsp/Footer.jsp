@@ -28,7 +28,7 @@
 <body>
 
 	<footer class="footer">
-		<small> <strong>&copy; 2025 Rays EdTech</strong> &nbsp;|&nbsp;
+		<small> <strong>&copy; 2026 Rays EdTech</strong> &nbsp;|&nbsp;
 			Online Result System &nbsp;|&nbsp; All Rights Reserved
 		</small>
 	</footer>

@@ -297,14 +297,14 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 					</ul></li>
 
 				<!-- ---- Daily Module : New Modules ---- -->
-				
+
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle px-3 py-3" href="#"
 					data-bs-toggle="dropdown" aria-expanded="false"> <i
 						class="bi bi-motherboard-fill me-1"></i> Daily Module
 				</a>
 					<ul
-						class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3"
+						class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3 custom-scroll-menu"
 						style="min-width: 210px; background: #1a2e4a;">
 
 						<!-- Product -->
@@ -316,9 +316,9 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						<li><a class="dropdown-item" href="<%=ORSView.PRODUCT_CTL%>">
 								<i class="bi bi-basket2 me-2 text-success"></i> Add Product
 						</a></li>
-						<li><a class="dropdown-item" href="<%=ORSView.PRODUCT_LIST_CTL%>"> <i
-								class="bi bi-basket2 me-2 text-primary"></i> Product
-								List
+						<li><a class="dropdown-item"
+							href="<%=ORSView.PRODUCT_LIST_CTL%>"> <i
+								class="bi bi-basket2 me-2 text-primary"></i> Product List
 						</a></li>
 
 						<li><hr class="dropdown-divider border-secondary"></li>
@@ -350,9 +350,10 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 								<i class="bi bi-person-arms-up me-2 text-success"></i> Add
 								Citizen Management
 						</a></li>
-						<li><a class="dropdown-item" href="<%=ORSView.CITIZEN_LIST_CTL%>">
-								<i class="bi bi-person-arms-up me-2 text-primary"></i>
-								Citizen Management List
+						<li><a class="dropdown-item"
+							href="<%=ORSView.CITIZEN_LIST_CTL%>"> <i
+								class="bi bi-person-arms-up me-2 text-primary"></i> Citizen
+								Management List
 						</a></li>
 
 						<li><hr class="dropdown-divider border-secondary"></li>
@@ -367,10 +368,10 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 								<i class="bi bi-currency-rupee me-2 text-success"></i> Add
 								Payment
 						</a></li>
-						
-						<li><a class="dropdown-item" href="<%=ORSView.PAYMENT_LIST_CTL%>">
-								<i class="bi bi-currency-rupee me-2 text-primary"></i>
-								Payment List
+
+						<li><a class="dropdown-item"
+							href="<%=ORSView.PAYMENT_LIST_CTL%>"> <i
+								class="bi bi-currency-rupee me-2 text-primary"></i> Payment List
 						</a></li>
 
 						<li><hr class="dropdown-divider border-secondary"></li>
@@ -382,13 +383,14 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 							</h6>
 						</li>
 						<li><a class="dropdown-item" href="<%=ORSView.HOSPITAL_CTL%>">
-								<i class="bi bi-hospital me-2 text-success"></i> Add
-								Hospital Record
+								<i class="bi bi-hospital me-2 text-success"></i> Add Hospital
+								Record
 						</a></li>
-						
-						<li><a class="dropdown-item" href="<%=ORSView.HOSPITAL_LIST_CTL%>">
-								<i class="bi bi-hospital-fill me-2 text-primary"></i>
-								Hospital Record List
+
+						<li><a class="dropdown-item"
+							href="<%=ORSView.HOSPITAL_LIST_CTL%>"> <i
+								class="bi bi-hospital-fill me-2 text-primary"></i> Hospital
+								Record List
 						</a></li>
 
 					</ul></li>

@@ -63,6 +63,39 @@ h1, h2, h3 {
 }
 
 /* ======================================================
+   SCROLLING
+   ====================================================== */
+.custom-scroll-menu {
+	min-width: 210px;
+	background: #1a2e4a;
+	max-height: 400px;
+	overflow-y: auto;
+}
+
+/* Optional: Custom Scrollbar */
+.custom-scroll-menu::-webkit-scrollbar {
+	width: 6px;
+}
+
+.custom-scroll-menu::-webkit-scrollbar-track {
+	background: #1a2e4a;
+}
+
+.custom-scroll-menu::-webkit-scrollbar-thumb {
+	background: #5c7cfa;
+	border-radius: 10px;
+}
+
+.custom-scroll-menu::-webkit-scrollbar-thumb:hover {
+	background: #748ffc;
+}
+
+.custom-scroll-menu {
+	max-height: 70vh;
+	overflow-y: auto;
+}
+
+/* ======================================================
    NAVBAR
    ====================================================== */
 .navbar {
