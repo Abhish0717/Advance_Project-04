@@ -14,7 +14,7 @@ import java.sql.Timestamp;
  * 
  */
 
-public abstract class BaseBean implements Serializable, DropdownListBean, Comparable<BaseBean> {
+public abstract class BaseBean implements DropdownListBean, Comparable<BaseBean> {
 
 	/**
 	 * Non Business primary key इसमें नॉन बिज़नेस के स्टोर की जाती है

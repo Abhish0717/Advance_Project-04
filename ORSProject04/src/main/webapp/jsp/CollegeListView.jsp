@@ -23,7 +23,7 @@ String _suc = ServletUtility.getSuccessMessage(request);
 			class="card-header text-white border-0 py-3 px-4 d-flex justify-content-between align-items-center"
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
-				<i class="bi bi-bank2 me-2"></i> College List
+				<i class="bi bi-building me-2"></i> College List
 			</h5>
 			<div class="d-flex gap-2">
 				<a href="<%=ORSView.COLLEGE_REPORT_CTL%>" target="_blank"

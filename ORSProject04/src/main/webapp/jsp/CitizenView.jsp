@@ -101,15 +101,19 @@ String _err = ServletUtility.getErrorMessage(request);
 					<%
 					if (bean.getId() > 0) {
 					%>
-					<button type="submit" name="operation"
+					<%-- <button type="submit" name="operation"
 						value="<%=BaseCtl.OP_DELETE%>" class="btn btn-danger"
 						onclick="return confirm('Delete this user?')">
 						<i class="bi bi-trash me-1"></i> Delete
+					</button> --%>
+					<button  type="submit" name="operation"
+						value="<%=BaseCtl.OP_CANCEL%>" class="btn btn-danger ms-auto">
+						<i class="bi bi-x-circle me-1"></i> Cancel
 					</button>
 
-					<a href="CitizenListCtl" class="btn btn-secondary ms-auto"> <i
+					<!-- <a href="CitizenListCtl" class="btn btn-secondary ms-auto"> <i
 						class="bi bi-x-circle me-1"></i> Cancel
-					</a>
+					</a> -->
 					<%
 					} else if (bean.getId() == 0) {
 					%>

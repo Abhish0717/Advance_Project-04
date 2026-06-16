@@ -102,7 +102,7 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						<!-- Colleges -->
 						<li>
 							<h6 class="dropdown-header text-uppercase text-info small">
-								<i class="bi bi-bank2 me-1"></i> Colleges
+								<i class="bi bi-building me-1"></i> Colleges
 							</h6>
 						</li>
 						<li><a class="dropdown-item" href="<%=ORSView.COLLEGE_CTL%>">
@@ -110,7 +110,7 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						</a></li>
 						<li><a class="dropdown-item"
 							href="<%=ORSView.COLLEGE_LIST_CTL%>"> <i
-								class="bi bi-building me-2 text-primary"></i> College List
+								class="bi bi-list-ul me-2 text-primary"></i> College List
 						</a></li>
 
 						<li><hr class="dropdown-divider border-secondary"></li>
@@ -303,9 +303,8 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 					data-bs-toggle="dropdown" aria-expanded="false"> <i
 						class="bi bi-motherboard-fill me-1"></i> Daily Module
 				</a>
-					<ul
-						class="dropdown-menu dropdown-menu-dark shadow border-0 rounded-3 custom-scroll-menu"
-						style="min-width: 210px; background: #1a2e4a;">
+					<ul class="dropdown-menu dropdown-menu-dark custom-scroll-menu"
+						style="min-width: 210px; max-height: 450px; background: #1a2e4a;">
 
 						<!-- Product -->
 						<li>
@@ -314,7 +313,7 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 							</h6>
 						</li>
 						<li><a class="dropdown-item" href="<%=ORSView.PRODUCT_CTL%>">
-								<i class="bi bi-basket2 me-2 text-success"></i> Add Product
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add Product
 						</a></li>
 						<li><a class="dropdown-item"
 							href="<%=ORSView.PRODUCT_LIST_CTL%>"> <i
@@ -330,7 +329,7 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 							</h6>
 						</li>
 						<li><a class="dropdown-item" href="<%=ORSView.API_CTL%>">
-								<i class="bi bi-hdd-rack-fill me-2 text-success"></i> Add API
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add API
 								Info
 						</a></li>
 						<li><a class="dropdown-item" href="<%=ORSView.API_LIST_CTL%>">
@@ -347,7 +346,7 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 							</h6>
 						</li>
 						<li><a class="dropdown-item" href="<%=ORSView.CITIZEN_CTL%>">
-								<i class="bi bi-person-arms-up me-2 text-success"></i> Add
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add
 								Citizen Management
 						</a></li>
 						<li><a class="dropdown-item"
@@ -365,7 +364,7 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 							</h6>
 						</li>
 						<li><a class="dropdown-item" href="<%=ORSView.PAYMENT_CTL%>">
-								<i class="bi bi-currency-rupee me-2 text-success"></i> Add
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add
 								Payment
 						</a></li>
 
@@ -383,7 +382,7 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 							</h6>
 						</li>
 						<li><a class="dropdown-item" href="<%=ORSView.HOSPITAL_CTL%>">
-								<i class="bi bi-hospital me-2 text-success"></i> Add Hospital
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add Hospital
 								Record
 						</a></li>
 

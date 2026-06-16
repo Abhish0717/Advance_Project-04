@@ -43,6 +43,10 @@ String _err = ServletUtility.getErrorMessage(request);
 				class="btn btn-primary btn-sm">
 				<i class="bi bi-search me-1"></i> Search
 			</button>
+			<button type="submit" name="operation" value="<%=BaseCtl.OP_CANCEL%>"
+				class="btn btn-danger btn-sm">
+				<i class="bi bi-x-circle me-1"></i> Reset
+			</button>
 			<button type="submit" name="operation" value="<%=BaseCtl.OP_DELETE%>"
 				class="btn btn-danger btn-sm ms-auto"
 				onclick="return confirm('Delete selected subjects?')">

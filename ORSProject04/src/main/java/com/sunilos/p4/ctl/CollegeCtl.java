@@ -37,8 +37,10 @@ public class CollegeCtl extends BaseCtl<CollegeBean, CollegeModel> {
 		if (DataValidator.isNull(request.getParameter("name"))) {
 			request.setAttribute("name", PropertyReader.getValue("error.require", "Name"));
 			pass = false;
+		} else if (!DataValidator.isName(request.getParameter("name"))) {
+			request.setAttribute("name", "Name Is Invalid");
+			pass = false;
 		}
-
 		if (DataValidator.isNull(request.getParameter("address"))) {
 			request.setAttribute("address", PropertyReader.getValue("error.require", "Address"));
 			pass = false;
@@ -54,6 +56,12 @@ public class CollegeCtl extends BaseCtl<CollegeBean, CollegeModel> {
 		}
 		if (DataValidator.isNull(request.getParameter("phoneNo"))) {
 			request.setAttribute("phoneNo", PropertyReader.getValue("error.require", "Phone No"));
+			pass = false;
+		} else if (!DataValidator.isPhoneLength(request.getParameter("phoneNo"))) {
+			request.setAttribute("phoneNo", "Phone No must have 10 digits And Numeric");
+			pass = false;
+		} else if (!DataValidator.isPhoneNo(request.getParameter("phoneNo"))) {
+			request.setAttribute("phoneNo", "Invalid Phone Number");
 			pass = false;
 		}
 

@@ -105,19 +105,12 @@ public class MarksheetCtl extends BaseCtl<MarksheetBean, MarksheetModel> {
 		MarksheetBean bean = new MarksheetBean();
 
 		bean.setId(DataUtility.getLong(request.getParameter("id")));
-
 		bean.setRollNo(DataUtility.getString(request.getParameter("rollNo")));
-
 		bean.setName(DataUtility.getString(request.getParameter("name")));
-
 		bean.setPhysics(DataUtility.getInt(request.getParameter("physics")));
-
 		bean.setChemistry(DataUtility.getInt(request.getParameter("chemistry")));
-
 		bean.setMaths(DataUtility.getInt(request.getParameter("maths")));
-
 		bean.setStudentId(DataUtility.getLong(request.getParameter("studentId")));
-
 		populateDTO(bean, request);
 
 		System.out.println("Population done");
