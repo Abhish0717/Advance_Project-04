@@ -61,6 +61,10 @@ String _suc = ServletUtility.getSuccessMessage(request);
 					<i class="bi bi-search me-1"></i> Search
 				</button>
 				<button type="submit" name="operation"
+					value="<%=BaseCtl.OP_CANCEL%>" class="btn btn-danger btn-sm">
+					<i class="bi bi-arrow-clockwise me-1"></i> Reset
+				</button>
+				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_DELETE%>"
 					class="btn btn-danger btn-sm ms-auto">
 					<i class="bi bi-trash me-1"></i> Delete Selected
@@ -112,7 +116,7 @@ String _suc = ServletUtility.getSuccessMessage(request);
 								value="<%=bean.getId()%>"></td>
 							<td class="text-muted small"><%=index++%></td>
 							<td class="text-muted small"><%=bean.getId()%></td>
-							<td><%=bean.getCollegeId()%></td>
+							<td class="small"><%=bean.getCollegeName()%></td>
 							<td class="fw-semibold"><%=bean.getFirstName()%></td>
 							<td><%=bean.getLastName()%></td>
 							<td class="text-muted small"><%=bean.getDob()%></td>

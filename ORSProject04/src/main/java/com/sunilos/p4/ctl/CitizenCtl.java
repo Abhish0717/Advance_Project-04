@@ -66,8 +66,6 @@ public class CitizenCtl extends BaseCtl<CitizenBean, CitizenModel> {
 		if (OP_CANCEL.equalsIgnoreCase(op) || OP_DELETE.equalsIgnoreCase(op)) {
 			return ORSView.CITIZEN_LIST_CTL;
 
-		} else if (OP_RESET.equalsIgnoreCase(op)) {
-			return ORSView.CITIZEN_CTL;
 		} else {
 			return ORSView.CITIZEN_VIEW;
 		}

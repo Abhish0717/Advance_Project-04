@@ -52,9 +52,14 @@ String _suc = ServletUtility.getSuccessMessage(request);
 					value="<%=BaseCtl.OP_SEARCH%>" class="btn btn-primary btn-sm">
 					<i class="bi bi-search me-1"></i> Search
 				</button>
-				<a href="PaymentListCtl" class="btn btn-danger btn-sm"> <i
+				<button type="submit" name="operation"
+					value="<%=BaseCtl.OP_CANCEL%>" class="btn btn-danger btn-sm">
+					<i class="bi bi-arrow-clockwise me-1"></i> Reset
+				</button>
+				
+				<!-- <a href="PaymentListCtl" class="btn btn-danger btn-sm"> <i
 					class="bi bi-arrow-clockwise me-1"></i> Reset
-				</a>
+				</a> -->
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_DELETE%>"
 					class="btn btn-danger btn-sm ms-auto">
