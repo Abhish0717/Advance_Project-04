@@ -28,6 +28,9 @@ public class CourseCtl extends BaseCtl<CourseBean, CourseModel> {
 		if (DataValidator.isNull(request.getParameter("name"))) {
 			request.setAttribute("name", PropertyReader.getValue("error.require", "Name"));
 			pass = false;
+		} else if (!DataValidator.isName(request.getParameter("name"))) {
+			request.setAttribute("name", "Name Is Invalid");
+			pass = false;
 		}
 
 		if (DataValidator.isNull(request.getParameter("description"))) {
@@ -53,7 +56,6 @@ public class CourseCtl extends BaseCtl<CourseBean, CourseModel> {
 		CourseBean bean = new CourseBean();
 
 		bean.setId(DataUtility.getLong(request.getParameter("id")));
-
 		bean.setName(DataUtility.getString(request.getParameter("name")));
 		bean.setDescription(DataUtility.getString(request.getParameter("description")));
 		bean.setDuration(DataUtility.getString(request.getParameter("duration")));

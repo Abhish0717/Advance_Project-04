@@ -1,8 +1,11 @@
+
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
 <%@page import="com.sunilos.p4.bean.UserBean"%>
 <%@page import="com.sunilos.p4.bean.RoleBean"%>
 
 <%
+MessageSource ms = MessageSource.getInstance();
 UserBean currentUser = (UserBean) session.getAttribute("user");
 boolean loggedIn = currentUser != null;
 boolean isStudent = loggedIn && currentUser.getRoleId() == RoleBean.STUDENT;
@@ -19,22 +22,23 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<div
 			class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center"
 			style="width: 80px; height: 80px; background: rgba(255, 255, 255, 0.15); border: 2px solid rgba(255, 255, 255, 0.25); font-size: 2.3rem;">
-			<i class="fas fa-graduation-cap"></i>
+			<i class="bi bi-mortarboard-fill"></i>
 		</div>
 		<div>
 			<h1 class="fw-bold mb-1 fs-2">
-				Welcome<%
-			if (loggedIn) {
-			%>,
+				<%=ms.get("welcome.msg")%>
+				<%
+				if (loggedIn) {
+				%>,
 				<%=firstName%>!<%
-			} else {
-			%>
-				to ORS<%
-			}
-			%>
+				} else {
+				%>
+				<%=ms.get("welcome.msg2")%>
+				<%
+				}
+				%>
 			</h1>
-			<p class="mb-0 opacity-75">Online Result System &mdash; Powered
-				by Rays Technologies</p>
+			<p class="mb-0 opacity-75"><%=ms.get("welcome.subtitle")%></p>
 		</div>
 	</div>
 
@@ -43,13 +47,14 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		style="letter-spacing: .08em;">
 		<%
 		if (isAdmin) {
-		%>Administration Panel
+		%><%=ms.get("admission.panel")%>
 		<%
 		} else if (isStudent) {
-		%>Quick Access
+		%><%=ms.get("quick.access")%>
 		<%
 		} else {
-		%>Get Started<%
+		%><%=ms.get("welcome.to")%>
+		<%
 		}
 		%>
 	</p>
@@ -68,8 +73,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-primary mb-2">
 						<i class="bi bi-file-earmark-text-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1">My Marksheet</h6>
-					<p class="text-muted small mb-0">View your academic results</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("my.marksheet")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("marksheet.subtitle")%></p>
 				</div>
 			</a>
 		</div>
@@ -178,10 +183,10 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 				<div
 					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-danger">
 					<div class="fs-1 text-danger mb-2">
-						<i class="bi bi-person-lines-fill"></i>
+						<i class="bi bi-shield-fill-check me-2"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Roles</h6>
-					<p class="text-muted small mb-0">Manage user roles</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("role.title") %></h6>
+					<p class="text-muted small mb-0"><%=ms.get("role.subtitle") %></p>
 				</div>
 			</a>
 		</div>
@@ -195,8 +200,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 mb-2" style="color: #0d9488;">
 						<i class="bi bi-trophy-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Merit List</h6>
-					<p class="text-muted small mb-0">View merit rankings</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("marksheet.title")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("marksheet.subtitle")%></p>
 				</div>
 			</a>
 		</div>
@@ -208,8 +213,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-primary mb-2">
 						<i class="bi bi-search"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Get Marksheet</h6>
-					<p class="text-muted small mb-0">Lookup a marksheet</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("marksheet.get")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("marksheet.get.subtitle")%></p>
 				</div>
 			</a>
 		</div>
@@ -221,8 +226,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 mb-2" style="color: #374151;">
 						<i class="bi bi-person-gear"></i>
 					</div>
-					<h6 class="fw-bold mb-1">My Profile</h6>
-					<p class="text-muted small mb-0">View and edit your profile</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("my.profile")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("my.profile.subtitle")%></p>
 				</div>
 			</a>
 		</div>
@@ -264,8 +269,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-primary mb-2">
 						<i class="bi bi-box-arrow-in-right"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Login</h6>
-					<p class="text-muted small mb-0">Sign in to your account</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("login.title")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("login.cardsubtitle")%></p>
 				</div>
 			</a>
 		</div>
@@ -278,8 +283,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-success mb-2">
 						<i class="bi bi-person-plus-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Register</h6>
-					<p class="text-muted small mb-0">Create a new account</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("register.title")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("register.cardsubtitle")%></p>
 				</div>
 			</a>
 		</div>
@@ -292,8 +297,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 mb-2" style="color: #7c3aed;">
 						<i class="bi bi-search"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Get Marksheet</h6>
-					<p class="text-muted small mb-0">Search for a marksheet</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("marksheet.get")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("marksheet.cardsubtitle")%></p>
 				</div>
 			</a>
 		</div>

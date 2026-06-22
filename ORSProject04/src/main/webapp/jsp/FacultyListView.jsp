@@ -88,7 +88,7 @@ String _suc = ServletUtility.getSuccessMessage(request);
 						<tr>
 							<th width="40"><input type="checkbox"
 								onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
-							<th>#</th>
+							<th>S.No.</th>
 							<th>College</th>
 							<th>First Name</th>
 							<th>Last Name</th>

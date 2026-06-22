@@ -95,12 +95,11 @@ String _suc = ServletUtility.getSuccessMessage(request);
 						<tr>
 							<th width="40"><input type="checkbox"
 								onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
-							<th>#</th>
-							<th>ID</th>
-							<th>College</th>
+							<th>Sr.No.</th>
 							<th>First Name</th>
 							<th>Last Name</th>
 							<th>Date of Birth</th>
+							<th>College</th>
 							<th>Mobile No</th>
 							<th>Email ID</th>
 							<th>Action</th>
@@ -115,11 +114,10 @@ String _suc = ServletUtility.getSuccessMessage(request);
 							<td><input type="checkbox" name="ids"
 								value="<%=bean.getId()%>"></td>
 							<td class="text-muted small"><%=index++%></td>
-							<td class="text-muted small"><%=bean.getId()%></td>
-							<td class="small"><%=bean.getCollegeName()%></td>
 							<td class="fw-semibold"><%=bean.getFirstName()%></td>
 							<td><%=bean.getLastName()%></td>
 							<td class="text-muted small"><%=bean.getDob()%></td>
+							<td class="small"><%=bean.getCollegeName()%></td>
 							<td><%=bean.getMobileNo()%></td>
 							<td><%=bean.getEmail()%></td>
 							<td><a href="StudentCtl?id=<%=bean.getId()%>"

@@ -102,6 +102,12 @@ public interface ORSView {
 	/** Product List Controller URL */
 	public String PRODUCT_LIST_CTL = APP_CONTEXT + "/ctl/ProductListCtl";
 
+	/** Product List Controller URL */
+	public String PRODUCT_REPORT_CTL = APP_CONTEXT + "/ctl/ProductReportCtl";
+	/** Product List Controller URL */
+	public String PRODUCT_REPORT_VIEW = "/reports/ProductListReport.jrxml";
+	
+
 	/** Api View JSP */
 	public String API_VIEW = PAGE_FOLDER + "/ApiView.jsp";
 	/** Api Controller URL */
@@ -141,5 +147,15 @@ public interface ORSView {
 	public String PAYMENT_LIST_VIEW = PAGE_FOLDER + "/PaymentListView.jsp";
 	/** Payment List Controller URL */
 	public String PAYMENT_LIST_CTL = APP_CONTEXT + "/ctl/PaymentListCtl";
+
+	/** Courier View JSP */
+	public String COURIER_VIEW = PAGE_FOLDER + "/CourierView.jsp";
+	/** Courier Controller URL */
+	public String COURIER_CTL = APP_CONTEXT + "/ctl/CourierCtl";
+	
+	/** Courier List JSP */
+	public String COURIER_LIST_VIEW = PAGE_FOLDER + "/CourierListView.jsp";
+	/** Courier List Controller URL */
+	public String COURIER_LIST_CTL = APP_CONTEXT + "/ctl/CourierListCtl";
 
 }

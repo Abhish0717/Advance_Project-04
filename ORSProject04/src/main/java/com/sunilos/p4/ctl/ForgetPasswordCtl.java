@@ -45,7 +45,7 @@ public class ForgetPasswordCtl extends BaseCtl<UserBean, UserModel> {
 			request.setAttribute("login", PropertyReader.getValue("error.require", "Email Id"));
 			pass = false;
 		} else if (!DataValidator.isEmail(login)) {
-			request.setAttribute("login", PropertyReader.getValue("error.email", "Login "));
+			request.setAttribute("login", PropertyReader.getValue("error.email", "Email Id"));
 			pass = false;
 		}
 		log.debug("ForgetPasswordCtl Method validate Ended");

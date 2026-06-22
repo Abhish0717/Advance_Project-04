@@ -29,13 +29,13 @@ MessageSource ms = MessageSource.getInstance();
 					<div
 						class="rounded-circle d-flex align-items-center justify-content-center"
 						style="width: 68px; height: 68px; background: rgba(255, 255, 255, 0.18); border: 2px solid rgba(255, 255, 255, 0.3); font-size: 1.9rem;">
-						<i class="fas fa-graduation-cap"></i>
+						<i class="bi bi-mortarboard-fill"></i>
 					</div>
 				</div>
 				<h4 class="fw-bold mb-1">
 					<ors:message key="login.title" />
 				</h4>
-				<p class="mb-0 opacity-75 small">Online Result System</p>
+				<p class="mb-0 opacity-75 small"><%=ms.get("login.subtitle")%></p>
 			</div>
 
 			<!-- Card body -->
@@ -54,15 +54,16 @@ MessageSource ms = MessageSource.getInstance();
 							<span class="text-danger">*</span>
 						</label> <input type="text" name="login"
 							class="form-control form-control-lg"
-							placeholder="Enter your login ID"
+							placeholder="<%=ms.get("login.enterloginid")%>"
 							value="<%=DataUtility.getStringData(bean.getLogin())%>">
+
 						<%
 						String loginErr = ServletUtility.getErrorMessage("login", request);
 						if (loginErr != null && !loginErr.isEmpty()) {
 						%>
 						<div class="text-danger small mt-1">
 							<i class="bi bi-exclamation-circle"></i>
-							<%=loginErr%></div>
+							<%=ms.get("login.error.require")%></div>
 						<%
 						}
 						%>
@@ -76,7 +77,7 @@ MessageSource ms = MessageSource.getInstance();
 							<span class="text-danger">*</span>
 						</label> <input type="password" name="password"
 							class="form-control form-control-lg"
-							placeholder="Enter your password"
+							placeholder="<%=ms.get("login.enterpassword")%>"
 							value="<%=DataUtility.getStringData(bean.getPassword())%>">
 						<%
 						String passErr = ServletUtility.getErrorMessage("password", request);
@@ -84,7 +85,7 @@ MessageSource ms = MessageSource.getInstance();
 						%>
 						<div class="text-danger small mt-1">
 							<i class="bi bi-exclamation-circle"></i>
-							<%=passErr%></div>
+							<%=ms.get("password.error.require")%></div>
 						<%
 						}
 						%>
@@ -103,12 +104,12 @@ MessageSource ms = MessageSource.getInstance();
 						class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
 						<a href="<%=ORSView.USER_REGISTRATION_CTL%>"
 							class="text-success fw-semibold text-decoration-none small">
-							<i class="bi bi-person-plus-fill me-1"></i>
-						<ors:message key="login.signup" />
+							<i class="bi bi-person-plus-fill me-1"></i> <ors:message
+								key="login.signup" />
 						</a> <a href="<%=ORSView.FORGET_PASSWORD_CTL%>"
 							class="text-secondary text-decoration-none small"> <i
-							class="bi bi-question-circle me-1"></i>
-						<ors:message key="login.forgotpassword" />
+							class="bi bi-question-circle me-1"></i> <ors:message
+								key="login.forgotpassword" />
 						</a>
 					</div>
 
@@ -117,8 +118,7 @@ MessageSource ms = MessageSource.getInstance();
 		</div>
 
 		<!-- Below card -->
-		<p class="text-center text-muted small mt-3">&copy; 2026 Rays
-			Technologies &mdash; Online Result System</p>
+		<p class="text-center text-muted small mt-3"><%=ms.get("footer.message")%></p>
 
 	</div>
 </div>

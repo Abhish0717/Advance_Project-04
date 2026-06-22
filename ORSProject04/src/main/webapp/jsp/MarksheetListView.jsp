@@ -92,8 +92,7 @@ String _suc = ServletUtility.getSuccessMessage(request);
 						<tr>
 							<th width="40"><input type="checkbox"
 								onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
-							<th>#</th>
-							<th>ID</th>
+							<th>Sr. No.</th>
 							<th><ors:message key="marksheet.rollno" /></th>
 							<th><ors:message key="marksheet.student.name" /></th>
 							<th class="text-center"><ors:message key="marksheet.physics" /></th>
@@ -112,7 +111,6 @@ String _suc = ServletUtility.getSuccessMessage(request);
 							<td><input type="checkbox" name="ids"
 								value="<%=bean.getId()%>"></td>
 							<td class="text-muted small"><%=index++%></td>
-							<td class="text-muted small"><%=bean.getId()%></td>
 							<td class="fw-semibold"><%=bean.getRollNo()%></td>
 							<td><%=bean.getName()%></td>
 							<td class="text-center"><%=bean.getPhysics()%></td>

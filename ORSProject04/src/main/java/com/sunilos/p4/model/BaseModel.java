@@ -79,7 +79,7 @@ public abstract class BaseModel<T extends BaseBean> {
 	 */
 
 	public T findByPk(long pk) throws ApplicationException {
-		log.debug("Model findByPK Started");
+		log.debug("Model findByPk Started");
 		StringBuffer sql = new StringBuffer("SELECT * FROM " + getTable() + " WHERE ID=?");
 		T bean = null;
 		Connection conn = null;
@@ -99,7 +99,7 @@ public abstract class BaseModel<T extends BaseBean> {
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}
-		log.debug("Model findByPK End");
+		log.debug("Model findByPk End");
 		return bean;
 	}
 

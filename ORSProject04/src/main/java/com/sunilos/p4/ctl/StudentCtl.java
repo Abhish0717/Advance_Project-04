@@ -55,13 +55,25 @@ public class StudentCtl extends BaseCtl {
 		if (DataValidator.isNull(request.getParameter("firstName"))) {
 			request.setAttribute("firstName", PropertyReader.getValue("error.require", "First Name"));
 			pass = false;
+		} else if (!DataValidator.isName(request.getParameter("firstName"))) {
+			request.setAttribute("firstName", "First Name Is Invalid");
+			pass = false;
 		}
 		if (DataValidator.isNull(request.getParameter("lastName"))) {
 			request.setAttribute("lastName", PropertyReader.getValue("error.require", "Last Name"));
 			pass = false;
+		} else if (!DataValidator.isName(request.getParameter("lastName"))) {
+			request.setAttribute("lastName", "Last Name Is Invalid");
+			pass = false;
 		}
 		if (DataValidator.isNull(request.getParameter("mobileNo"))) {
 			request.setAttribute("mobileNo", PropertyReader.getValue("error.require", "Mobile No"));
+			pass = false;
+		} else if (!DataValidator.isPhoneLength(request.getParameter("mobileNo"))) {
+			request.setAttribute("mobileNo", "mobile No must have 10 digits And Numeric");
+			pass = false;
+		} else if (!DataValidator.isPhoneNo(request.getParameter("mobileNo"))) {
+			request.setAttribute("mobileNo", "Invalid mobile Number");
 			pass = false;
 		}
 		if (DataValidator.isNull(email)) {
