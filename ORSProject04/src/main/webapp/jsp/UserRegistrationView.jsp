@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.UserRegistrationCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
 <%@page import="java.util.HashMap"%>
@@ -9,6 +10,7 @@
 	scope="request"></jsp:useBean>
 
 <%
+MessageSource ms = MessageSource.getInstance();
 String _suc = ServletUtility.getSuccessMessage(request);
 String _err = ServletUtility.getErrorMessage(request);
 HashMap genderMap = new HashMap();
@@ -28,8 +30,8 @@ genderMap.put("F", "Female");
 					<i class="bi bi-person-plus-fill"></i>
 				</div>
 			</div>
-			<h5 class="mb-0 fw-bold">User Registration</h5>
-			<p class="mb-0 opacity-75 small mt-1">Create your ORS account</p>
+			<h5 class="mb-0 fw-bold"><%=ms.get("register.usertitle")%></h5>
+			<p class="mb-0 opacity-75 small mt-1"><%=ms.get("register.cardsubtitle")%></p>
 		</div>
 
 		<div class="card-body px-4 py-4">
@@ -63,16 +65,20 @@ genderMap.put("F", "Female");
 
 				<div class="row g-3 mb-3">
 					<div class="col-md-6">
-						<label class="form-label fw-semibold">First Name <span
-							class="text-danger">*</span></label> <input type="text" name="firstName"
-							placeholder="Enter First Name" class="form-control"
+						<label class="form-label fw-semibold"><%=ms.get("register.firstname")%>
+							<span class="text-danger">*</span></label> <input type="text"
+							name="firstName"
+							placeholder="<%=ms.get("register.enterfirstname")%>"
+							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getFirstName())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("firstName", request)%></div>
 					</div>
 					<div class="col-md-6">
-						<label class="form-label fw-semibold">Last Name <span
-							class="text-danger">*</span></label> <input type="text" name="lastName"
-							placeholder="Enter Last Name" class="form-control"
+						<label class="form-label fw-semibold"><%=ms.get("register.lastname")%>
+							<span class="text-danger">*</span></label> <input type="text"
+							name="lastName"
+							placeholder="<%=ms.get("register.enterlastname")%>"
+							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getLastName())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("lastName", request)%></div>
 					</div>
@@ -115,8 +121,9 @@ genderMap.put("F", "Female");
 						<label class="form-label fw-semibold">Date of Birth
 							(mm/dd/yyyy)</label>
 						<div class="input-group">
-							<input type="text" name="dob" placeholder="Select Date Of Birth" id="udate" class="form-control"
-								readonly value="<%=DataUtility.getDateString(bean.getDob())%>">
+							<input type="text" name="dob" placeholder="Select Date Of Birth"
+								id="udate" class="form-control" readonly
+								value="<%=DataUtility.getDateString(bean.getDob())%>">
 							<!-- <a class="btn btn-outline-secondary"> <img
 								src="../img/cal.jpg" width="16" height="15" alt="Calendar">
 							</a> -->

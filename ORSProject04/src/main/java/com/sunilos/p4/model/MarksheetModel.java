@@ -59,7 +59,7 @@ public class MarksheetModel extends BaseModel<MarksheetBean> {
 			// Get auto-generated next primary key
 			pk = nextPK();
 			conn.setAutoCommit(false); // Begin transaction
-			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO ST_MARKSHEET VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement pstmt = conn.prepareStatement("insert into st_marksheet values(?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setInt(1, pk);
 			pstmt.setString(2, bean.getRollNo());
 			pstmt.setLong(3, bean.getStudentId());
@@ -131,7 +131,7 @@ public class MarksheetModel extends BaseModel<MarksheetBean> {
 
 			conn.setAutoCommit(false); // Begin transaction
 			PreparedStatement pstmt = conn.prepareStatement(
-					"UPDATE ST_MARKSHEET SET ROLL_NO=?,STUDENT_ID=?,NAME=?,PHYSICS=?,CHEMISTRY=?,MATHS=?,CREATED_BY=?,MODIFIED_BY=?,CREATED_DATETIME=?,MODIFIED_DATETIME=? WHERE ID=?");
+					"update st_marksheet set ROLL_NO=?,STUDENT_ID=?,NAME=?,PHYSICS=?,CHEMISTRY=?,MATHS=?,CREATED_BY=?,MODIFIED_BY=?,CREATED_DATETIME=?,MODIFIED_DATETIME=? where ID=?");
 			pstmt.setString(1, bean.getRollNo());
 			pstmt.setLong(2, bean.getStudentId());
 			pstmt.setString(3, bean.getName());
@@ -171,11 +171,11 @@ public class MarksheetModel extends BaseModel<MarksheetBean> {
 	 * @throws DatabaseException
 	 */
 
-	public List getMeritList(int pageNo, int pageSize) {
+	public List<MarksheetBean> getMeritList(int pageNo, int pageSize) {
 		log.debug("Model  MeritList Started");
-		ArrayList list = new ArrayList();
+		ArrayList<MarksheetBean> list = new ArrayList<MarksheetBean>();
 		StringBuffer sql = new StringBuffer(
-				"SELECT `ID`,`ROLL_NO`, `NAME`, `PHYSICS`, `CHEMISTRY`, `MATHS` , (PHYSICS + CHEMISTRY + MATHS) as total from `ST_MARKSHEET` order by total desc");
+				"select `ID`,`ROLL_NO`, `NAME`, `PHYSICS`, `CHEMISTRY`, `MATHS` , (PHYSICS + CHEMISTRY + MATHS) as total from `st_marksheet` order by total desc");
 		// if page size is greater than zero then apply pagination
 		if (pageSize > 0) {
 			// Calculate start record index
@@ -206,13 +206,13 @@ public class MarksheetModel extends BaseModel<MarksheetBean> {
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}
-		log.debug("Model  MeritList End");
+		log.debug("Model MeritList End");
 		return list;
 	}
 
 	@Override
 	public String getTable() {
-		return "ST_MARKSHEET";
+		return "st_marksheet";
 	}
 
 	@Override
@@ -227,22 +227,22 @@ public class MarksheetModel extends BaseModel<MarksheetBean> {
 		if (bean != null) {
 			System.out.println("service" + bean.getName());
 			if (bean.getId() > 0) {
-				sql.append(" AND id = " + bean.getId());
+				sql.append(" and id = " + bean.getId());
 			}
 			if (bean.getRollNo() != null && bean.getRollNo().length() > 0) {
-				sql.append(" AND roll_no like '" + bean.getRollNo() + "%'");
+				sql.append(" and roll_no like '" + bean.getRollNo() + "%'");
 			}
 			if (bean.getName() != null && bean.getName().length() > 0) {
-				sql.append(" AND name like '" + bean.getName() + "%'");
+				sql.append(" and name like '" + bean.getName() + "%'");
 			}
 			if (bean.getPhysics() != null && bean.getPhysics() > 0) {
-				sql.append(" AND physics = " + bean.getPhysics());
+				sql.append(" and physics = " + bean.getPhysics());
 			}
 			if (bean.getChemistry() != null && bean.getChemistry() > 0) {
-				sql.append(" AND chemistry = " + bean.getChemistry());
+				sql.append(" and chemistry = " + bean.getChemistry());
 			}
 			if (bean.getMaths() != null && bean.getMaths() > 0) {
-				sql.append(" AND maths = '" + bean.getMaths());
+				sql.append(" and maths = '" + bean.getMaths());
 			}
 
 		}

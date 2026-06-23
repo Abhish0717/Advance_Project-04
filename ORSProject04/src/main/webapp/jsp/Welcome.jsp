@@ -131,8 +131,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-primary mb-2">
 						<i class="bi bi-people-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Users</h6>
-					<p class="text-muted small mb-0">Manage system users</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("user.title")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("user.manage")%></p>
 				</div>
 			</a>
 		</div>
@@ -144,8 +144,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-success mb-2">
 						<i class="bi bi-building"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Colleges</h6>
-					<p class="text-muted small mb-0">Manage college records</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("college.title")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("college.manage")%></p>
 				</div>
 			</a>
 		</div>
@@ -158,8 +158,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 mb-2" style="color: black;">
 						<i class="bi bi-mortarboard-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Students</h6>
-					<p class="text-muted small mb-0">Manage student records</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("student.title")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("student.manage")%></p>
 				</div>
 			</a>
 		</div>
@@ -172,8 +172,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-warning mb-2">
 						<i class="bi bi-file-earmark-text-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Marksheets</h6>
-					<p class="text-muted small mb-0">Manage marksheet records</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("marksheet.plural")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("marksheet.manage.records")%></p>
 				</div>
 			</a>
 		</div>
@@ -185,8 +185,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-danger mb-2">
 						<i class="bi bi-shield-fill-check me-2"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("role.title") %></h6>
-					<p class="text-muted small mb-0"><%=ms.get("role.subtitle") %></p>
+					<h6 class="fw-bold mb-1"><%=ms.get("role.title")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("role.subtitle")%></p>
 				</div>
 			</a>
 		</div>

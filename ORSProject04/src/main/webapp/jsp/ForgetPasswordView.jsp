@@ -72,7 +72,7 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="text-center mt-3">
 					<a href="<%=ORSView.LOGIN_CTL%>"
 						class="text-secondary small text-decoration-none"> <i
-						class="bi bi-arrow-left me-1"></i> <ors:message key="forget.loginid" />
+						class="bi bi-arrow-left me-1"></i> <ors:message key="forget.loginidgo" />
 					</a>
 				</div>
 			</form>

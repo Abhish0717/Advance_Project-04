@@ -74,7 +74,7 @@ public class ProductModel extends BaseModel<ProductBean> {
 		}
 		try {
 			conn = JDBCDataSource.getConnection();
-			pk = nextPK();
+//			pk = nextPK();
 			conn.setAutoCommit(false); // Begin transaction`
 			PreparedStatement pstmt = conn.prepareStatement("update " + getTable()
 					+ " set name = ?, category = ?, order_date = ?, price = ?, created_by = ?, modified_by = ?, created_datetime = ?, modified_datetime = ? where id = ?");
@@ -98,7 +98,7 @@ public class ProductModel extends BaseModel<ProductBean> {
 				ex.printStackTrace();
 				throw new ApplicationException("Exception : Update rollback exception " + ex.getMessage());
 			}
-			throw new ApplicationException("Exception : Exception in Updated Payment Management");
+			throw new ApplicationException("Exception : Exception in Updated Product Management");
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}

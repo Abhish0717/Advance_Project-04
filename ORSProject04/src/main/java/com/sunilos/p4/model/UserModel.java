@@ -19,6 +19,7 @@ import com.sunilos.p4.util.EmailBuilder;
 import com.sunilos.p4.util.EmailMessage;
 import com.sunilos.p4.util.EmailUtility;
 import com.sunilos.p4.util.JDBCDataSource;
+import com.sunilos.p4.util.MessageSource;
 
 /**
  * JDBC Implementation of UserModel
@@ -28,6 +29,8 @@ import com.sunilos.p4.util.JDBCDataSource;
  * @Copyright (c) Rays Technologies
  */
 public class UserModel extends BaseModel<UserBean> {
+	
+	private static MessageSource ms = MessageSource.getInstance();
 
 	private static Logger log = Logger.getLogger(UserModel.class);
 
@@ -415,7 +418,7 @@ public class UserModel extends BaseModel<UserBean> {
 		boolean flag = false;
 
 		if (userData == null) {
-			throw new RecordNotFoundException("Email ID does not exists !");
+			throw new RecordNotFoundException(ms.get("forget.error"));
 
 		}
 
