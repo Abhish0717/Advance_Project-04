@@ -422,6 +422,23 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 								Record List
 						</a></li>
 
+						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- Transaction Record -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-bank me-1"></i>Transaction
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.TRANSACTION_CTL%>">
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add Transaction
+						</a></li>
+
+						<li><a class="dropdown-item"
+							href="<%=ORSView.TRANSACTION_LIST_CTL%>"> <i
+								class="bi bi-bank me-2 text-primary"></i> Transaction List
+						</a></li>
+
 					</ul></li>
 				<%
 				}

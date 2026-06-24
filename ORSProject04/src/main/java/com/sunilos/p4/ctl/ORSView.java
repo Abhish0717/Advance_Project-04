@@ -107,7 +107,6 @@ public interface ORSView {
 	/** Product List Controller URL */
 	public String PRODUCT_REPORT_VIEW = "/reports/ProductListReport.jrxml";
 	
-
 	/** Api View JSP */
 	public String API_VIEW = PAGE_FOLDER + "/ApiView.jsp";
 	/** Api Controller URL */
@@ -158,4 +157,18 @@ public interface ORSView {
 	/** Courier List Controller URL */
 	public String COURIER_LIST_CTL = APP_CONTEXT + "/ctl/CourierListCtl";
 
+	/** Transaction View JSP */
+	public String TRANSACTION_VIEW = PAGE_FOLDER + "/TransactionView.jsp";
+	/** Transaction Controller URL */
+	public String TRANSACTION_CTL = APP_CONTEXT + "/ctl/TransactionCtl";
+	
+	/** Transaction List JSP */
+	public String TRANSACTION_LIST_VIEW = PAGE_FOLDER + "/TransactionListView.jsp";
+	/** Transaction List Controller URL */
+	public String TRANSACTION_LIST_CTL = APP_CONTEXT + "/ctl/TransactionListCtl";
+	
+	/** Transaction Report Controller URL */
+	public String TRANSACTION_REPORT_CTL = APP_CONTEXT + "/ctl/TransactionReportCtl";
+	/** Transaction Report View jrxml file */
+	public String TRANSACTION_REPORT_VIEW = "/reports/TransactionListReport.jrxml";
 }

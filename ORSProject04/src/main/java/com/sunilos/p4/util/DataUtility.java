@@ -22,9 +22,9 @@ public class DataUtility {
 	/**
 	 * Application Date Format
 	 */
-	public static final String APP_DATE_FORMAT = "MM/dd/yyyy";
+	public static final String APP_DATE_FORMAT = "dd-mm-yyyy";			//MM/dd/yyyy
 
-	public static final String APP_TIME_FORMAT = "MM/dd/yyyy HH:mm:ss";
+	public static final String APP_TIME_FORMAT = "dd=mm-yyyy HH:mm:ss";
 
 	// DateTimeFormatter is immutable and thread-safe — safe to share as static
 	// fields
