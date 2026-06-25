@@ -59,9 +59,10 @@ String _err = ServletUtility.getErrorMessage(request);
 
 				<div class="mb-3">
 					<label class="form-label fw-semibold"><%=ms.get("transaction.date")%><span
-						class="text-danger">*</span></label> <input type="Date" name="transaction"
-						placeholder="Enter transaction Date" class="form-control"
-						maxlength="100"
+						class="text-danger">*</span></label> <input type="text" id="udatee"
+						name="transaction"
+						placeholder="<%=ms.get("transaction.date.placeholder")%>"
+						class="form-control" maxlength="100"
 						value="<%=DataUtility.getDateString(bean.getTransactionDate())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("transaction", request)%></div>
 				</div>
@@ -69,7 +70,8 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="mb-3">
 					<label class="form-label fw-semibold"><%=ms.get("transaction.amount")%><span
 						class="text-danger">*</span></label> <input type="text" name="amount"
-						placeholder="Enter Amount" class="form-control" maxlength="200"
+						placeholder="<%=ms.get("transaction.amount.placeholder")%>"
+						class="form-control" maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getAmount())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("amount", request)%></div>
 				</div>
@@ -77,7 +79,8 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="mb-3">
 					<label class="form-label fw-semibold"><%=ms.get("transaction.type")%><span
 						class="text-danger">*</span></label> <input type="text" name="type"
-						placeholder="Enter type" class="form-control" maxlength="200"
+						placeholder="<%=ms.get("transaction.type.placeholder")%>"
+						class="form-control" maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getType())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("type", request)%></div>
 				</div>
@@ -85,8 +88,8 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="mb-3">
 					<label class="form-label fw-semibold"><%=ms.get("transaction.account")%><span
 						class="text-danger">*</span></label> <input type="text" name="account"
-						placeholder="Enter Account Number" class="form-control"
-						maxlength="200"
+						placeholder="<%=ms.get("transaction.account.placeholder")%>"
+						class="form-control" maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getAccountNo())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("account", request)%></div>
 				</div>
@@ -94,21 +97,27 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="d-flex gap-2 pt-2 border-top">
 					<button type="submit" name="operation" value="<%=BaseCtl.OP_SAVE%>"
 						class="btn btn-primary">
-						<i class="bi bi-save me-1"></i> Save
+						<i class="bi bi-save me-1"></i>
+						<%=ms.get("button.save")%>
 					</button>
 					<%
 					if (bean.getId() > 0) {
 					%>
 					<button type="submit" name="operation"
-						value="<%=BaseCtl.OP_CANCEL%>" class="btn btn-secondary">
-						<i class="bi bi-x-circle ms-auto"></i>
-						<button>
-							<%
-							}
-							%>
-							<a href="TransactionCtl" class="btn btn-danger ms-auto"> <i
-								class="bi bi-arrow-clockwise ms-auto"></i> Reset
-							</a>
+						value="<%=BaseCtl.OP_CANCEL%>" class="btn btn-secondary ms-auto">
+						<i class="bi bi-x-circle "></i>
+						<%=ms.get("button.cancel")%>
+					</button>
+					<%
+					} else {
+					%>
+					<a href="TransactionCtl" class="btn btn-danger ms-auto"> <i
+						class="bi bi-arrow-clockwise"></i> <%=ms.get("button.reset")%>
+					</a>
+					<%
+					}
+					%>
+
 				</div>
 			</form>
 		</div>

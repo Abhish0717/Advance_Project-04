@@ -25,7 +25,8 @@ public class ApiModel extends BaseModel<ApiBean> {
 			conn = JDBCDataSource.getConnection();
 			pk = nextPK();
 			conn.setAutoCommit(false); // Begin transaction
-			PreparedStatement pstmt = conn.prepareStatement("insert into st_api values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement pstmt = conn
+					.prepareStatement("insert into " + getTable() + " values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			pstmt.setInt(1, pk);
 			pstmt.setString(2, bean.getApiName());
 			pstmt.setString(3, bean.getVersion());
@@ -65,8 +66,8 @@ public class ApiModel extends BaseModel<ApiBean> {
 			conn = JDBCDataSource.getConnection();
 			pk = nextPK();
 			conn.setAutoCommit(false); // Begin transaction`
-			PreparedStatement pstmt = conn.prepareStatement(
-					"update st_api set name = ?, version = ?, end_point = ?, status = ?, created_by = ?, modified_by = ?, created_datetime = ?, modified_datetime = ? where id = ?");
+			PreparedStatement pstmt = conn.prepareStatement("update " + getTable()
+					+ " set name = ?, version = ?, end_point = ?, status = ?, created_by = ?, modified_by = ?, created_datetime = ?, modified_datetime = ? where id = ?");
 			pstmt.setString(1, bean.getApiName());
 			pstmt.setString(2, bean.getVersion());
 			pstmt.setString(3, bean.getEndPoint());

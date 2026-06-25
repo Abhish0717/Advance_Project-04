@@ -60,7 +60,7 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="mb-3">
 					<label class="form-label fw-semibold"><%=ms.get("courier.tracking")%><span
 						class="text-danger">*</span></label> <input type="text" name="tracking"
-						placeholder="Enter Tracking Number" class="form-control"
+						placeholder="<%=ms.get("courier.tracking.placeholder") %>" class="form-control"
 						maxlength="100"
 						value="<%=DataUtility.getStringData(bean.getTrackingNumber())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("tracking", request)%></div>
@@ -69,7 +69,7 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="mb-3">
 					<label class="form-label fw-semibold"><%=ms.get("courier.sender")%><span
 						class="text-danger">*</span></label> <input type="text" name="sender"
-						placeholder="Enter Sender Name" class="form-control"
+						placeholder="<%=ms.get("courier.sender.placeholder") %>" class="form-control"
 						maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getSenderName())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("sender", request)%></div>
@@ -78,7 +78,7 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="mb-3">
 					<label class="form-label fw-semibold"><%=ms.get("courier.receiver")%><span
 						class="text-danger">*</span></label> <input type="text" name="receiver"
-						placeholder="Enter Receiver Name" class="form-control"
+						placeholder="<%=ms.get("courier.receiver.placeholder") %>" class="form-control"
 						maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getReceiverName())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("receiver", request)%></div>
@@ -87,7 +87,7 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="mb-3">
 					<label class="form-label fw-semibold"><%=ms.get("courier.status")%><span
 						class="text-danger">*</span></label> <input type="text" name="status"
-						placeholder="Enter Delivery Status" class="form-control"
+						placeholder="<%=ms.get("courier.status.placeholder") %>" class="form-control"
 						maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getDeliveryStatus())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("status", request)%></div>
@@ -96,21 +96,27 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="d-flex gap-2 pt-2 border-top">
 					<button type="submit" name="operation" value="<%=BaseCtl.OP_SAVE%>"
 						class="btn btn-primary">
-						<i class="bi bi-save me-1"></i> Save
+						<i class="bi bi-save me-1"></i> <%=ms.get("button.save") %>
 					</button>
 					<%
 					if (bean.getId() > 0) {
 					%>
-					<a href="CourierListCtl" class="btn btn-secondary ms-auto"> <i
+					<!-- <a href="CourierListCtl" class="btn btn-secondary ms-auto"> <i
 						class="bi bi-x-circle me-1"></i> Cancel
+					</a> -->
+					<button type="submit" name="operation"
+						value="<%=BaseCtl.OP_CANCEL%>" class="btn btn-danger ms-auto">
+						<i class="bi bi-x-circle me-1"></i> <%=ms.get("button.cancel") %>
+					</button>
+					<%
+					} else {
+					%>
+					<a href="CourierCtl" class="btn btn-danger ms-auto"> <i
+						class="bi bi-arrow-clockwise me-1"></i> <%=ms.get("button.reset") %>
 					</a>
 					<%
 					}
 					%>
-					<a href="CourierListCtl" class="btn btn-danger ms-auto"> <i
-						class="bi bi-x-circle me-1"></i> Reset
-					</a>
-
 				</div>
 			</form>
 		</div>

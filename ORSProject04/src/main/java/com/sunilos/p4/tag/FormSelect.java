@@ -16,7 +16,7 @@ import com.sunilos.p4.util.HTMLUtility;
  *
  * <ors:formSelect name="roleId" value="1" list="roleList" />
  * 
- * @author Sunil Sahu
+ * @author Abhishish Bhawsar
  *
  */
 public class FormSelect extends TagSupport {
@@ -81,6 +81,7 @@ public class FormSelect extends TagSupport {
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new JspException(e);
 		}
 

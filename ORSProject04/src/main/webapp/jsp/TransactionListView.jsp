@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.TransactionListCtl"%>
 <%@page import="com.sunilos.p4.ctl.BaseCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
@@ -7,6 +8,7 @@
 <%@page import="java.util.Iterator"%>
 
 <%
+MessageSource ms = MessageSource.getInstance();
 int pageNo = ServletUtility.getPageNo(request);
 int pageSize = ServletUtility.getPageSize(request);
 int index = ((pageNo - 1) * pageSize) + 1;
@@ -49,7 +51,8 @@ String _err = ServletUtility.getErrorMessage(request);
 					value="<%=ServletUtility.getParameter("name", request)%>">
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_SEARCH%>" class="btn btn-primary btn-sm">
-					<i class="bi bi-search me-1"></i> Search
+					<i class="bi bi-search me-1"></i>
+					<%=ms.get("button.search")%>
 				</button>
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_DELETE%>"

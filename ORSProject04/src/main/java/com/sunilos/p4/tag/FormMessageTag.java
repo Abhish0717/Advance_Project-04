@@ -13,7 +13,7 @@ import com.sunilos.p4.util.ServletUtility;
  *
  * <ors:formMsg />
  * 
- * @author Sunil Sahu
+ * @author Abhishish Bhawsar
  *
  */
 public class FormMessageTag extends TagSupport {
@@ -42,6 +42,7 @@ public class FormMessageTag extends TagSupport {
 				}
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new JspException(e);
 		}
 

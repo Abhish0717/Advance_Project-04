@@ -56,10 +56,10 @@ public class TransactionBean extends BaseBean {
 	public void setResultset(ResultSet rs) {
 		super.setResultset(rs);
 		try {
-			this.setTransactionDate(rs.getDate("transactionDate"));
+			this.setTransactionDate(rs.getDate("transaction_date"));
 			this.setAmount(rs.getLong("amount"));
 			this.setType(rs.getString("type"));
-			this.setAccountNo(rs.getString("accountNo"));
+			this.setAccountNo(rs.getString("account_no"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

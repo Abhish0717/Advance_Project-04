@@ -92,7 +92,7 @@ String _suc = ServletUtility.getSuccessMessage(request);
 						<tr>
 							<th width="40"><input type="checkbox"
 								onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
-							<th>Sr. No.</th>
+							<th><ors:message key="serial.no"/></th>
 							<th><ors:message key="marksheet.rollno" /></th>
 							<th><ors:message key="marksheet.student.name" /></th>
 							<th class="text-center"><ors:message key="marksheet.physics" /></th>

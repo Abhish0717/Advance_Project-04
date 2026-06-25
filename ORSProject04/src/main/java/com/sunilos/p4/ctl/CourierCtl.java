@@ -45,7 +45,7 @@ public class CourierCtl extends BaseCtl<CourierBean, CourierModel> {
 
 		CourierBean bean = new CourierBean();
 		bean.setId(DataUtility.getLong(request.getParameter("id")));
-		bean.setTrackingNumber(DataUtility.getString(request.getParameter("Tracking")));
+		bean.setTrackingNumber(DataUtility.getString(request.getParameter("tracking")));
 		bean.setSenderName(DataUtility.getString(request.getParameter("sender")));
 		bean.setReceiverName(DataUtility.getString(request.getParameter("receiver")));
 		bean.setDeliveryStatus(DataUtility.getString(request.getParameter("status")));

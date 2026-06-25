@@ -430,8 +430,9 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 								<i class="bi bi-bank me-1"></i>Transaction
 							</h6>
 						</li>
-						<li><a class="dropdown-item" href="<%=ORSView.TRANSACTION_CTL%>">
-								<i class="bi bi-plus-circle me-2 text-success"></i> Add Transaction
+						<li><a class="dropdown-item"
+							href="<%=ORSView.TRANSACTION_CTL%>"> <i
+								class="bi bi-plus-circle me-2 text-success"></i> Add Transaction
 						</a></li>
 
 						<li><a class="dropdown-item"
@@ -515,14 +516,14 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						</a></li>
 						<li><a class="dropdown-item"
 							href="<%=ORSView.JAVA_DOC_VIEW%>"> <i
-								class="bi bi-book me-2 text-success"></i> Java Doc
+								class="bi bi-book me-2 text-success"></i> <%=ms.get("java.doc")%>
 						</a></li>
 						<li>
 							<hr class="dropdown-divider border-secondary">
 						</li>
 						<li><a class="dropdown-item text-danger"
 							href="<%=ORSView.LOGIN_CTL%>?operation=<%=LoginCtl.OP_LOG_OUT%>">
-								<i class="bi bi-box-arrow-right me-2"></i> Logout
+								<i class="bi bi-box-arrow-right me-2"></i> <%=ms.get("logout.title")%>
 						</a></li>
 					</ul></li>
 

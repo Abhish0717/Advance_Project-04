@@ -4,6 +4,7 @@ import com.sunilos.p4.bean.TransactionBean;
 import com.sunilos.p4.model.TransactionModel;
 import com.sunilos.p4.util.DataUtility;
 import com.sunilos.p4.util.DataValidator;
+import com.sunilos.p4.util.MessageSource;
 import com.sunilos.p4.util.PropertyReader;
 
 import jakarta.servlet.annotation.WebServlet;
@@ -16,9 +17,14 @@ public class TransactionCtl extends BaseCtl<TransactionBean, TransactionModel> {
 	protected boolean validate(HttpServletRequest request) {
 
 		boolean pass = true;
+		
+		MessageSource ms = getMessageSource(request);
 
 		if (DataValidator.isNull(request.getParameter("transaction"))) {
 			request.setAttribute("transaction", PropertyReader.getValue("error.require", "Transaction Date"));
+			pass = false;
+		} else if (!DataValidator.isDate(request.getParameter("transaction"))) {
+			request.setAttribute("transaction", "Invalid Date Format");
 			pass = false;
 		}
 
@@ -35,11 +41,10 @@ public class TransactionCtl extends BaseCtl<TransactionBean, TransactionModel> {
 		if (DataValidator.isNull(request.getParameter("account"))) {
 			request.setAttribute("account", PropertyReader.getValue("error.require", "Account Number"));
 			pass = false;
-		} 
-//		else if (!DataValidator.isName(request.getParameter("account"))) {
-//			request.setAttribute("account", "Invalid Account Number");
-//			pass = false;
-//		}
+		} else if (!DataValidator.isLong(request.getParameter("account"))) {
+			request.setAttribute("account", "Invalid Account Number");
+			pass = false;
+		}
 
 		return pass;
 	}

@@ -76,7 +76,7 @@ String _err = ServletUtility.getErrorMessage(request);
 						<tr>
 							<th width="40"><input type="checkbox"
 								onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
-							<th>#</th>
+							<th>S.No.</th>
 							<th>ID</th>
 							<th>Name</th>
 							<th>Description</th>

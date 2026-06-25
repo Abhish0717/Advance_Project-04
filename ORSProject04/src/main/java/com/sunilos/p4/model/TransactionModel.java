@@ -25,8 +25,7 @@ public class TransactionModel extends BaseModel<TransactionBean> {
 			conn = JDBCDataSource.getConnection();
 			pk = nextPK();
 			conn.setAutoCommit(false); // Begin transaction
-			PreparedStatement pstmt = conn
-					.prepareStatement("insert into " + getTable() + " values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO " + getTable() + " VALUES(?,?,?,?,?,?,?,?,?)");
 			pstmt.setInt(1, pk);
 			pstmt.setDate(2, new java.sql.Date(bean.getTransactionDate().getTime()));
 			pstmt.setLong(3, bean.getAmount());
@@ -40,6 +39,7 @@ public class TransactionModel extends BaseModel<TransactionBean> {
 			conn.commit(); // End transaction
 			pstmt.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 			try {
 				conn.rollback();
 			} catch (Exception ex) {
@@ -94,8 +94,8 @@ public class TransactionModel extends BaseModel<TransactionBean> {
 		}
 	}
 
-	public TransactionBean findByNumber(String number) throws ApplicationException {
-		return findByUniqueColumn("account_no", number);
+	public TransactionBean findByNumber(String accountNo) throws ApplicationException {
+		return findByUniqueColumn("account_no", accountNo);
 	}
 
 	@Override
