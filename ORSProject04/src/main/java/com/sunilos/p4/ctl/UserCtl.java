@@ -104,6 +104,16 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 			request.setAttribute("dob", PropertyReader.getValue("error.date", "Date Of Birth"));
 			pass = false;
 		}
+		if (DataValidator.isNull(request.getParameter("mobileNo"))) {
+			request.setAttribute("mobileNo", PropertyReader.getValue("error.require", "Mobile No."));
+			pass = false;
+		} else if (!DataValidator.isPhoneLength(request.getParameter("mobileNo"))) {
+			request.setAttribute("mobileNo", "Mobile No must have 10 digits");
+			pass = false;
+		} else if (!DataValidator.isPhoneNo(request.getParameter("mobileNo"))) {
+			request.setAttribute("mobileNo", "Invalid Mobile No");
+			pass = false;
+		}
 		if (!(password).equals(request.getParameter("confirmPassword"))
 				&& !"".equals(request.getParameter("confirmPassword"))) {
 			ServletUtility.setErrorMessage("Confirm  Password  should not be matched.", request);
@@ -137,6 +147,8 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 		bean.setConfirmPassword(DataUtility.getString(request.getParameter("confirmPassword")));
 
 		bean.setGender(DataUtility.getString(request.getParameter("gender")));
+
+		bean.setMobileNo(DataUtility.getString(request.getParameter("mobileNo")));
 
 		bean.setDob(DataUtility.getDate(request.getParameter("dob")));
 

@@ -194,9 +194,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 			<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"
 				class="text-decoration-none">
 				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-success"
-					style="border-top: 4px solid #0d9488;">
-					<div class="fs-1 mb-2" style="color: #0d9488;">
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-warning">
+					<div class="fs-1 text-warning mb-2" style="color: #d0ca14;">
 						<i class="bi bi-trophy-fill"></i>
 					</div>
 					<h6 class="fw-bold mb-1"><%=ms.get("marksheet.title")%></h6>
@@ -238,8 +237,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-info mb-2">
 						<i class="bi bi-person-badge-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Faculty</h6>
-					<p class="text-muted small mb-0">Manage faculty records</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("faculty.title")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("faculty.card.subtitle")%></p>
 				</div>
 			</a>
 		</div>
@@ -251,8 +250,21 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 mb-2" style="color: red;">
 						<i class="bi bi-hospital-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Hospital Record</h6>
-					<p class="text-muted small mb-0">Manage Hospital records</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("hospital.record")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("hospital.card.subtitle")%></p>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-6 col-md-4 col-lg-3">
+			<a href="<%=ORSView.DOCTOR_LIST_CTL%>" class="text-decoration-none">
+				<div
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-success">
+					<div class="fs-1 mb-2" style="color: green;">
+						<i class="bi bi-prescription2"></i>
+					</div>
+					<h6 class="fw-bold mb-1"><%=ms.get("doctor.title")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("doctor.subtitle")%></p>
 				</div>
 			</a>
 		</div>

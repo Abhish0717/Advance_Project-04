@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@ taglib uri="http://www.sunilos.com/ors-tags" prefix="ors"%>
 <%@page import="com.sunilos.p4.ctl.MarksheetCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
@@ -6,6 +7,9 @@
 <%@page import="com.sunilos.p4.util.DataUtility"%>
 <%@page import="com.sunilos.p4.util.ServletUtility"%>
 
+<%
+MessageSource ms = MessageSource.getInstance();
+%>
 <jsp:useBean id="bean" class="com.sunilos.p4.bean.MarksheetBean"
 	scope="request"></jsp:useBean>
 
@@ -16,7 +20,7 @@
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
 				<i class="bi bi-file-earmark-text-fill me-2"></i>
-				<%=bean.getId() > 0 ? "Edit Marksheet" : "Add Marksheet"%>
+				<%=bean.getId() > 0 ? ms.get("marksheet.edit") : ms.get("marksheet.add")%>
 			</h5>
 		</div>
 
@@ -37,7 +41,8 @@
 				<div class="mb-3">
 					<label class="form-label fw-semibold"><ors:message
 							key="marksheet.rollno" /> <span class="text-danger">*</span></label> <input
-						type="text" name="rollNo" placeholder="Enter Roll No."
+						type="text" name="rollNo"
+						placeholder="<%=ms.get("marksheet.rollno.placeholder")%>"
 						class="form-control"
 						value="<%=DataUtility.getStringData(bean.getRollNo())%>"
 						<%=(bean.getId() > 0) ? "readonly" : ""%>>
@@ -57,14 +62,16 @@
 					<div class="col-md-4">
 						<label class="form-label fw-semibold"><ors:message
 								key="marksheet.physics" /></label> <input type="text" name="physics"
-							placeholder="Enter Physics Marks" class="form-control"
+							placeholder="<%=ms.get("marksheet.physics.placeholder")%>"
+							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getPhysics())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("physics", request)%></div>
 					</div>
 					<div class="col-md-4">
 						<label class="form-label fw-semibold"><ors:message
 								key="marksheet.chemistry" /></label> <input type="text"
-							name="chemistry" placeholder="Enter Chemistry Marks"
+							name="chemistry"
+							placeholder="<%=ms.get("marksheet.chemistry.placeholder")%>"
 							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getChemistry())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("chemistry", request)%></div>
@@ -72,7 +79,8 @@
 					<div class="col-md-4">
 						<label class="form-label fw-semibold"><ors:message
 								key="marksheet.maths" /></label> <input type="text" name="maths"
-							placeholder="Enter Maths Marks" class="form-control"
+							placeholder="<%=ms.get("marksheet.maths.placeholder")%>"
+							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getMaths())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("maths", request)%></div>
 					</div>
@@ -88,18 +96,20 @@
 					if (bean.getId() > 0) {
 					%>
 					<button type="submit" name="operation"
-						value="<%=MarksheetCtl.OP_DELETE%>" class="btn btn-danger"
-						onclick="return confirm('Delete this marksheet?')">
-						<i class="bi bi-trash me-1"></i>
-						<ors:message key="button.delete" />
+						value="<%=MarksheetCtl.OP_CANCEL%>" class="btn btn-danger ms-auto">
+						<i class="bi bi-x-circle me-1"></i>
+						<ors:message key="button.cancel" />
 					</button>
+					<%
+					} else {
+					%>
+					<a href="MarksheetCtl?id=0" class="btn btn-secondary ms-auto">
+						<i class="bi bi-arrow-clockwise me-1"></i> <ors:message
+							key="button.reset" />
+					</a>
 					<%
 					}
 					%>
-					<a href="MarksheetListCtl?id=0" class="btn btn-secondary ms-auto">
-						<i class="bi bi-x-circle me-1"></i> <ors:message
-							key="button.cancel" />
-					</a>
 				</div>
 			</form>
 		</div>

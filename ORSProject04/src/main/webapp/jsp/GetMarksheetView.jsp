@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.GetMarksheetCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
 <%@page import="com.sunilos.p4.util.DataUtility"%>
@@ -6,9 +7,10 @@
 <jsp:useBean id="bean" class="com.sunilos.p4.bean.MarksheetBean" scope="request"></jsp:useBean>
 
 <%
-    String _suc = ServletUtility.getSuccessMessage(request);
-    String _err = ServletUtility.getErrorMessage(request);
-    boolean hasResult = bean.getRollNo() != null && bean.getRollNo().trim().length() > 0;
+MessageSource ms = MessageSource.getInstance();
+String _suc = ServletUtility.getSuccessMessage(request);
+String _err = ServletUtility.getErrorMessage(request);
+boolean hasResult = bean.getRollNo() != null && bean.getRollNo().trim().length() > 0;
 %>
 
 <div class="container py-4" style="max-width:600px;">
@@ -17,7 +19,7 @@
   <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
     <div class="card-header text-white border-0 py-3 px-4"
          style="background:linear-gradient(135deg,#0d2137 0%,#1565c0 100%);">
-      <h5 class="mb-0 fw-bold"><i class="bi bi-search me-2"></i> Get Marksheet</h5>
+      <h5 class="mb-0 fw-bold"><i class="bi bi-search me-2"></i><%=ms.get("marksheet.get")%></h5>
     </div>
     <div class="card-body px-4 py-4">
 
@@ -29,14 +31,14 @@
       <% } %>
 
       <form action="<%=ORSView.GET_MARKSHEET_CTL%>" method="POST">
-        <label class="form-label fw-semibold">Roll No <span class="text-danger">*</span></label>
+        <label class="form-label fw-semibold"><%=ms.get("marksheet.rollno")%><span class="text-danger">*</span></label>
         <div class="input-group">
           <input type="text" name="rollNo" class="form-control form-control-lg"
-                 placeholder="Enter Roll Number"
+                 placeholder="<%=ms.get("marksheet.rollno.placeholder")%>"
                  value="<%=ServletUtility.getParameter("rollNo", request)%>">
           <button type="submit" name="operation" value="<%=GetMarksheetCtl.OP_GO%>"
                   class="btn btn-primary px-4">
-            <i class="bi bi-search me-1"></i> Search
+            <i class="bi bi-search me-1"></i><%=ms.get("button.search")%>
           </button>
         </div>
         <div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("rollNo", request)%></div>
@@ -54,45 +56,45 @@
   %>
   <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
     <div class="card-header border-0 py-3 px-4 bg-success text-white">
-      <h6 class="mb-0 fw-bold"><i class="bi bi-file-earmark-check-fill me-2"></i> Marksheet Result</h6>
+      <h6 class="mb-0 fw-bold"><i class="bi bi-file-earmark-check-fill me-2"></i><%=ms.get("marksheet.result")%></h6>
     </div>
     <div class="card-body p-0">
       <table class="table table-borderless mb-0">
         <tbody>
           <tr class="border-bottom">
-            <th class="ps-4 py-3 text-muted" style="width:40%">Roll No</th>
+            <th class="ps-4 py-3 text-muted" style="width:40%"><%=ms.get("marksheet.rollno")%></th>
             <td class="fw-semibold py-3"><%=DataUtility.getStringData(bean.getRollNo())%></td>
           </tr>
           <tr class="border-bottom">
-            <th class="ps-4 py-3 text-muted">Student Name</th>
+            <th class="ps-4 py-3 text-muted"><%=ms.get("marksheet.student.name")%></th>
             <td class="fw-semibold py-3"><%=DataUtility.getStringData(bean.getName())%></td>
           </tr>
           <tr class="border-bottom">
-            <th class="ps-4 py-3 text-muted">Physics</th>
+            <th class="ps-4 py-3 text-muted"><%=ms.get("marksheet.physics")%></th>
             <td class="py-3">
               <span class="badge bg-primary rounded-pill fs-6 px-3"><%=physics%></span>
             </td>
           </tr>
           <tr class="border-bottom">
-            <th class="ps-4 py-3 text-muted">Chemistry</th>
+            <th class="ps-4 py-3 text-muted"><%=ms.get("marksheet.chemistry")%></th>
             <td class="py-3">
               <span class="badge bg-success rounded-pill fs-6 px-3"><%=chemistry%></span>
             </td>
           </tr>
           <tr class="border-bottom">
-            <th class="ps-4 py-3 text-muted">Maths</th>
+            <th class="ps-4 py-3 text-muted"><%=ms.get("marksheet.maths")%></th>
             <td class="py-3">
               <span class="badge bg-warning text-dark rounded-pill fs-6 px-3"><%=maths%></span>
             </td>
           </tr>
           <tr class="border-bottom table-light">
-            <th class="ps-4 py-3">Total <small class="text-muted fw-normal">(out of 300)</small></th>
+            <th class="ps-4 py-3"><%=ms.get("marksheet.total")%><small class="text-muted fw-normal">(out of 300)</small></th>
             <td class="py-3">
               <span class="badge bg-dark rounded-pill fs-6 px-3"><%=total%></span>
             </td>
           </tr>
           <tr class="table-light">
-            <th class="ps-4 py-3">Percentage</th>
+            <th class="ps-4 py-3"><%=ms.get("marksheet.percentage")%></th>
             <td class="py-3">
               <span class="badge bg-info text-dark rounded-pill fs-6 px-3"><%=String.format("%.2f", percentage)%> %</span>
             </td>

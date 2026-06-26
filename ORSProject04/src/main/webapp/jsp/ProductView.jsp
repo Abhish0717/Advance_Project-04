@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.SubjectCtl"%>
 <%@page import="com.sunilos.p4.ctl.BaseCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
@@ -10,6 +11,7 @@
 	scope="request"></jsp:useBean>
 
 <%
+MessageSource ms = MessageSource.getInstance();
 String _suc = ServletUtility.getSuccessMessage(request);
 String _err = ServletUtility.getErrorMessage(request);
 %>
@@ -20,7 +22,7 @@ String _err = ServletUtility.getErrorMessage(request);
 		<div class="card-header text-white border-0 py-3 px-4"
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
-				<i class="bi bi-bookmark-star-fill me-2"></i>
+				<i class="bi bi-cart4 me-2"></i>
 				<%=bean.getId() > 0 ? "Edit Product" : "Add Product"%>
 			</h5>
 		</div>
@@ -57,7 +59,8 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="mb-3">
 					<label class="form-label fw-semibold">Product Name <span
 						class="text-danger">*</span></label> <input type="text" name="productName"
-						class="form-control" maxlength="100"
+						placeholder="Enter Product Name" class="form-control"
+						maxlength="100"
 						value="<%=DataUtility.getStringData(bean.getProductName())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("productName", request)%></div>
 				</div>
@@ -65,7 +68,8 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="mb-3">
 					<label class="form-label fw-semibold">Product Category <span
 						class="text-danger">*</span></label> <input type="text"
-						name="productCategory" class="form-control" maxlength="200"
+						name="productCategory" placeholder="Enter Product Category"
+						class="form-control" maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getProductCategory())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("productCategory", request)%></div>
 				</div>
@@ -73,8 +77,8 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="mb-3">
 					<label class="form-label fw-semibold">Order Date <span
 						class="text-danger">*</span></label> <input type="text" name="orderDate"
-						id="udatee" readonly="readonly" class="form-control"
-						maxlength="200"
+						placeholder="Enter Order Date" id="udatee" readonly="readonly"
+						class="form-control" maxlength="200"
 						value="<%=DataUtility.getDateString(bean.getOrderDate())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("orderDate", request)%></div>
 				</div>
@@ -82,7 +86,7 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="mb-3">
 					<label class="form-label fw-semibold">Price <span
 						class="text-danger">*</span></label> <input type="text" name="price"
-						class="form-control" maxlength="200"
+						placeholder="Enter Price" class="form-control" maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getPrice())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("price", request)%></div>
 				</div>
@@ -90,15 +94,17 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="d-flex gap-2 pt-2 border-top">
 					<button type="submit" name="operation" value="<%=BaseCtl.OP_SAVE%>"
 						class="btn btn-primary">
-						<i class="bi bi-save me-1"></i> Save
+						<i class="bi bi-save me-1"></i>
+						<%=ms.get("button.save")%>
 					</button>
 					<%
 					if (bean.getId() > 0) {
 					%>
 					<button type="submit" name="operation"
 						value="<%=BaseCtl.OP_DELETE%>" class="btn btn-danger"
-						onclick="return confirm('Delete this user?')">
-						<i class="bi bi-trash me-1"></i> Delete
+						onclick="return confirm('Delete this Product?')">
+						<i class="bi bi-trash me-1"></i>
+						<%=ms.get("button.delete")%>
 					</button>
 					<%
 					}
@@ -107,15 +113,16 @@ String _err = ServletUtility.getErrorMessage(request);
 					if (bean.getId() == 0) {
 					%>
 					<button type="submit" name="operation"
-						value="<%=BaseCtl.OP_RESET%>" class="btn btn-danger">
-						<i class="bi bi-arrow-clockwise me-1"></i> Reset
+						value="<%=BaseCtl.OP_RESET%>" class="btn btn-danger ms-auto">
+						<i class="bi bi-arrow-clockwise me-1"></i>
+						<%=ms.get("button.reset")%>
 					</button>
 					<%
 					} else {
 					%>
 
 					<a href="ProductListCtl" class="btn btn-secondary ms-auto"> <i
-						class="bi bi-x-circle me-1"></i> Cancel
+						class="bi bi-x-circle me-1"></i> <%=ms.get("button.cancel")%>
 					</a>
 					<%
 					}

@@ -132,6 +132,12 @@ genderMap.put("F", "Female");
 						</a>
 					</div>
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("dob", request)%></div>
+					<label class="form-label fw-semibold">Mobile No.</label>
+					<div class="input-group">
+						<input type="text" name="mobileNo" class="form-control" placeholder="Enter Mobile Number"
+							value="<%=DataUtility.getStringData(bean.getMobileNo())%>">
+					</div>
+					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("mobileNo", request)%></div>
 				</div>
 
 				<div class="d-flex gap-2 pt-2 border-top">

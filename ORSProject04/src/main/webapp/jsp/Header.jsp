@@ -314,7 +314,7 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle px-3 py-3" href="#"
 					data-bs-toggle="dropdown" aria-expanded="false"> <i
-						class="bi bi-motherboard-fill me-1"></i> Daily Module
+						class="bi bi-diagram-3-fill me-1"></i> <%=ms.get("daily.module")%>
 				</a>
 					<ul class="dropdown-menu dropdown-menu-dark custom-scroll-menu"
 						style="min-width: 210px; max-height: 450px; background: #1a2e4a;">
@@ -372,16 +372,16 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						<!-- Payment -->
 						<li>
 							<h6 class="dropdown-header text-uppercase text-info small">
-								<i class="bi bi-currency-rupee me-1"></i>Payment
+								<i class="bi bi-currency-rupee me-1"></i>Payment Record
 							</h6>
 						</li>
 						<li><a class="dropdown-item" href="<%=ORSView.PAYMENT_CTL%>">
-								<i class="bi bi-plus-circle me-2 text-success"></i> Add Payment
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add Payment Record
 						</a></li>
 
 						<li><a class="dropdown-item"
 							href="<%=ORSView.PAYMENT_LIST_CTL%>"> <i
-								class="bi bi-currency-rupee me-2 text-primary"></i> Payment List
+								class="bi bi-currency-rupee me-2 text-primary"></i> Payment Record List
 						</a></li>
 
 						<li><hr class="dropdown-divider border-secondary"></li>
@@ -427,17 +427,36 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						<!-- Transaction Record -->
 						<li>
 							<h6 class="dropdown-header text-uppercase text-info small">
-								<i class="bi bi-bank me-1"></i>Transaction
+								<i class="bi bi-bank me-1"></i>Transaction Detail
 							</h6>
 						</li>
 						<li><a class="dropdown-item"
 							href="<%=ORSView.TRANSACTION_CTL%>"> <i
-								class="bi bi-plus-circle me-2 text-success"></i> Add Transaction
+								class="bi bi-plus-circle me-2 text-success"></i> Add Transaction Detail
 						</a></li>
 
 						<li><a class="dropdown-item"
 							href="<%=ORSView.TRANSACTION_LIST_CTL%>"> <i
-								class="bi bi-bank me-2 text-primary"></i> Transaction List
+								class="bi bi-bank me-2 text-primary"></i> Transaction Detail List
+						</a></li>
+
+						<li><hr class="dropdown-divider border-secondary"></li>
+
+						<!-- Doctor Details -->
+						<li>
+							<h6 class="dropdown-header text-uppercase text-info small">
+								<i class="bi bi-prescription2 me-1"></i>Doctor Detail
+							</h6>
+						</li>
+						<li><a class="dropdown-item" href="<%=ORSView.DOCTOR_CTL%>">
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add Doctor
+								Details
+						</a></li>
+
+						<li><a class="dropdown-item"
+							href="<%=ORSView.DOCTOR_LIST_CTL%>"> <i
+								class="bi bi-prescription2 me-2 text-primary"></i> Doctor
+								Details List
 						</a></li>
 
 					</ul></li>

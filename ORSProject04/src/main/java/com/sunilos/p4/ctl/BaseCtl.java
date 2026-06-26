@@ -143,7 +143,7 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 		if (OP_CANCEL.equalsIgnoreCase(op)) {
 			ServletUtility.redirect(getView(op), request, response);
 			return;
-		} else if(OP_RESET.equalsIgnoreCase(op)) {
+		} else if (OP_RESET.equalsIgnoreCase(op)) {
 			ServletUtility.forwardPage(getView(op), request, response);
 		}
 
@@ -195,7 +195,7 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 			throws ServletException, IOException {
 
 		log.debug("CollegeCtl Method doGet Started");
-
+		MessageSource ms = getMessageSource(request);
 		String op = DataUtility.getString(request.getParameter("operation"));
 
 		// get model
@@ -206,11 +206,11 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 		// If primary key does exist then update the record of save the record
 		if (id > 0) {
 			getModel().update(bean);
-			ServletUtility.setSuccessMessage("Data is successfully updated", request);
+			ServletUtility.setSuccessMessage(ms.get("business.update"), request);
 		} else {
 			long pk = getModel().add(bean);
 			bean.setId(0L);
-			ServletUtility.setSuccessMessage("Data is successfully saved", request);
+			ServletUtility.setSuccessMessage(ms.get("business.save"), request);
 		}
 		ServletUtility.setBean(bean, request);
 		ServletUtility.forwardPage(getView(), request, response);

@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@ taglib uri="http://www.sunilos.com/ors-tags" prefix="ors"%>
 <%@page import="com.sunilos.p4.ctl.MarksheetListCtl"%>
 <%@page import="com.sunilos.p4.ctl.BaseCtl"%>
@@ -8,6 +9,7 @@
 <%@page import="java.util.Iterator"%>
 
 <%
+MessageSource ms = MessageSource.getInstance();
 int pageNo = ServletUtility.getPageNo(request);
 int pageSize = ServletUtility.getPageSize(request);
 int index = ((pageNo - 1) * pageSize) + 1;
@@ -30,10 +32,10 @@ String _suc = ServletUtility.getSuccessMessage(request);
 			<div class="d-flex gap-2">
 				<a href="<%=ORSView.MARKSHEET_REPORT_CTL%>" target="_blank"
 					class="btn btn-sm btn-warning fw-semibold"> <i
-					class="bi bi-file-earmark-pdf me-1"></i> Print PDF
+					class="bi bi-file-earmark-pdf me-1"></i> <%=ms.get("print.pdf")%>
 				</a> <a href="<%=ORSView.MARKSHEET_REPORT_CTL%>?type=doc"
 					target="_blank" class="btn btn-sm btn-info fw-semibold"> <i
-					class="bi bi-file-earmark-word me-1"></i> Print DOC
+					class="bi bi-file-earmark-word me-1"></i> <%=ms.get("print.doc")%>
 				</a> <a href="MarksheetCtl"
 					class="btn btn-sm btn-light text-primary fw-semibold"> <i
 					class="bi bi-plus-circle me-1"></i> <ors:message
@@ -49,11 +51,11 @@ String _suc = ServletUtility.getSuccessMessage(request);
 			<div
 				class="p-3 bg-light border-bottom d-flex flex-wrap gap-2 align-items-center">
 				<input type="text" name="name" class="form-control form-control-sm"
-					style="max-width: 180px;" placeholder="Student Name"
+					style="max-width: 180px;" placeholder="<%=ms.get("marksheet.student.name")%>"
 					value="<%=ServletUtility.getParameter("name", request)%>">
 				<input type="text" name="rollNo"
 					class="form-control form-control-sm" style="max-width: 160px;"
-					placeholder="Roll No"
+					placeholder="<%=ms.get("marksheet.rollno")%>"
 					value="<%=ServletUtility.getParameter("rollNo", request)%>">
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_SEARCH%>" class="btn btn-primary btn-sm">

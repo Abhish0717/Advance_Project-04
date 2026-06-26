@@ -45,7 +45,7 @@ String _err = ServletUtility.getErrorMessage(request);
 			</button>
 			<button type="submit" name="operation" value="<%=BaseCtl.OP_CANCEL%>"
 				class="btn btn-danger btn-sm">
-				<i class="bi bi-x-circle me-1"></i> Reset
+				<i class="bi bi-arrow-clockwise me-1"></i> Reset
 			</button>
 			<button type="submit" name="operation" value="<%=BaseCtl.OP_DELETE%>"
 				class="btn btn-danger btn-sm ms-auto"
@@ -57,20 +57,29 @@ String _err = ServletUtility.getErrorMessage(request);
 		<%
 		if (_err != null && !_err.isEmpty()) {
 		%>
-		<div class="alert alert-danger py-2 mx-3 mt-3">
-			<i class="bi bi-exclamation-triangle-fill me-2"></i><%=_err%><button
-				type="button" class="btn-close" data-bs-dismiss="alert"
+		<div
+			class="alert alert-danger alert-dismissible fade show py-2 mx-3 mt-3"
+			role="alert">
+			<i class="bi bi-exclamation-triangle-fill me-2"></i>
+			<%=_err%>
+
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
 				aria-label="Close"></button>
 		</div>
 		<%
 		}
 		%>
+
 		<%
 		if (_suc != null && !_suc.isEmpty()) {
 		%>
-		<div class="alert alert-success py-2">
-			<i class="bi bi-check-circle-fill me-2"></i><%=_suc%><button
-				type="button" class="btn-close" data-bs-dismiss="alert"
+		<div
+			class="alert alert-success alert-dismissible fade show py-2 mx-3 mt-3"
+			role="alert">
+			<i class="bi bi-exclamation-triangle-fill me-2"></i>
+			<%=_suc%>
+
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
 				aria-label="Close"></button>
 		</div>
 		<%

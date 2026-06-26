@@ -171,4 +171,19 @@ public interface ORSView {
 	public String TRANSACTION_REPORT_CTL = APP_CONTEXT + "/ctl/TransactionReportCtl";
 	/** Transaction Report View jrxml file */
 	public String TRANSACTION_REPORT_VIEW = "/reports/TransactionListReport.jrxml";
+
+	/** Doctor View JSP */
+	public String DOCTOR_VIEW = PAGE_FOLDER + "/DoctorView.jsp";
+	/** Doctor Controller URL */
+	public String DOCTOR_CTL = APP_CONTEXT + "/ctl/DoctorCtl";
+	
+	/** Doctor List JSP */
+	public String DOCTOR_LIST_VIEW = PAGE_FOLDER + "/DoctorListView.jsp";
+	/** Doctor List Controller URL */
+	public String DOCTOR_LIST_CTL = APP_CONTEXT + "/ctl/DoctorListCtl";
+	
+	/** Doctor Report Controller URL */
+	public String DOCTOR_REPORT_CTL = APP_CONTEXT + "/ctl/DoctorReportCtl";
+	/** Doctor Report View jrxml file */
+	public String DOCTOR_REPORT_VIEW = "/reports/DoctorReportView.jrxml";
 }

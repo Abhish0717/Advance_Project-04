@@ -123,7 +123,7 @@ public class ProductModel extends BaseModel<ProductBean> {
 				sql.append(" AND order_date = " + bean.getOrderDate());
 			}
 			if (bean.getPrice() > 0) {
-				sql.append(" AND price = " + bean.getProductName());
+				sql.append(" AND price = " + bean.getPrice());
 			}
 		}
 

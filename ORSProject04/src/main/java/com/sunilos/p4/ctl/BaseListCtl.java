@@ -9,6 +9,7 @@ import com.sunilos.p4.bean.BaseBean;
 import com.sunilos.p4.model.BaseModel;
 import com.sunilos.p4.util.DataUtility;
 import com.sunilos.p4.util.DataValidator;
+import com.sunilos.p4.util.MessageSource;
 import com.sunilos.p4.util.PropertyReader;
 import com.sunilos.p4.util.ServletUtility;
 
@@ -51,7 +52,7 @@ public abstract class BaseListCtl<B extends BaseBean, M extends BaseModel> exten
 			throws ServletException, IOException {
 
 		log.debug("List toPost started");
-
+		MessageSource ms = getMessageSource(request);
 		// Get the operation
 		// ऑपरेशन पैरामीटर रिक्वेस्ट ऑब्जेक्ट से निकाले
 		String op = DataUtility.getString(request.getParameter("operation"));
@@ -65,10 +66,10 @@ public abstract class BaseListCtl<B extends BaseBean, M extends BaseModel> exten
 			if (ids != null && ids.length > 0) {
 				for (String id : ids) {
 					model.delete(DataUtility.getInt(id));
-					ServletUtility.setSuccessMessage("records deleted successfully", request);
+					ServletUtility.setSuccessMessage( ms.get("business.deleted"), request);
 				}
 			} else {
-				ServletUtility.setErrorMessage("select at least one record", request);
+				ServletUtility.setErrorMessage(ms.get("business.select.alor"), request);
 			}
 		}
 
