@@ -51,7 +51,7 @@ MessageSource ms = MessageSource.getInstance();
 
 				<div class="mb-3">
 					<label class="form-label fw-semibold"><ors:message
-							key="marksheet.name" /> <span class="text-danger">*</span></label>
+							key="name.title" /> <span class="text-danger">*</span></label>
 					<ors:formSelect name="studentId"
 						value="<%=String.valueOf(bean.getStudentId())%>"
 						list="studentList" />

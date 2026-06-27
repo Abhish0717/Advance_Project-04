@@ -66,7 +66,7 @@ String _suc = ServletUtility.getSuccessMessage(request);
 					value="<%=BaseCtl.OP_DELETE%>"
 					class="btn btn-danger btn-sm ms-auto">
 					<i class="bi bi-trash me-1"></i>
-					<ors:message key="button.delete.selected" />
+					<ors:message key="button.delete" />
 				</button>
 			</div>
 

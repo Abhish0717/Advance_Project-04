@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.BaseCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
 <%@page import="com.sunilos.p4.util.ServletUtility"%>
@@ -6,6 +7,7 @@
 <%@page import="java.util.Iterator"%>
 
 <%
+MessageSource ms = MessageSource.getInstance();
 int pageNo = ServletUtility.getPageNo(request);
 int pageSize = ServletUtility.getPageSize(request);
 int index = ((pageNo - 1) * pageSize) + 1;
@@ -22,18 +24,19 @@ String _suc = ServletUtility.getSuccessMessage(request);
 			class="card-header text-white border-0 py-3 px-4 d-flex justify-content-between align-items-center"
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
-				<i class="bi bi-person-badge-fill me-2"></i> Faculty List
+				<i class="bi bi-person-badge-fill me-2"></i>
+				<%=ms.get("faculty.list")%>
 			</h5>
 			<div class="d-flex gap-2">
 				<a href="<%=ORSView.FACULTY_REPORT_CTL%>" target="_blank"
 					class="btn btn-sm btn-warning fw-semibold"> <i
-					class="bi bi-file-earmark-pdf me-1"></i> Print PDF
+					class="bi bi-file-earmark-pdf me-1"></i> <%=ms.get("print.pdf")%>
 				</a> <a href="<%=ORSView.FACULTY_REPORT_CTL%>?type=doc" target="_blank"
 					class="btn btn-sm btn-info fw-semibold"> <i
-					class="bi bi-file-earmark-word me-1"></i> Print DOC
+					class="bi bi-file-earmark-word me-1"></i> <%=ms.get("print.doc")%>
 				</a> <a href="FacultyCtl"
 					class="btn btn-sm btn-light text-primary fw-semibold"> <i
-					class="bi bi-plus-circle me-1"></i> Add Faculty
+					class="bi bi-plus-circle me-1"></i> <%=ms.get("faculty.add")%>
 				</a>
 			</div>
 		</div>
@@ -46,23 +49,26 @@ String _suc = ServletUtility.getSuccessMessage(request);
 				class="p-3 bg-light border-bottom d-flex flex-wrap gap-2 align-items-center">
 				<input type="text" name="firstName"
 					class="form-control form-control-sm" style="max-width: 140px;"
-					placeholder="First Name"
+					placeholder="<%=ms.get("register.enterfirstname")%>"
 					value="<%=ServletUtility.getParameter("firstName", request)%>">
 				<input type="text" name="lastName"
 					class="form-control form-control-sm" style="max-width: 140px;"
-					placeholder="Last Name"
+					placeholder="<%=ms.get("register.enterlastname")%>"
 					value="<%=ServletUtility.getParameter("lastName", request)%>">
 				<input type="text" name="email" class="form-control form-control-sm"
-					style="max-width: 200px;" placeholder="Email ID"
+					style="max-width: 200px;"
+					placeholder="<%=ms.get("email.placeholder")%>"
 					value="<%=ServletUtility.getParameter("email", request)%>">
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_SEARCH%>" class="btn btn-primary btn-sm">
-					<i class="bi bi-search me-1"></i> Search
+					<i class="bi bi-search me-1"></i>
+					<%=ms.get("button.search")%>
 				</button>
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_DELETE%>"
 					class="btn btn-danger btn-sm ms-auto">
-					<i class="bi bi-trash me-1"></i> Delete Selected
+					<i class="bi bi-trash me-1"></i>
+					<%=ms.get("button.delete")%>
 				</button>
 			</div>
 
@@ -88,15 +94,15 @@ String _suc = ServletUtility.getSuccessMessage(request);
 						<tr>
 							<th width="40"><input type="checkbox"
 								onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
-							<th>S.No.</th>
-							<th>College</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Email ID</th>
-							<th>Mobile No</th>
-							<th>Gender</th>
-							<th>Date of Birth</th>
-							<th>Action</th>
+							<th><%=ms.get("serial.no")%></th>
+							<th><%=ms.get("college.title")%></th>
+							<th><%=ms.get("register.firstname")%></th>
+							<th><%=ms.get("register.lastname")%></th>
+							<th><%=ms.get("email.id")%></th>
+							<th><%=ms.get("mobile.title")%></th>
+							<th><%=ms.get("register.gender")%></th>
+							<th><%=ms.get("dob.title")%></th>
+							<th><%=ms.get("label.action")%></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -127,7 +133,7 @@ String _suc = ServletUtility.getSuccessMessage(request);
 							<td class="text-muted small"><%=bean.getDob()%></td>
 							<td><a href="FacultyCtl?id=<%=bean.getId()%>"
 								class="btn btn-sm btn-outline-primary"> <i
-									class="bi bi-pencil"></i> Edit
+									class="bi bi-pencil"></i> <%=ms.get("link.edit")%>
 							</a></td>
 						</tr>
 						<%

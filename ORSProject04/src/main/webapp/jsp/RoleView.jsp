@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.RoleCtl"%>
 <%@page import="com.sunilos.p4.ctl.BaseCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
@@ -8,6 +9,7 @@
 	scope="request"></jsp:useBean>
 
 <%
+MessageSource ms = MessageSource.getInstance();
 String _suc = ServletUtility.getSuccessMessage(request);
 String _err = ServletUtility.getErrorMessage(request);
 %>
@@ -19,7 +21,7 @@ String _err = ServletUtility.getErrorMessage(request);
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
 				<i class="bi bi-shield-fill-check me-2"></i>
-				<%=bean.getId() > 0 ? "Edit Role" : "Add Role"%>
+				<%=bean.getId() > 0 ? ms.get("role.edit") : ms.get("role.add")%>
 			</h5>
 		</div>
 
@@ -53,16 +55,16 @@ String _err = ServletUtility.getErrorMessage(request);
 					value="<%=DataUtility.getTimestamp(bean.getModifiedDatetime())%>">
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold">Name <span
-						class="text-danger">*</span></label> <input type="text" name="name" placeholder="Enter Role Name"
+					<label class="form-label fw-semibold"><%=ms.get("name.title")%> <span
+						class="text-danger">*</span></label> <input type="text" name="name" placeholder="<%=ms.get("role.placeholder") %>"
 						class="form-control"
 						value="<%=DataUtility.getStringData(bean.getName())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("name", request)%></div>
 				</div>
 
 				<div class="mb-4">
-					<label class="form-label fw-semibold">Description <span
-						class="text-danger">*</span></label> <input type="text" name="description" placeholder="Enter Role Description"
+					<label class="form-label fw-semibold"><%=ms.get("description.title")%> <span
+						class="text-danger">*</span></label> <input type="text" name="description" placeholder="<%=ms.get("role.descriptionplaceholder") %>"
 						class="form-control"
 						value="<%=DataUtility.getStringData(bean.getDescription())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("description", request)%></div>
@@ -71,23 +73,26 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="d-flex gap-2 pt-2 border-top">
 					<button type="submit" name="operation" value="<%=BaseCtl.OP_SAVE%>"
 						class="btn btn-primary">
-						<i class="bi bi-save me-1"></i> Save
+						<i class="bi bi-save me-1"></i>
+						<%=ms.get("button.save")%>
 					</button>
 					<%
 					if (bean.getId() > 0) {
 					%>
 					<button type="submit" name="operation"
-						value="<%=BaseCtl.OP_DELETE%>" class="btn btn-danger"
-						onclick="return confirm('Delete this role?')">
-						<i class="bi bi-trash me-1"></i> Delete
+						value="<%=BaseCtl.OP_CANCEL%>" class="btn btn-danger ms-auto">
+						<i class="bi bi-x-circle me-1"></i>
+						<%=ms.get("button.cancel")%>
 					</button>
+					<%
+					} else {
+					%>
+					<a href="RoleCtl" class="btn btn-danger ms-auto"> <i
+						class="bi bi-arrow-clockwise me-1"></i> <%=ms.get("button.reset")%>
+					</a>
 					<%
 					}
 					%>
-					<a href="<%=ORSView.ROLE_LIST_CTL%>"
-						class="btn btn-secondary ms-auto"> <i
-						class="bi bi-x-circle me-1"></i> Cancel
-					</a>
 				</div>
 			</form>
 		</div>

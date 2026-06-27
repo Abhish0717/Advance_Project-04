@@ -57,7 +57,7 @@ String _err = ServletUtility.getErrorMessage(request);
 				class="btn btn-danger btn-sm ms-auto"
 				onclick="return confirm('<%=ms.get("doctor.delete.confirm")%>')">
 				<i class="bi bi-trash me-1"></i>
-				<%=ms.get("button.delete.selected")%>
+				<%=ms.get("button.delete")%>
 			</button>
 		</div>
 		<%
@@ -119,7 +119,7 @@ String _err = ServletUtility.getErrorMessage(request);
 						<td><%=bean.getContactNo()%></td>
 						<td><a href="DoctorCtl?id=<%=bean.getId()%>"
 							class="btn btn-sm btn-outline-primary"> <i
-								class="bi bi-pencil"></i> <%=ms.get("button.edit")%>
+								class="bi bi-pencil"></i> <%=ms.get("link.edit")%>
 						</a></td>
 					</tr>
 					<%

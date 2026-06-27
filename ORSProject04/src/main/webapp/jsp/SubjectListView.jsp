@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.bean.CourseBean"%>
 <%@page import="com.sunilos.p4.model.CourseModel"%>
 <%@page import="com.sunilos.p4.ctl.SubjectListCtl"%>
@@ -9,6 +10,7 @@
 <%@page import="java.util.Iterator"%>
 
 <%
+MessageSource ms = MessageSource.getInstance();
 int pageNo = ServletUtility.getPageNo(request);
 int pageSize = ServletUtility.getPageSize(request);
 int index = ((pageNo - 1) * pageSize) + 1;
@@ -24,18 +26,18 @@ String _err = ServletUtility.getErrorMessage(request);
 			class="card-header text-white border-0 py-3 px-4 d-flex justify-content-between align-items-center"
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
-				<i class="bi bi-bookmark-star-fill me-2"></i> Subject List
+				<i class="bi bi-bookmark-star-fill me-2"></i> <%=ms.get("subject.list")%>
 			</h5>
 			<div class="d-flex gap-2">
 				<a href="<%=ORSView.SUBJECT_REPORT_CTL%>" target="_blank"
 					class="btn btn-sm btn-warning fw-semibold"> <i
-					class="bi bi-file-earmark-pdf me-1"></i> Print PDF
+					class="bi bi-file-earmark-pdf me-1"></i><%=ms.get("print.pdf")%>
 				</a> <a href="<%=ORSView.SUBJECT_REPORT_CTL%>?type=doc" target="_blank"
 					class="btn btn-sm btn-info fw-semibold"> <i
-					class="bi bi-file-earmark-word me-1"></i> Print DOC
+					class="bi bi-file-earmark-word me-1"></i> <%=ms.get("print.doc")%>
 				</a> <a href="<%=ORSView.SUBJECT_CTL%>"
 					class="btn btn-sm btn-light text-primary fw-semibold"> <i
-					class="bi bi-plus-circle me-1"></i> Add Subject
+					class="bi bi-plus-circle me-1"></i> <%=ms.get("subject.add")%>
 				</a>
 			</div>
 		</div>
@@ -51,13 +53,13 @@ String _err = ServletUtility.getErrorMessage(request);
 					value="<%=ServletUtility.getParameter("name", request)%>">
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_SEARCH%>" class="btn btn-primary btn-sm">
-					<i class="bi bi-search me-1"></i> Search
+					<i class="bi bi-search me-1"></i> <%=ms.get("button.search")%>
 				</button>
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_DELETE%>"
 					class="btn btn-danger btn-sm ms-auto"
 					onclick="return confirm('Delete selected subjects?')">
-					<i class="bi bi-trash me-1"></i> Delete Selected
+					<i class="bi bi-trash me-1"></i> <%=ms.get("button.delete")%>
 				</button>
 			</div>
 
@@ -76,12 +78,11 @@ String _err = ServletUtility.getErrorMessage(request);
 						<tr>
 							<th width="40"><input type="checkbox"
 								onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
-							<th>S.No.</th>
-							<th>ID</th>
-							<th>Name</th>
-							<th>Description</th>
-							<th>Course Name</th>
-							<th>Action</th>
+							<th><%=ms.get("serial.no")%></th>
+							<th><%=ms.get("name.title")%></th>
+							<th><%=ms.get("description.title")%></th>
+							<th><%=ms.get("course.name")%></th>
+							<th><%=ms.get("label.action") %></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -96,13 +97,12 @@ String _err = ServletUtility.getErrorMessage(request);
 							<td><input type="checkbox" name="ids"
 								value="<%=bean.getId()%>"></td>
 							<td class="text-muted small"><%=index++%></td>
-							<td class="text-muted small"><%=bean.getId()%></td>
 							<td class="fw-semibold"><%=bean.getName()%></td>
 							<td><%=bean.getDescription()%></td>
 							<td class="small"><%=cBean.getName()%></td>
 							<td><a href="SubjectCtl?id=<%=bean.getId()%>"
 								class="btn btn-sm btn-outline-primary"> <i
-									class="bi bi-pencil"></i> Edit
+									class="bi bi-pencil"></i> <%=ms.get("link.edit")%>
 							</a></td>
 						</tr>
 						<%

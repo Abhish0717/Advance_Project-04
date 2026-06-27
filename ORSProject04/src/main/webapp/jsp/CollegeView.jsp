@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.CollegeCtl"%>
 <%@page import="com.sunilos.p4.ctl.BaseCtl"%>
 <%@page import="com.sunilos.p4.util.DataUtility"%>
@@ -7,6 +8,7 @@
 	scope="request"></jsp:useBean>
 
 <%
+MessageSource ms = MessageSource.getInstance();
 String _suc = ServletUtility.getSuccessMessage(request);
 String _err = ServletUtility.getErrorMessage(request);
 %>
@@ -18,7 +20,7 @@ String _err = ServletUtility.getErrorMessage(request);
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
 				<i class="bi bi-building me-2"></i>
-				<%=bean.getId() > 0 ? "Edit College" : "Add College"%>
+				<%=bean.getId() > 0 ? ms.get("college.edit") : ms.get("college.add")%>
 			</h5>
 		</div>
 
@@ -52,32 +54,36 @@ String _err = ServletUtility.getErrorMessage(request);
 					value="<%=DataUtility.getTimestamp(bean.getModifiedDatetime())%>">
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold">Name <span
-						class="text-danger">*</span></label> <input type="text" name="name"
-						placeholder="Enter College Name" class="form-control"
+					<label class="form-label fw-semibold"><%=ms.get("name.title")%>
+						<span class="text-danger">*</span></label> <input type="text" name="name"
+						placeholder="<%=ms.get("course.placeholder")%>"
+						class="form-control"
 						value="<%=DataUtility.getStringData(bean.getName())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("name", request)%></div>
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold">Address <span
-						class="text-danger">*</span></label> <input type="text" name="address"
-						placeholder="Enter Address" class="form-control"
+					<label class="form-label fw-semibold"><%=ms.get("address.title")%>
+						<span class="text-danger">*</span></label> <input type="text"
+						name="address" placeholder="<%=ms.get("address.placeholder")%>"
+						class="form-control"
 						value="<%=DataUtility.getStringData(bean.getAddress())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("address", request)%></div>
 				</div>
 
 				<div class="row g-3 mb-3">
 					<div class="col-md-6">
-						<label class="form-label fw-semibold">State <span
-							class="text-danger">*</span></label> <input type="text" name="state"
-							placeholder="Enter State Name" class="form-control"
+						<label class="form-label fw-semibold"><%=ms.get("state.title")%>
+							<span class="text-danger">*</span></label> <input type="text"
+							name="state" placeholder="<%=ms.get("state.placeholder")%>"
+							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getState())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("state", request)%></div>
 					</div>
 					<div class="col-md-6">
-						<label class="form-label fw-semibold">City <span
-							class="text-danger">*</span></label> <input type="text" name="city"placeholder="Enter City Name"
+						<label class="form-label fw-semibold"><%=ms.get("city.title")%><span
+							class="text-danger">*</span></label> <input type="text" name="city"
+							placeholder="<%=ms.get("city.placeholder")%>"
 							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getCity())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("city", request)%></div>
@@ -85,8 +91,9 @@ String _err = ServletUtility.getErrorMessage(request);
 				</div>
 
 				<div class="mb-4">
-					<label class="form-label fw-semibold">Phone No <span
-						class="text-danger">*</span></label> <input type="text" name="phoneNo"placeholder="Enter Phone Number"
+					<label class="form-label fw-semibold"><%=ms.get("phone.title")%><span
+						class="text-danger">*</span></label> <input type="text" name="phoneNo"
+						placeholder="<%=ms.get("phone.placeholder")%>"
 						class="form-control"
 						value="<%=DataUtility.getStringData(bean.getPhoneNo())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("phoneNo", request)%></div>
@@ -95,23 +102,28 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="d-flex gap-2 pt-2 border-top">
 					<button type="submit" name="operation" value="<%=BaseCtl.OP_SAVE%>"
 						class="btn btn-primary">
-						<i class="bi bi-save me-1"></i> Save
+						<i class="bi bi-save me-1"></i>
+						<%=ms.get("button.save")%>
 					</button>
 					<%
 					if (bean.getId() > 0) {
 					%>
 					<button type="submit" name="operation"
-						value="<%=BaseCtl.OP_DELETE%>" class="btn btn-danger"
-						onclick="return confirm('Delete this college?')">
-						<i class="bi bi-trash me-1"></i> Delete
+						value="<%=BaseCtl.OP_CANCEL%>" class="btn btn-danger ms-auto">
+						<i class="bi bi-x-circle me-1"></i>
+						<%=ms.get("button.cancel")%>
 					</button>
+					<%
+					} else {
+					%>
+					<a href="collegeCtl" class="btn btn-danger ms-auto"> <i
+						class="bi bi-arrow-clockwise me-1"></i> <%=ms.get("button.reset")%>
+					</a>
 					<%
 					}
 					%>
-					<a href="CollegeListCtl?id=0" class="btn btn-secondary ms-auto">
-						<i class="bi bi-x-circle me-1"></i> Cancel
-					</a>
 				</div>
+
 			</form>
 		</div>
 	</div>
