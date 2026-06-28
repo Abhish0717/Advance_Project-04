@@ -72,7 +72,7 @@ public class HospitalCtl extends BaseCtl<HospitalBean, HospitalModel> {
 	@Override
 	protected String getView(String op) {
 
-		if (OP_CANCEL.equalsIgnoreCase(op) || OP_DELETE.equalsIgnoreCase(op)) {
+		if (OP_CANCEL.equalsIgnoreCase(op)) {
 			return ORSView.HOSPITAL_LIST_CTL;
 
 		} else {
