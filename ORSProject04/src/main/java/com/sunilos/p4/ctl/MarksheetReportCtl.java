@@ -11,7 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
  * Report servlet that generates a Marksheet list report in PDF or DOC format.
  * Mapped to {@code /ctl/MarksheetReportCtl}; add {@code ?type=doc} for Word output.
  *
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @see BaseReportCtl
  */

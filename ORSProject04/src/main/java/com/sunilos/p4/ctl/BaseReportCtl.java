@@ -43,7 +43,7 @@ import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
  * @param <B> the bean type whose instances populate the report data source;
  *            must extend {@link BaseBean}
  *
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  */
 public abstract class BaseReportCtl<B extends BaseBean> extends HttpServlet {

@@ -22,7 +22,7 @@ import com.sunilos.p4.util.ServletUtility;
  * User registration functionality Controller. Performs operation for User
  * Registration
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */

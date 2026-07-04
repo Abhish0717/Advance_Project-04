@@ -78,8 +78,7 @@ String _err = ServletUtility.getErrorMessage(request);
 					<tr>
 						<th width="40"><input type="checkbox"
 							onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
-						<th>Sr.No.</th>
-						<th>ID</th>
+						<th>S.No.</th>
 						<th>Patient Name</th>
 						<th>Doctor Name</th>
 						<th>Disease</th>
@@ -95,7 +94,6 @@ String _err = ServletUtility.getErrorMessage(request);
 						<td><input type="checkbox" name="ids"
 							value="<%=bean.getId()%>"></td>
 						<td class="text-muted small"><%=index++%></td>
-						<td class="text-muted small"><%=bean.getId()%></td>
 						<td class="fw-semibold"><%=bean.getPatientName()%></td>
 						<td><%=bean.getDoctorName()%></td>
 						<td><%=bean.getDisease()%></td>

@@ -24,7 +24,7 @@ import com.sunilos.p4.util.MessageSource;
 /**
  * JDBC Implementation of UserModel
  * 
- * @author Rays Technologies
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays Technologies
  */

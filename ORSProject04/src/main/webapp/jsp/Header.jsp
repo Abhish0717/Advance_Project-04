@@ -376,12 +376,14 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 							</h6>
 						</li>
 						<li><a class="dropdown-item" href="<%=ORSView.PAYMENT_CTL%>">
-								<i class="bi bi-plus-circle me-2 text-success"></i> Add Payment Record
+								<i class="bi bi-plus-circle me-2 text-success"></i> Add Payment
+								Record
 						</a></li>
 
 						<li><a class="dropdown-item"
 							href="<%=ORSView.PAYMENT_LIST_CTL%>"> <i
-								class="bi bi-currency-rupee me-2 text-primary"></i> Payment Record List
+								class="bi bi-currency-rupee me-2 text-primary"></i> Payment
+								Record List
 						</a></li>
 
 						<li><hr class="dropdown-divider border-secondary"></li>
@@ -389,18 +391,16 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						<!-- Hospital Record -->
 						<li>
 							<h6 class="dropdown-header text-uppercase text-info small">
-								<i class="bi bi-hospital me-1"></i>Hospital Record
+								<i class="bi bi-hospital me-1"></i><%=ms.get("hospital.record")%>
 							</h6>
 						</li>
 						<li><a class="dropdown-item" href="<%=ORSView.HOSPITAL_CTL%>">
-								<i class="bi bi-plus-circle me-2 text-success"></i> Add Hospital
-								Record
+								<i class="bi bi-plus-circle me-2 text-success"></i> <%=ms.get("hospital.add")%>
 						</a></li>
 
 						<li><a class="dropdown-item"
 							href="<%=ORSView.HOSPITAL_LIST_CTL%>"> <i
-								class="bi bi-hospital-fill me-2 text-primary"></i> Hospital
-								Record List
+								class="bi bi-hospital-fill me-2 text-primary"></i> <%=ms.get("hospital.list")%>
 						</a></li>
 
 						<li><hr class="dropdown-divider border-secondary"></li>
@@ -432,12 +432,14 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						</li>
 						<li><a class="dropdown-item"
 							href="<%=ORSView.TRANSACTION_CTL%>"> <i
-								class="bi bi-plus-circle me-2 text-success"></i> Add Transaction Detail
+								class="bi bi-plus-circle me-2 text-success"></i> Add Transaction
+								Detail
 						</a></li>
 
 						<li><a class="dropdown-item"
 							href="<%=ORSView.TRANSACTION_LIST_CTL%>"> <i
-								class="bi bi-bank me-2 text-primary"></i> Transaction Detail List
+								class="bi bi-bank me-2 text-primary"></i> Transaction Detail
+								List
 						</a></li>
 
 						<li><hr class="dropdown-divider border-secondary"></li>
@@ -445,18 +447,16 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						<!-- Doctor Details -->
 						<li>
 							<h6 class="dropdown-header text-uppercase text-info small">
-								<i class="bi bi-prescription2 me-1"></i>Doctor Detail
+								<i class="bi bi-prescription2 me-1"></i><%=ms.get("doctor.title") %>
 							</h6>
 						</li>
 						<li><a class="dropdown-item" href="<%=ORSView.DOCTOR_CTL%>">
-								<i class="bi bi-plus-circle me-2 text-success"></i> Add Doctor
-								Details
+								<i class="bi bi-plus-circle me-2 text-success"></i> <%=ms.get("doctor.add") %>
 						</a></li>
 
 						<li><a class="dropdown-item"
 							href="<%=ORSView.DOCTOR_LIST_CTL%>"> <i
-								class="bi bi-prescription2 me-2 text-primary"></i> Doctor
-								Details List
+								class="bi bi-prescription2 me-2 text-primary"></i> <%=ms.get("doctor.list") %>
 						</a></li>
 
 					</ul></li>
@@ -533,7 +533,7 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 							href="<%=ORSView.CHANGE_PASSWORD_CTL%>"> <i
 								class="bi bi-key me-2 text-warning"></i> <%=ms.get("change.password")%>
 						</a></li>
-						<li><a class="dropdown-item"
+						<li><a class="dropdown-item" target="blank"
 							href="<%=ORSView.JAVA_DOC_VIEW%>"> <i
 								class="bi bi-book me-2 text-success"></i> <%=ms.get("java.doc")%>
 						</a></li>

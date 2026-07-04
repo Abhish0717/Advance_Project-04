@@ -15,7 +15,7 @@ import com.sunilos.p4.util.PropertyReader;
  * College functionality Controller. Performs operation for add, update, delete
  * and get College
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */

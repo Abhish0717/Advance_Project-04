@@ -23,7 +23,7 @@ import com.sunilos.p4.util.ServletUtility;
  * Forget Password functionality Controller. Performs operation for Forget
  * Password
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */

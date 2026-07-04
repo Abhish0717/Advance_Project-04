@@ -89,7 +89,7 @@ String _err = ServletUtility.getErrorMessage(request);
 						class="text-danger">*</span></label> <input type="text"
 						name="room" placeholder="Enter Room Number" class="form-control"
 						maxlength="200"
-						value="<%=DataUtility.getDataString(bean.getRoomNumber())%>">
+						value="<%=DataUtility.getStringData(bean.getRoomNumber())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("room", request)%></div>
 				</div>
 
@@ -101,20 +101,15 @@ String _err = ServletUtility.getErrorMessage(request);
 					<%
 					if (bean.getId() > 0) {
 					%>
-					<button type="submit" name="operation"
-						value="<%=BaseCtl.OP_DELETE%>" class="btn btn-danger"
-						onclick="return confirm('Delete this Hospital Record?')">
-						<i class="bi bi-trash me-1"></i> Delete
-					</button>
 
-					<a href="HospitalListCtl" class="btn btn-secondary ms-auto"> <i
+					<a href="HospitalListCtl" class="btn btn-danger ms-auto"> <i
 						class="bi bi-x-circle me-1"></i> Cancel
 					</a>
 					<%
-					} else if (bean.getId() == 0) {
+					} else {
 					%>
 
-					<a href="HospitalCtl" class="btn btn-secondary ms-auto"> <i
+					<a href="HospitalCtl" class="btn btn-danger ms-auto"> <i
 						class="bi bi-arrow-clockwise me-1"></i> Reset
 					</a>
 					<%

@@ -13,7 +13,7 @@ import com.sunilos.p4.util.DataUtility;
  * Student List functionality Controller. Performs operation for list, search
  * and delete operations of Student
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */

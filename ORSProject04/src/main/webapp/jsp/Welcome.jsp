@@ -244,6 +244,19 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		</div>
 
 		<div class="col-6 col-md-4 col-lg-3">
+			<a href="<%=ORSView.PRODUCT_LIST_CTL%>" class="text-decoration-none">
+				<div
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-success">
+					<div class="fs-1 mb-2" style="color: green;">
+						<i class="bi bi-cart"></i>
+					</div>
+					<h6 class="fw-bold mb-1"><%=ms.get("product.add")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("product.card.subtitle")%></p>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-6 col-md-4 col-lg-3">
 			<a href="<%=ORSView.HOSPITAL_LIST_CTL%>" class="text-decoration-none">
 				<div
 					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-danger">
@@ -259,8 +272,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<div class="col-6 col-md-4 col-lg-3">
 			<a href="<%=ORSView.DOCTOR_LIST_CTL%>" class="text-decoration-none">
 				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-success">
-					<div class="fs-1 mb-2" style="color: green;">
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-danger">
+					<div class="fs-1 mb-2" style="color: red;">
 						<i class="bi bi-prescription2"></i>
 					</div>
 					<h6 class="fw-bold mb-1"><%=ms.get("doctor.title")%></h6>

@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 /**
  * This class validates input data
  *
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */

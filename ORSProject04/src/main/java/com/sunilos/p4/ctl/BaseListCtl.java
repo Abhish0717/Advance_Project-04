@@ -24,7 +24,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * इस बेस लिस्ट कंट्रोलर क्लास को एप्लीकेशन के सारे लिस्ट पेजेज इन्हेरिट करते
  * है। एसकेअंदर किसी भी लिस्ट पेज के सर्च एवं पेजिनेशन के लॉजिक लिखे गए है
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
