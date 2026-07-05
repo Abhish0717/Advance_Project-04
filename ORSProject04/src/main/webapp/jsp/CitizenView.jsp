@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.BaseCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
 <%@page import="com.sunilos.p4.util.DataUtility"%>
@@ -8,6 +9,7 @@
 	scope="request"></jsp:useBean>
 
 <%
+MessageSource ms = MessageSource.getInstance();
 String _suc = ServletUtility.getSuccessMessage(request);
 String _err = ServletUtility.getErrorMessage(request);
 %>
@@ -96,32 +98,26 @@ String _err = ServletUtility.getErrorMessage(request);
 				<div class="d-flex gap-2 pt-2 border-top">
 					<button type="submit" name="operation" value="<%=BaseCtl.OP_SAVE%>"
 						class="btn btn-primary">
-						<i class="bi bi-save me-1"></i> Save
+						<i class="bi bi-save me-1"></i>
+						<%=ms.get("button.save")%>
 					</button>
 					<%
 					if (bean.getId() > 0) {
 					%>
-					<%-- <button type="submit" name="operation"
-						value="<%=BaseCtl.OP_DELETE%>" class="btn btn-danger"
-						onclick="return confirm('Delete this user?')">
-						<i class="bi bi-trash me-1"></i> Delete
-					</button> --%>
 					<button type="submit" name="operation"
 						value="<%=BaseCtl.OP_CANCEL%>" class="btn btn-danger ms-auto">
-						<i class="bi bi-x-circle me-1"></i> Cancel
+						<i class="bi bi-x-circle me-1"></i>
+						<%=ms.get("button.cancel")%>
 					</button>
-
 					<%
 					} else {
 					%>
-
-					<a href="CitizenCtl" class="btn btn-secondary ms-auto"> <i
-						class="bi bi-arrow-clockwise me-1"></i> Reset
+					<a href="FacultyCtl" class="btn btn-danger ms-auto"> <i
+						class="bi bi-arrow-clockwise me-1"></i> <%=ms.get("button.reset")%>
 					</a>
 					<%
 					}
 					%>
-
 				</div>
 			</form>
 		</div>
