@@ -1,0 +1,8 @@
+com.sunilos.p4.bean
+com.sunilos.p4.ctl
+com.sunilos.p4.exception
+com.sunilos.p4.model
+com.sunilos.p4.rest
+com.sunilos.p4.tag
+com.sunilos.p4.testmodel
+com.sunilos.p4.util

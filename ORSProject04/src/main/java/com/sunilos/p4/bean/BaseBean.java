@@ -1,6 +1,5 @@
 package com.sunilos.p4.bean;
 
-import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -13,17 +12,14 @@ import java.sql.Timestamp;
  * @Copyright (c) Rays Technologies
  * 
  */
-
 public abstract class BaseBean implements DropdownListBean, Comparable<BaseBean> {
 
 	/**
-	 * Non Business primary key इसमें नॉन बिज़नेस के स्टोर की जाती है
+	 * Non Business primary key
 	 */
 	protected long id = 0L;
-
 	/**
-	 * Contains USER ID who created this database record. इसमें रिकॉर्ड क्रिएट करने
-	 * वाले यूजर का ID स्टोर किया जाता है
+	 * Contains USER ID who created this database record.
 	 */
 	protected String createdBy;
 
