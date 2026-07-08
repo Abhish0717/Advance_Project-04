@@ -80,6 +80,11 @@ public class UserBean extends BaseBean {
 	 * IP Address of User of his last login
 	 */
 	private String lastLoginIP;
+	
+	/**
+	 * Relative path of the Photo of User
+	 */
+	private String photo;
 
 	/**
 	 * accessor

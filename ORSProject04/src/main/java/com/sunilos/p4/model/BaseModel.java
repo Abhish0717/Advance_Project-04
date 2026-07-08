@@ -77,7 +77,6 @@ public abstract class BaseModel<T extends BaseBean> {
 	 * @return
 	 * @throws ApplicationException
 	 */
-
 	public T findByPk(long pk) throws ApplicationException {
 		log.debug("Model findByPk Started");
 		StringBuffer sql = new StringBuffer("SELECT * FROM " + getTable() + " WHERE ID=?");
