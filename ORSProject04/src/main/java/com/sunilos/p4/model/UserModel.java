@@ -29,7 +29,7 @@ import com.sunilos.p4.util.MessageSource;
  * @Copyright (c) Rays Technologies
  */
 public class UserModel extends BaseModel<UserBean> {
-	
+
 	private static MessageSource ms = MessageSource.getInstance();
 
 	private static Logger log = Logger.getLogger(UserModel.class);
@@ -60,7 +60,7 @@ public class UserModel extends BaseModel<UserBean> {
 			System.out.println(pk + " in ModelJDBC");
 			conn.setAutoCommit(false); // Begin transaction
 			PreparedStatement pstmt = conn
-					.prepareStatement("INSERT INTO ST_USER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+					.prepareStatement("INSERT INTO ST_USER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setInt(1, pk);
 			pstmt.setString(2, bean.getFirstName());
 			pstmt.setString(3, bean.getLastName());
@@ -79,6 +79,7 @@ public class UserModel extends BaseModel<UserBean> {
 			pstmt.setString(16, bean.getModifiedBy());
 			pstmt.setTimestamp(17, bean.getCreatedDatetime());
 			pstmt.setTimestamp(18, bean.getModifiedDatetime());
+			pstmt.setString(19, bean.getPhoto());
 			pstmt.executeUpdate();
 			conn.commit(); // End transaction
 			pstmt.close();
@@ -111,12 +112,45 @@ public class UserModel extends BaseModel<UserBean> {
 	}
 
 	/**
+	 * Update Photo of a user
+	 *
+	 * @param id    : User id
+	 * @param photo : relative path of the photo
+	 * @throws ApplicationException
+	 */
+	public void updatePhoto(long id, String photo) throws ApplicationException {
+		log.debug("Model updatePhoto Started");
+		Connection conn = null;
+
+		try {
+			conn = JDBCDataSource.getConnection();
+			conn.setAutoCommit(false); // Begin transaction
+			PreparedStatement pstmt = conn.prepareStatement("UPDATE ST_USER SET PHOTO=? WHERE ID=?");
+			pstmt.setString(1, photo);
+			pstmt.setLong(2, id);
+			pstmt.executeUpdate();
+			conn.commit(); // End transaction
+			pstmt.close();
+		} catch (Exception e) {
+			log.error("Database Exception..", e);
+			try {
+				conn.rollback();
+			} catch (Exception ex) {
+				throw new ApplicationException("Exception : updatePhoto rollback exception " + ex.getMessage());
+			}
+			throw new ApplicationException("Exception in updating User Photo");
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+		log.debug("Model updatePhoto End");
+	}
+
+	/**
 	 * Update a user
 	 * 
 	 * @param bean
 	 * @throws DatabaseException
 	 */
-
 	@Override
 	public void update(UserBean bean) throws ApplicationException, DuplicateRecordException {
 		log.debug("Model update Started");
@@ -175,7 +209,6 @@ public class UserModel extends BaseModel<UserBean> {
 	 * @param new password : String newPassword
 	 * @throws DatabaseException
 	 */
-
 	public UserBean authenticate(String login, String password) throws ApplicationException {
 		UserBean bean = findByLogin(login);
 		if (bean != null && bean.getPassword().equals(password)) {
@@ -193,7 +226,6 @@ public class UserModel extends BaseModel<UserBean> {
 	 * @throws ApplicationException
 	 * @throws RecordNotFoundException : if user not found
 	 */
-
 	public boolean lock(String login) throws RecordNotFoundException, ApplicationException {
 		log.debug("Service lock Started");
 		boolean flag = false;

@@ -55,17 +55,20 @@ String _suc = ServletUtility.getSuccessMessage(request);
 					placeholder="<%=ms.get("register.enterfirstname")%>"
 					value="<%=ServletUtility.getParameter("firstName", request)%>">
 				<input type="text" name="login" class="form-control form-control-sm"
-					style="max-width: 200px;" placeholder="<%=ms.get("login.enterloginid")%>"
+					style="max-width: 200px;"
+					placeholder="<%=ms.get("login.enterloginid")%>"
 					value="<%=ServletUtility.getParameter("login", request)%>">
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_SEARCH%>" class="btn btn-primary btn-sm">
-					<i class="bi bi-search me-1"></i> <%=ms.get("button.search")%>
+					<i class="bi bi-search me-1"></i>
+					<%=ms.get("button.search")%>
 				</button>
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_DELETE%>"
 					class="btn btn-danger btn-sm ms-auto"
 					onclick="return confirm('Delete this user?')">
-					<i class="bi bi-trash me-1"></i> <%=ms.get("button.delete")%>
+					<i class="bi bi-trash me-1"></i>
+					<%=ms.get("button.delete")%>
 				</button>
 			</div>
 
@@ -108,6 +111,7 @@ String _suc = ServletUtility.getSuccessMessage(request);
 							<th width="40"><input type="checkbox"
 								onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
 							<th><%=ms.get("serial.no")%></th>
+							<th><%=ms.get("user.photo") %></th>
 							<th><%=ms.get("register.firstname")%></th>
 							<th><%=ms.get("register.lastname")%></th>
 							<th><%=ms.get("login.userid")%></th>
@@ -130,6 +134,11 @@ String _suc = ServletUtility.getSuccessMessage(request);
 								value="<%=bean.getId()%>"
 								<%=(user.getId() == bean.getId() || bean.getRoleId() == RoleBean.ADMIN) ? "disabled" : ""%>></td>
 							<td class="text-muted small"><%=index++%></td>
+							<td><img
+								src="<%=ORSView.UPLOAD_PHOTO_CTL%>?id=<%=bean.getId()%>"
+								onerror="this.style.display='none';" alt="User Photo"
+								class="rounded-circle border" width="30" height="30"
+								style="object-fit: cover;"></td>
 							<td class="fw-semibold"><%=bean.getFirstName()%></td>
 							<td><%=bean.getLastName()%></td>
 							<td><%=bean.getLogin()%></td>
