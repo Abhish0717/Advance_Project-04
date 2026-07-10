@@ -14,8 +14,8 @@ MessageSource ms = MessageSource.getInstance();
 String _suc = ServletUtility.getSuccessMessage(request);
 String _err = ServletUtility.getErrorMessage(request);
 HashMap genderMap = new HashMap();
-genderMap.put("M", "Male");
-genderMap.put("F", "Female");
+genderMap.put("M", ms.get("male.val"));
+genderMap.put("F", ms.get("female.val"));
 %>
 
 <div class="container py-4" style="max-width: 660px;">
@@ -31,7 +31,7 @@ genderMap.put("F", "Female");
 				</div>
 			</div>
 			<h5 class="mb-0 fw-bold"><%=ms.get("register.usertitle")%></h5>
-			<p class="mb-0 opacity-75 small mt-1"><%=ms.get("register.cardsubtitle")%></p>
+			<p class="mb-0 opacity-75 small mt-1"><%=ms.get("registers.subtitle")%></p>
 		</div>
 
 		<div class="card-body px-4 py-4">
@@ -85,26 +85,28 @@ genderMap.put("F", "Female");
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold">Login ID (Email) <span
+					<label class="form-label fw-semibold"><%=ms.get("register.loginid")%><span
 						class="text-danger">*</span></label> <input type="text" name="login"
-						placeholder="Enter Login ID" class="form-control"
-						placeholder="Must be Email ID"
+						placeholder="<%=ms.get("email.placeholder")%>"
+						class="form-control" placeholder="Must be Email ID"
 						value="<%=DataUtility.getStringData(bean.getLogin())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("login", request)%></div>
 				</div>
 
 				<div class="row g-3 mb-3">
 					<div class="col-md-6">
-						<label class="form-label fw-semibold">Password <span
-							class="text-danger">*</span></label> <input type="password"
-							placeholder="Enter Password" name="password" class="form-control"
+						<label class="form-label fw-semibold"><%=ms.get("login.password")%>
+							<span class="text-danger">*</span></label> <input type="password"
+							placeholder="<%=ms.get("login.enterpassword")%>" name="password"
+							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getPassword())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("password", request)%></div>
 					</div>
 					<div class="col-md-6">
-						<label class="form-label fw-semibold">Confirm Password <span
+						<label class="form-label fw-semibold"><%=ms.get("register.confirmpassword")%><span
 							class="text-danger">*</span></label> <input type="password"
-							name="confirmPassword" placeholder="Enter Confirm Password"
+							name="confirmPassword"
+							placeholder="<%=ms.get("register.enterconfirmpassword")%>"
 							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getConfirmPassword())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("confirmPassword", request)%></div>
@@ -113,20 +115,20 @@ genderMap.put("F", "Female");
 
 				<div class="row g-3 mb-3">
 					<div class="col-md-6">
-						<label class="form-label fw-semibold">Gender</label>
+						<label class="form-label fw-semibold"><%=ms.get("register.gender")%></label>
 						<%=HTMLUtility.getList("gender", bean.getGender(), genderMap)%>
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("gender", request)%></div>
 					</div>
 					<div class="col-md-6">
-						<label class="form-label fw-semibold">Date of Birth
-							(mm/dd/yyyy)</label>
+						<label class="form-label fw-semibold"><%=ms.get("register.dob")%></label>
 						<div class="input-group">
-							<input type="text" name="dob" placeholder="Select Date Of Birth"
-								id="udate" class="form-control" readonly
-								value="<%=DataUtility.getDateString(bean.getDob())%>">
-							<!-- <a class="btn btn-outline-secondary"> <img
-								src="../img/cal.jpg" width="16" height="15" alt="Calendar">
-							</a> -->
+							<input type="text" name="dob"
+								placeholder="<%=ms.get("register.selectdob")%>" id="udate"
+								class="form-control" readonly
+								value="<%=DataUtility.getDateString(bean.getDob())%>"> <a
+								class="btn btn-outline-secondary"> <img src="../img/cal.jpg"
+								width="16" height="15" alt="Calendar">
+							</a>
 						</div>
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("dob", request)%></div>
 					</div>
@@ -139,21 +141,22 @@ genderMap.put("F", "Female");
 					<button type="submit" name="operation"
 						value="<%=UserRegistrationCtl.OP_SIGN_UP%>"
 						class="btn btn-primary btn-lg w-100">
-						<i class="bi bi-person-check-fill me-2"></i> Sign Up
+						<i class="bi bi-person-check-fill me-2"></i>
+						<%=ms.get("login.signup")%>
 					</button>
 					<%
 					} else {
 					%>
 					<a href="<%=ORSView.LOGIN_CTL%>"
 						class="btn btn-outline-primary btn-lg w-100"> <i
-						class="bi bi-box-arrow-in-right me-2"></i> Go to Login
+						class="bi bi-box-arrow-in-right me-2"></i> <%=ms.get("go.login")%>
 					</a>
 					<%
 					}
 					%>
 					<p class="text-center mt-3 mb-0 small text-muted">
-						Already have an account? <a href="<%=ORSView.LOGIN_CTL%>"
-							class="text-primary fw-semibold">Login here</a>
+						<%=ms.get("register.alreadyaccount")%>
+						<a href="<%=ORSView.LOGIN_CTL%>" class="text-primary fw-semibold"><%=ms.get("register.loginhere")%></a>
 					</p>
 				</div>
 			</form>

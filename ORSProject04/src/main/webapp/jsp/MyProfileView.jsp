@@ -14,8 +14,8 @@ MessageSource ms = MessageSource.getInstance();
 String _suc = ServletUtility.getSuccessMessage(request);
 String _err = ServletUtility.getErrorMessage(request);
 HashMap genderMap = new HashMap();
-genderMap.put("M", "Male");
-genderMap.put("F", "Female");
+genderMap.put("M", ms.get("male.val"));
+genderMap.put("F", ms.get("female.val"));
 %>
 
 <div class="container py-4" style="max-width: 660px;">

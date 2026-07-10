@@ -1,8 +1,10 @@
+<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
 <%@page import="com.sunilos.p4.bean.UserBean"%>
 <%@page import="com.sunilos.p4.bean.RoleBean"%>
 
 <%
+MessageSource ms = MessageSource.getInstance();
 UserBean currentUser = (UserBean) session.getAttribute("user");
 boolean loggedIn = currentUser != null;
 boolean isStudent = loggedIn && currentUser.getRoleId() == RoleBean.STUDENT;
@@ -18,22 +20,23 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<div
 			class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center"
 			style="width: 80px; height: 80px; background: rgba(255, 255, 255, 0.15); border: 2px solid rgba(255, 255, 255, 0.25); font-size: 2.3rem;">
-			<i class="fas fa-graduation-cap"></i>
+			<i class="bi bi-mortarboard-fill"></i>
 		</div>
 		<div>
 			<h1 class="fw-bold mb-1 fs-2">
-				Welcome<%
-			if (loggedIn) {
-			%>,
+				<%=ms.get("welcome.msg")%>
+				<%
+				if (loggedIn) {
+				%>,
 				<%=firstName%>!<%
-			} else {
-			%>
-				to ORS<%
-			}
-			%>
+				} else {
+				%>
+				<%=ms.get("welcome.msg2")%>
+				<%
+				}
+				%>
 			</h1>
-			<p class="mb-0 opacity-75">Online Result System &mdash; Powered
-				by Rays Technologies</p>
+			<p class="mb-0 opacity-75"></p><%=ms.get("welcome.subtitle")%>
 		</div>
 	</div>
 </div>

@@ -7,30 +7,33 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import org.apache.log4j.Logger;
+
+import com.sunilos.p4.bean.BaseBean;
+import com.sunilos.p4.bean.UserBean;
+import com.sunilos.p4.exception.ApplicationException;
+import com.sunilos.p4.model.BaseModel;
+import com.sunilos.p4.model.UserModel;
+import com.sunilos.p4.util.DataUtility;
+import com.sunilos.p4.util.DataValidator;
+import com.sunilos.p4.util.MessageSource;
+import com.sunilos.p4.util.PropertyReader;
+import com.sunilos.p4.util.ServletUtility;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
-import org.apache.log4j.Logger;
-
-import com.sunilos.p4.bean.UserBean;
-import com.sunilos.p4.exception.ApplicationException;
-import com.sunilos.p4.model.UserModel;
-import com.sunilos.p4.util.DataUtility;
-import com.sunilos.p4.util.DataValidator;
-import com.sunilos.p4.util.PropertyReader;
-
 @WebServlet("/ctl/uploadphoto")
 @MultipartConfig
-public class UploadPhotoCtl extends HttpServlet {
+public class UploadPhotoCtl extends BaseCtl<BaseBean, BaseModel> {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * Fallback photo served when the User has no photo uploaded yet, or the stored
 	 * photo file can no longer be found on disk.
@@ -120,13 +123,24 @@ public class UploadPhotoCtl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		MessageSource ms = getMessageSource(request);
+
 		long id = DataUtility.getLong(request.getParameter("id"));
 		String view = request.getParameter("view");
 
 		Part part = request.getPart("photo");
 
+//		if (part == null || part.getSize() == 0) {
+//			response.getWriter().println("Please select a photo.");
+//			return;
+//		}
+
 		if (part == null || part.getSize() == 0) {
-			response.getWriter().println("Please select a photo.");
+
+			ServletUtility.setErrorMessage(ms.get("select.photo"), request);
+
+			ServletUtility.forward(ORSView.USER_VIEW, request, response);
+
 			return;
 		}
 
@@ -188,5 +202,23 @@ public class UploadPhotoCtl extends HttpServlet {
 		} else {
 			response.sendRedirect("UserCtl?id=" + id);
 		}
+	}
+
+	@Override
+	protected String getView() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String getView(String op) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected BaseModel getModel() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

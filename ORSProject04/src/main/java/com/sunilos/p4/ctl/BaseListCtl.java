@@ -114,7 +114,7 @@ public abstract class BaseListCtl<B extends BaseBean, M extends BaseModel> exten
 
 		// If list is empty then set error message
 		if (list == null || list.size() == 0) {
-			ServletUtility.setErrorMessage("No record found ", request);
+			ServletUtility.setErrorMessage(ms.get("no.record"), request);
 		}
 
 		// Set page number and page size in the request object

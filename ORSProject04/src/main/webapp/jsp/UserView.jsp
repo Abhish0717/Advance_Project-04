@@ -1,3 +1,4 @@
+<%@page import="com.sunilos.p4.ctl.UploadPhotoCtl"%>
 <%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.UserCtl"%>
 <%@page import="com.sunilos.p4.ctl.BaseCtl"%>
@@ -17,8 +18,8 @@ List l = (List) request.getAttribute("roleList");
 String _suc = ServletUtility.getSuccessMessage(request);
 String _err = ServletUtility.getErrorMessage(request);
 HashMap genderMap = new HashMap();
-genderMap.put("M", "Male");
-genderMap.put("F", "Female");
+genderMap.put("M", ms.get("male.val"));
+genderMap.put("F", ms.get("female.val"));
 %>
 
 <div class="container py-4" style="max-width: 680px;">
@@ -67,13 +68,17 @@ genderMap.put("F", "Female");
 				<form action="<%=ORSView.UPLOAD_PHOTO_CTL%>" method="POST"
 					enctype="multipart/form-data"
 					class="d-flex align-items-center gap-2">
+
 					<input type="hidden" name="id" value="<%=bean.getId()%>"> <input
 						type="file" name="photo" class="form-control form-control-sm"
 						accept="image/*">
+
 					<button type="submit"
 						class="btn btn-sm btn-outline-primary text-nowrap">
-						<i class="bi bi-upload me-1"></i> <%=ms.get("button.upload") %>
+						<i class="bi bi-upload me-1"></i>
+						<%=ms.get("button.upload")%>
 					</button>
+					<%=ServletUtility.getErrorMessage("photo", request)%>
 				</form>
 			</div>
 			<%
