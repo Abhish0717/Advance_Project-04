@@ -50,7 +50,7 @@ public class UserModel extends BaseModel<UserBean> {
 		UserBean existbean = findByLogin(bean.getLogin());
 
 		if (existbean != null) {
-			throw new DuplicateRecordException("Login Id already exists");
+			throw new DuplicateRecordException(ms.get("business.idalready"));
 		}
 
 		try {
@@ -106,7 +106,6 @@ public class UserModel extends BaseModel<UserBean> {
 	 * @return bean
 	 * @throws DatabaseException
 	 */
-
 	public UserBean findByLogin(String login) throws ApplicationException {
 		return findByUniqueColumn("LOGIN", login);
 	}
@@ -159,7 +158,7 @@ public class UserModel extends BaseModel<UserBean> {
 		UserBean beanExist = findByLogin(bean.getLogin());
 		// Check if updated LoginId already exist
 		if (beanExist != null && !(beanExist.getId() == bean.getId())) {
-			throw new DuplicateRecordException("LoginId is already exist");
+			throw new DuplicateRecordException(ms.get("business.idalready"));
 		}
 
 		try {
@@ -259,7 +258,7 @@ public class UserModel extends BaseModel<UserBean> {
 		log.debug("Model get roles Started");
 		StringBuffer sql = new StringBuffer("SELECT * FROM ST_USER WHERE role_Id=?");
 		Connection conn = null;
-		List list = new ArrayList();
+		List<UserBean> list = new ArrayList<UserBean>();
 		try {
 
 			conn = JDBCDataSource.getConnection();

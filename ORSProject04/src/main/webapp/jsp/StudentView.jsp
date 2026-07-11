@@ -49,7 +49,7 @@ List l = (List) request.getAttribute("collegeList");
 
 				<div class="row g-3 mb-3">
 					<div class="col-md-6">
-						<label class="form-label fw-semibold"><%=ms.get("register.firstname")%> <span
+						<label class="form-label fw-semibold"><%=ms.get("first.name")%> <span
 							class="text-danger">*</span></label> <input type="text" name="firstName" placeholder="<%=ms.get("register.enterfirstname")%>"
 							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getFirstName())%>"
@@ -57,7 +57,7 @@ List l = (List) request.getAttribute("collegeList");
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("firstName", request)%></div>
 					</div>
 					<div class="col-md-6">
-						<label class="form-label fw-semibold"><%=ms.get("register.lastname")%> <span
+						<label class="form-label fw-semibold"><%=ms.get("last.name")%> <span
 							class="text-danger">*</span></label> <input type="text" name="lastName" placeholder="<%=ms.get("register.enterlastname") %>"
 							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getLastName())%>">

@@ -112,8 +112,8 @@ String _suc = ServletUtility.getSuccessMessage(request);
 								onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
 							<th><%=ms.get("serial.no")%></th>
 							<th><%=ms.get("user.photo") %></th>
-							<th><%=ms.get("register.firstname")%></th>
-							<th><%=ms.get("register.lastname")%></th>
+							<th><%=ms.get("first.name")%></th>
+							<th><%=ms.get("last.name")%></th>
 							<th><%=ms.get("login.userid")%></th>
 							<th><%=ms.get("register.gender")%></th>
 							<th><%=ms.get("dob.title")%></th>

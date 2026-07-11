@@ -13,6 +13,7 @@ import com.sunilos.p4.model.RoleModel;
 import com.sunilos.p4.model.UserModel;
 import com.sunilos.p4.util.DataUtility;
 import com.sunilos.p4.util.DataValidator;
+import com.sunilos.p4.util.MessageSource;
 import com.sunilos.p4.util.PropertyReader;
 import com.sunilos.p4.util.ServletUtility;
 
@@ -47,6 +48,7 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 
 		log.debug("UserCtl Method validate Started");
 
+		MessageSource ms = getMessageSource(request);
 		boolean pass = true;
 
 		String login = request.getParameter("login");
@@ -54,69 +56,70 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 		String password = request.getParameter("password");
 
 		if (DataValidator.isNull(request.getParameter("firstName"))) {
-			request.setAttribute("firstName", PropertyReader.getValue("error.require", "First Name"));
+			request.setAttribute("firstName", PropertyReader.getValue("error.require", ms.get("first.name")));
 			pass = false;
 		} else if (!DataValidator.isName(request.getParameter("firstName"))) {
-			request.setAttribute("firstName", "Invalid First Name");
+			request.setAttribute("firstName", ms.get("error.firstname"));
 			pass = false;
 		}
 
 		if (DataValidator.isNull(request.getParameter("lastName"))) {
-			request.setAttribute("lastName", PropertyReader.getValue("error.require", "Last Name"));
+			request.setAttribute("lastName", PropertyReader.getValue("error.require", ms.get("last.name")));
 			pass = false;
 		} else if (!DataValidator.isName(request.getParameter("lastName"))) {
-			request.setAttribute("lastName", "Invalid Last Name");
+			request.setAttribute("lastName", ms.get("error.lastname"));
 			pass = false;
 		}
 
 		if (DataValidator.isNull(login)) {
-			request.setAttribute("login", PropertyReader.getValue("error.require", "Login Id"));
+			request.setAttribute("login", PropertyReader.getValue("error.require", ms.get("login.userid")));
 			pass = false;
 		} else if (!DataValidator.isEmail(login)) {
-			request.setAttribute("login", PropertyReader.getValue("error.email", "Login "));
+			request.setAttribute("login", PropertyReader.getValue("error.email", ms.get("login.userid")));
 			pass = false;
 		}
 
 		if (DataValidator.isNull(password)) {
-			request.setAttribute("password", PropertyReader.getValue("error.require", "Password"));
+			request.setAttribute("password", PropertyReader.getValue("error.require", ms.get("register.password")));
 			pass = false;
 		} else if (!DataValidator.isPasswordLength(password)) {
-			request.setAttribute("password", "Password should be 8 to 12 characters");
+			request.setAttribute("password", ms.get("password.error.require"));
 			pass = false;
 		} else if (!DataValidator.isPassword(password)) {
-			request.setAttribute("password", "Must contain uppercase, lowercase, digit & special character");
+			request.setAttribute("password", ms.get("password.error.mustrequire"));
 			pass = false;
 		}
 
 		if (DataValidator.isNull(request.getParameter("confirmPassword"))) {
-			request.setAttribute("confirmPassword", PropertyReader.getValue("error.require", "Confirm Password"));
+			request.setAttribute("confirmPassword",
+					PropertyReader.getValue("error.require", ms.get("register.confirmpassword")));
 			pass = false;
 		}
 
-		if (DataValidator.isNull(request.getParameter("gender"))) {
-			request.setAttribute("gender", PropertyReader.getValue("error.require", "Gender"));
-			pass = false;
-		}
+//		if (DataValidator.isNull(request.getParameter("gender"))) {
+//			request.setAttribute("gender", PropertyReader.getValue("error.require", "Gender"));
+//			pass = false;
+//		}
 		if (DataValidator.isNull(dob)) {
-			request.setAttribute("dob", PropertyReader.getValue("error.require", "Date Of Birth"));
+			request.setAttribute("dob", PropertyReader.getValue("error.require", ms.get("dob.title")));
 			pass = false;
 		} else if (!DataValidator.isDate(dob)) {
-			request.setAttribute("dob", PropertyReader.getValue("error.date", "Date Of Birth"));
+			request.setAttribute("dob", PropertyReader.getValue("error.date", ms.get("dob.title")));
 			pass = false;
 		}
 		if (DataValidator.isNull(request.getParameter("mobileNo"))) {
-			request.setAttribute("mobileNo", PropertyReader.getValue("error.require", "Mobile No."));
+			request.setAttribute("mobileNo", PropertyReader.getValue("error.require", ms.get("mobile.title")));
 			pass = false;
 		} else if (!DataValidator.isPhoneLength(request.getParameter("mobileNo"))) {
-			request.setAttribute("mobileNo", "Mobile No must have 10 digits");
+			request.setAttribute("mobileNo", ms.get("require.mobile"));
 			pass = false;
 		} else if (!DataValidator.isPhoneNo(request.getParameter("mobileNo"))) {
-			request.setAttribute("mobileNo", "Invalid Mobile No");
+			request.setAttribute("mobileNo", ms.get("require.mobile.error"));
 			pass = false;
 		}
 		if (!(password).equals(request.getParameter("confirmPassword"))
 				&& !"".equals(request.getParameter("confirmPassword"))) {
-			ServletUtility.setErrorMessage("Confirm  Password  should not be matched.", request);
+			request.setAttribute(ms.get("business.empty"), request);
 			pass = false;
 		}
 

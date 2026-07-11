@@ -149,8 +149,6 @@ public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 
 	@Override
 	protected String getView() {
-		System.out.println("------------------------------>");
-		System.out.println(MessageSource.getInstance().get("login.userid"));
 		return ORSView.LOGIN_VIEW;
 	}
 
