@@ -61,7 +61,7 @@ String _err = ServletUtility.getErrorMessage(request);
 					value="<%=DataUtility.getTimestamp(bean.getModifiedDatetime())%>">
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold">Name <span
+					<label class="form-label fw-semibold"><%=ms.get("name.title")%><span
 						class="text-danger">*</span></label> <input type="text" name="name"
 						placeholder="Enter your Name" class="form-control" maxlength="100"
 						value="<%=DataUtility.getStringData(bean.getName())%>">
@@ -78,7 +78,7 @@ String _err = ServletUtility.getErrorMessage(request);
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold">Address<span
+					<label class="form-label fw-semibold"><%=ms.get("address.title")%><span
 						class="text-danger">*</span></label> <input type="text" name="address"
 						placeholder="Enter your Address" class="form-control"
 						maxlength="200"
