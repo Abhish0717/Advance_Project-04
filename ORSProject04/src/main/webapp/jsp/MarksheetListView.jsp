@@ -120,7 +120,7 @@ String _suc = ServletUtility.getSuccessMessage(request);
 							<td class="text-center"><%=bean.getMaths()%></td>
 							<td><a href="MarksheetCtl?id=<%=bean.getId()%>"
 								class="btn btn-sm btn-outline-primary"> <i
-									class="bi bi-pencil"></i> <ors:message key="button.edit" />
+									class="bi bi-pencil"></i> <ors:message key="link.edit" />
 							</a></td>
 						</tr>
 						<%

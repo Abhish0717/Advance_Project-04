@@ -16,7 +16,7 @@ String contextPath = request.getContextPath();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <%-- <ors:message key="login.forgotpassword" /> --%>
-<title><ors:message key="wel.ms" /> - <ors:message key="wel.msg" /></title>
+<title><ors:message key="wel.msg" /> - <ors:message key="wel.msg" /></title>
 
 <link rel="icon" href="<%=contextPath%>/img/favicon.ico"
 	type="image/x-icon">

@@ -13,6 +13,7 @@ import com.sunilos.p4.bean.MarksheetBean;
 import com.sunilos.p4.model.MarksheetModel;
 import com.sunilos.p4.util.DataUtility;
 import com.sunilos.p4.util.DataValidator;
+import com.sunilos.p4.util.MessageSource;
 import com.sunilos.p4.util.PropertyReader;
 import com.sunilos.p4.util.ServletUtility;
 
@@ -28,6 +29,7 @@ import com.sunilos.p4.util.ServletUtility;
 public class GetMarksheetCtl extends BaseCtl<MarksheetBean, MarksheetModel> {
 
 	private static Logger log = Logger.getLogger(GetMarksheetCtl.class);
+	private static MessageSource ms = MessageSource.getInstance();
 
 	@Override
 	protected boolean validate(HttpServletRequest request) {
@@ -36,6 +38,9 @@ public class GetMarksheetCtl extends BaseCtl<MarksheetBean, MarksheetModel> {
 
 		if (DataValidator.isNull(request.getParameter("rollNo"))) {
 			request.setAttribute("rollNo", PropertyReader.getValue("error.require", "Roll Number"));
+			pass = false;
+		} else if (!DataValidator.isRollNo(request.getParameter("rollNo"))) {
+			request.setAttribute("rollNo", ms.get("invalid.roll"));
 			pass = false;
 		}
 		return pass;
@@ -53,7 +58,7 @@ public class GetMarksheetCtl extends BaseCtl<MarksheetBean, MarksheetModel> {
 		if (bean != null) {
 			ServletUtility.setBean(bean, request);
 		} else {
-			ServletUtility.setErrorMessage("RollNo does not exist", request);
+			ServletUtility.setErrorMessage(ms.get("exist.roll"), request);
 		}
 		ServletUtility.forwardPage(getView(), request, response);
 	}
