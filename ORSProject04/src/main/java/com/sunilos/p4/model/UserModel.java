@@ -19,18 +19,15 @@ import com.sunilos.p4.util.EmailBuilder;
 import com.sunilos.p4.util.EmailMessage;
 import com.sunilos.p4.util.EmailUtility;
 import com.sunilos.p4.util.JDBCDataSource;
-import com.sunilos.p4.util.MessageSource;
 
 /**
  * JDBC Implementation of UserModel
  * 
- * @author Abhishish Bhawsar
+ * @author Rays Technologies
  * @version 1.0
  * @Copyright (c) Rays Technologies
  */
 public class UserModel extends BaseModel<UserBean> {
-
-	private static MessageSource ms = MessageSource.getInstance();
 
 	private static Logger log = Logger.getLogger(UserModel.class);
 
@@ -50,7 +47,7 @@ public class UserModel extends BaseModel<UserBean> {
 		UserBean existbean = findByLogin(bean.getLogin());
 
 		if (existbean != null) {
-			throw new DuplicateRecordException(ms.get("business.idalready"));
+			throw new DuplicateRecordException("Login Id already exists");
 		}
 
 		try {
@@ -60,7 +57,7 @@ public class UserModel extends BaseModel<UserBean> {
 			System.out.println(pk + " in ModelJDBC");
 			conn.setAutoCommit(false); // Begin transaction
 			PreparedStatement pstmt = conn
-					.prepareStatement("INSERT INTO ST_USER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+					.prepareStatement("INSERT INTO ST_USER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setInt(1, pk);
 			pstmt.setString(2, bean.getFirstName());
 			pstmt.setString(3, bean.getLastName());
@@ -79,7 +76,6 @@ public class UserModel extends BaseModel<UserBean> {
 			pstmt.setString(16, bean.getModifiedBy());
 			pstmt.setTimestamp(17, bean.getCreatedDatetime());
 			pstmt.setTimestamp(18, bean.getModifiedDatetime());
-			pstmt.setString(19, bean.getPhoto());
 			pstmt.executeUpdate();
 			conn.commit(); // End transaction
 			pstmt.close();
@@ -106,42 +102,9 @@ public class UserModel extends BaseModel<UserBean> {
 	 * @return bean
 	 * @throws DatabaseException
 	 */
+
 	public UserBean findByLogin(String login) throws ApplicationException {
 		return findByUniqueColumn("LOGIN", login);
-	}
-
-	/**
-	 * Update Photo of a user
-	 *
-	 * @param id    : User id
-	 * @param photo : relative path of the photo
-	 * @throws ApplicationException
-	 */
-	public void updatePhoto(long id, String photo) throws ApplicationException {
-		log.debug("Model updatePhoto Started");
-		Connection conn = null;
-
-		try {
-			conn = JDBCDataSource.getConnection();
-			conn.setAutoCommit(false); // Begin transaction
-			PreparedStatement pstmt = conn.prepareStatement("UPDATE ST_USER SET PHOTO=? WHERE ID=?");
-			pstmt.setString(1, photo);
-			pstmt.setLong(2, id);
-			pstmt.executeUpdate();
-			conn.commit(); // End transaction
-			pstmt.close();
-		} catch (Exception e) {
-			log.error("Database Exception..", e);
-			try {
-				conn.rollback();
-			} catch (Exception ex) {
-				throw new ApplicationException("Exception : updatePhoto rollback exception " + ex.getMessage());
-			}
-			throw new ApplicationException("Exception in updating User Photo");
-		} finally {
-			JDBCDataSource.closeConnection(conn);
-		}
-		log.debug("Model updatePhoto End");
 	}
 
 	/**
@@ -150,6 +113,7 @@ public class UserModel extends BaseModel<UserBean> {
 	 * @param bean
 	 * @throws DatabaseException
 	 */
+
 	@Override
 	public void update(UserBean bean) throws ApplicationException, DuplicateRecordException {
 		log.debug("Model update Started");
@@ -158,7 +122,7 @@ public class UserModel extends BaseModel<UserBean> {
 		UserBean beanExist = findByLogin(bean.getLogin());
 		// Check if updated LoginId already exist
 		if (beanExist != null && !(beanExist.getId() == bean.getId())) {
-			throw new DuplicateRecordException(ms.get("business.idalready"));
+			throw new DuplicateRecordException("LoginId is already exist");
 		}
 
 		try {
@@ -208,6 +172,7 @@ public class UserModel extends BaseModel<UserBean> {
 	 * @param new password : String newPassword
 	 * @throws DatabaseException
 	 */
+
 	public UserBean authenticate(String login, String password) throws ApplicationException {
 		UserBean bean = findByLogin(login);
 		if (bean != null && bean.getPassword().equals(password)) {
@@ -225,6 +190,7 @@ public class UserModel extends BaseModel<UserBean> {
 	 * @throws ApplicationException
 	 * @throws RecordNotFoundException : if user not found
 	 */
+
 	public boolean lock(String login) throws RecordNotFoundException, ApplicationException {
 		log.debug("Service lock Started");
 		boolean flag = false;
@@ -254,7 +220,7 @@ public class UserModel extends BaseModel<UserBean> {
 	 * @throws ApplicationException
 	 */
 
-	public List getRoles(UserBean bean) throws ApplicationException {
+	public List<UserBean> getRoles(UserBean bean) throws ApplicationException {
 		log.debug("Model get roles Started");
 		StringBuffer sql = new StringBuffer("SELECT * FROM ST_USER WHERE role_Id=?");
 		Connection conn = null;
@@ -314,7 +280,7 @@ public class UserModel extends BaseModel<UserBean> {
 
 		boolean flag = false;
 		UserBean beanExist = null;
-		beanExist = findByPk(id);
+		beanExist = findByPK(id);
 		if (beanExist != null && beanExist.getPassword().equals(oldPassword)) {
 			beanExist.setPassword(newPassword);
 			update(beanExist);
@@ -374,19 +340,19 @@ public class UserModel extends BaseModel<UserBean> {
 		long pk = add(bean);
 
 		try {
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("login", bean.getLogin());
-			map.put("password", bean.getPassword());
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("login", bean.getLogin());
+		map.put("password", bean.getPassword());
 
-			String message = EmailBuilder.getUserRegistrationMessage(map);
+		String message = EmailBuilder.getUserRegistrationMessage(map);
 
-			EmailMessage msg = new EmailMessage();
+		EmailMessage msg = new EmailMessage();
 
-			msg.setTo(bean.getLogin());
-			msg.setSubject("Registration is successful for ORS Project Rays Technologies");
-			msg.setMessage(message);
-			msg.setMessageType(EmailMessage.HTML_MSG);
-			EmailUtility.sendMail(msg);
+		msg.setTo(bean.getLogin());
+		msg.setSubject("Registration is successful for ORS Project Rays Technologies");
+		msg.setMessage(message);
+		msg.setMessageType(EmailMessage.HTML_MSG);
+		EmailUtility.sendMail(msg);
 
 		} catch (ApplicationException e) {
 			log.error("Email Server error, your emails may get delay", e);
@@ -406,7 +372,7 @@ public class UserModel extends BaseModel<UserBean> {
 	public boolean resetPassword(UserBean bean) throws ApplicationException {
 
 		String newPassword = String.valueOf(new Date().getTime()).substring(0, 4);
-		UserBean userData = findByPk(bean.getId());
+		UserBean userData = findByPK(bean.getId());
 		userData.setPassword(newPassword);
 
 		try {
@@ -449,7 +415,7 @@ public class UserModel extends BaseModel<UserBean> {
 		boolean flag = false;
 
 		if (userData == null) {
-			throw new RecordNotFoundException(ms.get("forget.error"));
+			throw new RecordNotFoundException("Email ID does not exists !");
 
 		}
 
@@ -501,8 +467,8 @@ public class UserModel extends BaseModel<UserBean> {
 			if (bean.getPassword() != null && bean.getPassword().length() > 0) {
 				sql.append(" AND PASSWORD like '" + bean.getPassword() + "%'");
 			}
-			if (bean.getDob() != null && bean.getDob().getDate() > 0) {
-				sql.append(" AND DOB = " + bean.getDob());
+			if (bean.getDob() != null && bean.getDob().getTime() > 0) {
+				sql.append(" AND DOB = " + bean.getGender());
 			}
 			if (bean.getMobileNo() != null && bean.getMobileNo().length() > 0) {
 				sql.append(" AND MOBILE_NO = " + bean.getMobileNo());

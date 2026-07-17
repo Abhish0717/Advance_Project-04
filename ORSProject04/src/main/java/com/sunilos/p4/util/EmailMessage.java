@@ -3,7 +3,7 @@ package com.sunilos.p4.util;
 /**
  * Contains Email Message
  * 
- * @author Abhishish Bhawsar
+ * @author Rays Technologies
  * @version 1.0
  * @Copyright (c) Rays Technologies
  * 

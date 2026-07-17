@@ -1,10 +1,8 @@
-<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
 <%@page import="com.sunilos.p4.bean.UserBean"%>
 <%@page import="com.sunilos.p4.bean.RoleBean"%>
 
 <%
-MessageSource ms = MessageSource.getInstance();
 UserBean currentUser = (UserBean) session.getAttribute("user");
 boolean loggedIn = currentUser != null;
 boolean isStudent = loggedIn && currentUser.getRoleId() == RoleBean.STUDENT;
@@ -21,23 +19,22 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<div
 			class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center"
 			style="width: 80px; height: 80px; background: rgba(255, 255, 255, 0.15); border: 2px solid rgba(255, 255, 255, 0.25); font-size: 2.3rem;">
-			<i class="bi bi-mortarboard-fill"></i>
+			<i class="fas fa-graduation-cap"></i>
 		</div>
 		<div>
 			<h1 class="fw-bold mb-1 fs-2">
-				<%=ms.get("welcome.msg")%>
-				<%
-				if (loggedIn) {
-				%>,
+				Welcome<%
+			if (loggedIn) {
+			%>,
 				<%=firstName%>!<%
-				} else {
-				%>
-				<%=ms.get("welcome.msg2")%>
-				<%
-				}
-				%>
+			} else {
+			%>
+				to ORS<%
+			}
+			%>
 			</h1>
-			<p class="mb-0 opacity-75"><%=ms.get("welcome.subtitle")%></p>
+			<p class="mb-0 opacity-75">Online Result System &mdash; Powered
+				by Rays Technologies</p>
 		</div>
 	</div>
 
@@ -46,14 +43,13 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		style="letter-spacing: .08em;">
 		<%
 		if (isAdmin) {
-		%><%=ms.get("admission.panel")%>
+		%>Administration Panel
 		<%
 		} else if (isStudent) {
-		%><%=ms.get("quick.access")%>
+		%>Quick Access
 		<%
 		} else {
-		%><%=ms.get("welcome.to")%>
-		<%
+		%>Get Started<%
 		}
 		%>
 	</p>
@@ -72,8 +68,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-primary mb-2">
 						<i class="bi bi-file-earmark-text-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("my.marksheet")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("marksheet.subtitle")%></p>
+					<h6 class="fw-bold mb-1">My Marksheet</h6>
+					<p class="text-muted small mb-0">View your academic results</p>
 				</div>
 			</a>
 		</div>
@@ -130,8 +126,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-primary mb-2">
 						<i class="bi bi-people-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("user.title")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("user.manage")%></p>
+					<h6 class="fw-bold mb-1">Users</h6>
+					<p class="text-muted small mb-0">Manage system users</p>
 				</div>
 			</a>
 		</div>
@@ -141,10 +137,10 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 				<div
 					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-success">
 					<div class="fs-1 text-success mb-2">
-						<i class="bi bi-building"></i>
+						<i class="bi bi-bank2"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("college.title")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("college.manage")%></p>
+					<h6 class="fw-bold mb-1">Colleges</h6>
+					<p class="text-muted small mb-0">Manage college records</p>
 				</div>
 			</a>
 		</div>
@@ -152,13 +148,13 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<div class="col-6 col-md-4 col-lg-3">
 			<a href="<%=ORSView.STUDENT_LIST_CTL%>" class="text-decoration-none">
 				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-dark"
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card"
 					style="border-top: 4px solid #7c3aed;">
-					<div class="fs-1 mb-2" style="color: black;">
+					<div class="fs-1 mb-2" style="color: #7c3aed;">
 						<i class="bi bi-mortarboard-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("student.title")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("student.manage")%></p>
+					<h6 class="fw-bold mb-1">Students</h6>
+					<p class="text-muted small mb-0">Manage student records</p>
 				</div>
 			</a>
 		</div>
@@ -171,8 +167,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-warning mb-2">
 						<i class="bi bi-file-earmark-text-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("marksheet.plural")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("marksheet.manage.records")%></p>
+					<h6 class="fw-bold mb-1">Marksheets</h6>
+					<p class="text-muted small mb-0">Manage marksheet records</p>
 				</div>
 			</a>
 		</div>
@@ -182,10 +178,10 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 				<div
 					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-danger">
 					<div class="fs-1 text-danger mb-2">
-						<i class="bi bi-shield-fill-check me-2"></i>
+						<i class="bi bi-shield-fill-check"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("role.title")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("role.subtitle")%></p>
+					<h6 class="fw-bold mb-1">Roles</h6>
+					<p class="text-muted small mb-0">Manage user roles</p>
 				</div>
 			</a>
 		</div>
@@ -194,12 +190,13 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 			<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>"
 				class="text-decoration-none">
 				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-warning">
-					<div class="fs-1 text-warning mb-2" style="color: #d0ca14;">
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card"
+					style="border-top: 4px solid #0d9488;">
+					<div class="fs-1 mb-2" style="color: #0d9488;">
 						<i class="bi bi-trophy-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("marksheet.title")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("marksheet.subtitle")%></p>
+					<h6 class="fw-bold mb-1">Merit List</h6>
+					<p class="text-muted small mb-0">View merit rankings</p>
 				</div>
 			</a>
 		</div>
@@ -211,8 +208,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-primary mb-2">
 						<i class="bi bi-search"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("marksheet.get")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("marksheet.get.subtitle")%></p>
+					<h6 class="fw-bold mb-1">Get Marksheet</h6>
+					<p class="text-muted small mb-0">Lookup a marksheet</p>
 				</div>
 			</a>
 		</div>
@@ -220,12 +217,13 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<div class="col-6 col-md-4 col-lg-3">
 			<a href="<%=ORSView.MY_PROFILE_CTL%>" class="text-decoration-none">
 				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-secondary">
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card"
+					style="border-top: 4px solid #374151;">
 					<div class="fs-1 mb-2" style="color: #374151;">
 						<i class="bi bi-person-gear"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("my.profile")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("my.profile.subtitle")%></p>
+					<h6 class="fw-bold mb-1">My Profile</h6>
+					<p class="text-muted small mb-0">View and edit your profile</p>
 				</div>
 			</a>
 		</div>
@@ -233,51 +231,13 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<div class="col-6 col-md-4 col-lg-3">
 			<a href="<%=ORSView.FACULTY_LIST_CTL%>" class="text-decoration-none">
 				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-info">
-					<div class="fs-1 text-info mb-2">
+					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card"
+					style="border-top: 4px solid #0891b2;">
+					<div class="fs-1 mb-2" style="color: #0891b2;">
 						<i class="bi bi-person-badge-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("faculty.title")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("faculty.card.subtitle")%></p>
-				</div>
-			</a>
-		</div>
-
-		<div class="col-6 col-md-4 col-lg-3">
-			<a href="<%=ORSView.PRODUCT_LIST_CTL%>" class="text-decoration-none">
-				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-success">
-					<div class="fs-1 mb-2" style="color: green;">
-						<i class="bi bi-cart"></i>
-					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("product.add")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("product.card.subtitle")%></p>
-				</div>
-			</a>
-		</div>
-
-		<div class="col-6 col-md-4 col-lg-3">
-			<a href="<%=ORSView.HOSPITAL_LIST_CTL%>" class="text-decoration-none">
-				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-danger">
-					<div class="fs-1 mb-2" style="color: red;">
-						<i class="bi bi-hospital-fill"></i>
-					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("hospital.record")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("hospital.card.subtitle")%></p>
-				</div>
-			</a>
-		</div>
-
-		<div class="col-6 col-md-4 col-lg-3">
-			<a href="<%=ORSView.DOCTOR_LIST_CTL%>" class="text-decoration-none">
-				<div
-					class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 ors-card border-top border-4 border-danger">
-					<div class="fs-1 mb-2" style="color: red;">
-						<i class="bi bi-prescription2"></i>
-					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("doctor.title")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("doctor.subtitle")%></p>
+					<h6 class="fw-bold mb-1">Faculty</h6>
+					<p class="text-muted small mb-0">Manage faculty records</p>
 				</div>
 			</a>
 		</div>
@@ -293,8 +253,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-primary mb-2">
 						<i class="bi bi-box-arrow-in-right"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("login.title")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("login.cardsubtitle")%></p>
+					<h6 class="fw-bold mb-1">Login</h6>
+					<p class="text-muted small mb-0">Sign in to your account</p>
 				</div>
 			</a>
 		</div>
@@ -307,8 +267,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 text-success mb-2">
 						<i class="bi bi-person-plus-fill"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("register.title")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("register.cardsubtitle")%></p>
+					<h6 class="fw-bold mb-1">Register</h6>
+					<p class="text-muted small mb-0">Create a new account</p>
 				</div>
 			</a>
 		</div>
@@ -321,8 +281,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 mb-2" style="color: #7c3aed;">
 						<i class="bi bi-search"></i>
 					</div>
-					<h6 class="fw-bold mb-1"><%=ms.get("marksheet.get")%></h6>
-					<p class="text-muted small mb-0"><%=ms.get("marksheet.cardsubtitle")%></p>
+					<h6 class="fw-bold mb-1">Get Marksheet</h6>
+					<p class="text-muted small mb-0">Search for a marksheet</p>
 				</div>
 			</a>
 		</div>
@@ -330,7 +290,7 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 		<%
 		}
 		%>
-	</div>
 
+	</div>
 	<!-- /row -->
 </div>

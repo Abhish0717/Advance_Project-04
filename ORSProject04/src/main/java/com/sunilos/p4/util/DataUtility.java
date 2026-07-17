@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * Data Utility class to format data from one format to another
  *
- * @author Abhishish Bhawsar
+ * @author Rays EdTech
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -22,7 +22,7 @@ public class DataUtility {
 	/**
 	 * Application Date Format
 	 */
-	public static final String APP_DATE_FORMAT = "MM/dd/yyyy"; // MM/dd/yyyy
+	public static final String APP_DATE_FORMAT = "MM/dd/yyyy";
 
 	public static final String APP_TIME_FORMAT = "MM/dd/yyyy HH:mm:ss";
 
@@ -49,14 +49,6 @@ public class DataUtility {
 	public static String getStringData(Object val) {
 		if (val != null) {
 			return val.toString();
-		} else {
-			return "";
-		}
-	}
-
-	public static String getDataString(Object val) {
-		if (val != null) {
-			return "";
 		} else {
 			return "";
 		}

@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import com.sunilos.p4.util.MessageSource;
 import com.sunilos.p4.util.ServletUtility;
 
 /**
@@ -22,7 +21,7 @@ import com.sunilos.p4.util.ServletUtility;
  * application without login.
  * 
  * 
- * @author Abhishish Bhawsar
+ * @author Rays EdTech
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -38,15 +37,14 @@ public class FrontController implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 
-		MessageSource ms = MessageSource.getInstance();
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 
 		HttpSession session = request.getSession(true);
 
 		if (session.getAttribute("user") == null) {
-			ServletUtility.setErrorMessage(ms.get("session.error"), request);
-			String queryParam = "?" + BaseCtl.MSG_ERROR + "=" + ms.get("session.error");
+			ServletUtility.setErrorMessage("OOPS!! your session has been expired, please relogin", request);
+			String queryParam = "?" + BaseCtl.MSG_ERROR + "=OOPS!! your session has been expired, please relogin";
 			ServletUtility.redirect(ORSView.LOGIN_CTL + queryParam, request, response);
 		} else {
 			chain.doFilter(req, resp);

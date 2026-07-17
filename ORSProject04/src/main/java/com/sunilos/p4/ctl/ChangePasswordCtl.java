@@ -22,7 +22,7 @@ import com.sunilos.p4.util.ServletUtility;
  * Change Password functionality Controller. Performs operation for Change
  * Password
  * 
- * @author Abhishish Bhawsar
+ * @author Rays EdTech
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -133,7 +133,7 @@ public class ChangePasswordCtl extends BaseCtl<UserBean, UserModel> {
 
 	@Override
 	protected String getView() {
-		return ORSView.CHANGE_PASSWORD_VIEW;
+		return getView(null);
 	}
 
 	@Override

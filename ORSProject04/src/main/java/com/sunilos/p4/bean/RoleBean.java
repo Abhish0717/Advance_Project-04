@@ -6,7 +6,7 @@ import java.sql.SQLException;
 /**
  * Role JavaBean encapsulates Role attributes
  * 
- * @author Abhishish Bhawsar
+ * @author Rays Technologies
  * @version 1.0
  * @Copyright (c) Rays Technologies
  * 

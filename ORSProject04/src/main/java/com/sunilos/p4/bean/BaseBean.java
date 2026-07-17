@@ -1,5 +1,6 @@
 package com.sunilos.p4.bean;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -7,19 +8,22 @@ import java.sql.Timestamp;
 /**
  * Parent class of all Beans in application. It contains generic attributes.
  * 
- * @author Abhishish Bhawsar
+ * @author Rays Technologies
  * @version 1.0
  * @Copyright (c) Rays Technologies
  * 
  */
-public abstract class BaseBean implements DropdownListBean, Comparable<BaseBean> {
+
+public abstract class BaseBean implements Serializable, DropdownListBean, Comparable<BaseBean> {
 
 	/**
-	 * Non Business primary key
+	 * Non Business primary key इसमें नॉन बिज़नेस के स्टोर की जाती है
 	 */
-	protected long id = 0L;
+	protected long id;
+
 	/**
-	 * Contains USER ID who created this database record.
+	 * Contains USER ID who created this database record. इसमें रिकॉर्ड क्रिएट करने
+	 * वाले यूजर का ID स्टोर किया जाता है
 	 */
 	protected String createdBy;
 

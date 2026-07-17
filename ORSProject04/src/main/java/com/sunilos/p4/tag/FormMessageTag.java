@@ -13,7 +13,7 @@ import com.sunilos.p4.util.ServletUtility;
  *
  * <ors:formMsg />
  * 
- * @author Abhishish Bhawsar
+ * @author Sunil Sahu
  *
  */
 public class FormMessageTag extends TagSupport {
@@ -28,21 +28,14 @@ public class FormMessageTag extends TagSupport {
 
 			// Get the JspWriter to write content to the JSP
 			JspWriter out = pageContext.getOut();
-			if (msg != null && !msg.trim().isEmpty()) {
-
+			if (msg != null) {
 				if ("true".equals(err)) {
-
-					out.println("<div class='alert alert-danger alert-dismissible fade show' role='alert'>" + msg
-							+ "<button type='button' class='btn-close' data-bs-dismiss='alert'></button>" + "</div>");
-
+					out.println("<p class=\"error-message\">" + msg + "</p>");
 				} else {
-
-					out.println("<div class='alert alert-success alert-dismissible fade show' role='alert'>" + msg
-							+ "<button type='button' class='btn-close' data-bs-dismiss='alert'></button>" + "</div>");
+					out.println("<p class=\"success-message\">" + msg + "</p>");
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			throw new JspException(e);
 		}
 

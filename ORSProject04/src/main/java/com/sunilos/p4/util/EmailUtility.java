@@ -16,7 +16,7 @@ import com.sunilos.p4.exception.ApplicationException;
 /**
  * Email Utility provides Email Services
  * 
- * @author Abhishish Bhawsar
+ * @author Rays Technologies
  * @version 1.0
  * @Copyright (c) Rays Technologies
  * 

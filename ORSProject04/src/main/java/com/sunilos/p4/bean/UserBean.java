@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * User JavaBean encapsulates User attributes
  * 
- * @author Abhishish Bhawsar
+ * @author Rays Technologies
  * @version 1.0
  * @Copyright (c) Rays Technologies
  * 
@@ -80,11 +80,6 @@ public class UserBean extends BaseBean {
 	 * IP Address of User of his last login
 	 */
 	private String lastLoginIP;
-
-	/**
-	 * Relative path of the Photo of User
-	 */
-	private String photo;
 
 	/**
 	 * accessor
@@ -186,14 +181,6 @@ public class UserBean extends BaseBean {
 		this.lastLoginIP = lastLoginIP;
 	}
 
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
 	public String getGender() {
 		return gender;
 	}
@@ -237,7 +224,6 @@ public class UserBean extends BaseBean {
 			this.setLock(rs.getString(12));
 			this.setRegisteredIP(rs.getString(13));
 			this.setLastLoginIP(rs.getString(14));
-			this.setPhoto(rs.getString(19));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

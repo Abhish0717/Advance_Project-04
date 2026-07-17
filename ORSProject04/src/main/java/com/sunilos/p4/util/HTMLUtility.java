@@ -10,7 +10,7 @@ import com.sunilos.p4.bean.DropdownListBean;
 /**
  * HTML Utility class to produce HTML contents like Dropdown List.
  * 
- * @author Abhishish Bhawsar
+ * @author Rays Technologies
  * @version 1.0
  * @Copyright (c) Rays Technologies
  * 
@@ -36,7 +36,7 @@ public class HTMLUtility {
 
 		boolean select = true;
 		if (select) {
-			sb.append("<option selected value=''>-----------------Select------------------</option>");
+			sb.append("<option selected value=''>--------------Select Gender---------------</option>");
 		}
 
 		for (String key : keys) {
@@ -72,7 +72,7 @@ public class HTMLUtility {
 
 		boolean select = true;
 		if (select) {
-			sb.append("<option selected value=''>-----------------Select------------------</option>");	//---------------------------------------Select---------------------------------------
+			sb.append("<option selected value=''>--------------Select Role---------------</option>");
 		}
 
 		for (DropdownListBean obj : dd) {

@@ -20,7 +20,7 @@ import com.sunilos.p4.util.JDBCDataSource;
  * It contains generalized methods for a Model class. �All Model classes in the
  * application must inherit BasModel class.
  * 
- * @author Abhishish Bhawsar
+ * @author Sunil Sahu
  *
  * @param <T>
  */
@@ -77,8 +77,9 @@ public abstract class BaseModel<T extends BaseBean> {
 	 * @return
 	 * @throws ApplicationException
 	 */
-	public T findByPk(long pk) throws ApplicationException {
-		log.debug("Model findByPk Started");
+
+	public T findByPK(long pk) throws ApplicationException {
+		log.debug("Model findByPK Started");
 		StringBuffer sql = new StringBuffer("SELECT * FROM " + getTable() + " WHERE ID=?");
 		T bean = null;
 		Connection conn = null;
@@ -98,7 +99,7 @@ public abstract class BaseModel<T extends BaseBean> {
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}
-		log.debug("Model findByPk End");
+		log.debug("Model findByPK End");
 		return bean;
 	}
 
@@ -122,7 +123,7 @@ public abstract class BaseModel<T extends BaseBean> {
 			rs.close();
 		} catch (Exception e) {
 			log.error("Database Exception..", e);
-			throw new ApplicationException("Exception : Exception in getting Unique Column");
+			throw new ApplicationException("Exception : Exception in getting User by Unique Column");
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}
@@ -294,7 +295,7 @@ public abstract class BaseModel<T extends BaseBean> {
 	public List<T> list(int pageNo, int pageSize) throws ApplicationException {
 
 		log.debug("Model list Started");
-		ArrayList list = new ArrayList();
+		ArrayList<T> list = new ArrayList<T>();
 
 		StringBuffer sql = new StringBuffer("select * from " + getTable());
 

@@ -1,4 +1,3 @@
-<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.RoleListCtl"%>
 <%@page import="com.sunilos.p4.ctl.BaseCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
@@ -8,7 +7,6 @@
 <%@page import="java.util.Iterator"%>
 
 <%
-MessageSource ms = MessageSource.getInstance();
 int pageNo = ServletUtility.getPageNo(request);
 int pageSize = ServletUtility.getPageSize(request);
 int index = ((pageNo - 1) * pageSize) + 1;
@@ -25,19 +23,18 @@ String _suc = ServletUtility.getSuccessMessage(request);
 			class="card-header text-white border-0 py-3 px-4 d-flex justify-content-between align-items-center"
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
-				<i class="bi bi-shield-fill-check me-2"></i>
-				<%=ms.get("role.list")%>
+				<i class="bi bi-shield-fill-check me-2"></i> Role List
 			</h5>
 			<div class="d-flex gap-2">
 				<a href="<%=ORSView.ROLE_REPORT_CTL%>" target="_blank"
 					class="btn btn-sm btn-warning fw-semibold"> <i
-					class="bi bi-file-earmark-pdf me-1"></i> <%=ms.get("print.pdf")%>
+					class="bi bi-file-earmark-pdf me-1"></i> Print PDF
 				</a> <a href="<%=ORSView.ROLE_REPORT_CTL%>?type=doc" target="_blank"
 					class="btn btn-sm btn-info fw-semibold"> <i
-					class="bi bi-file-earmark-word me-1"></i> <%=ms.get("print.doc")%>
+					class="bi bi-file-earmark-word me-1"></i> Print DOC
 				</a> <a href="<%=ORSView.ROLE_CTL%>"
 					class="btn btn-sm btn-light text-primary fw-semibold"> <i
-					class="bi bi-plus-circle me-1"></i> <%=ms.get("role.add")%>
+					class="bi bi-plus-circle me-1"></i> Add Role
 				</a>
 			</div>
 		</div>
@@ -49,19 +46,16 @@ String _suc = ServletUtility.getSuccessMessage(request);
 			<div
 				class="p-3 bg-light border-bottom d-flex flex-wrap gap-2 align-items-center">
 				<input type="text" name="name" class="form-control form-control-sm"
-					style="max-width: 220px;" placeholder="<%=ms.get("search.name")%>"
+					style="max-width: 220px;" placeholder="Search by Name"
 					value="<%=ServletUtility.getParameter("name", request)%>">
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_SEARCH%>" class="btn btn-primary btn-sm">
-					<i class="bi bi-search me-1"></i>
-					<%=ms.get("button.search")%>
+					<i class="bi bi-search me-1"></i> Search
 				</button>
 				<button type="submit" name="operation"
 					value="<%=BaseCtl.OP_DELETE%>"
-					class="btn btn-danger btn-sm ms-auto"
-					onclick="return confirm('Delete this Role?')">
-					<i class="bi bi-trash me-1"></i>
-					<%=ms.get("button.delete")%>
+					class="btn btn-danger btn-sm ms-auto">
+					<i class="bi bi-trash me-1"></i> Delete Selected
 				</button>
 			</div>
 
@@ -102,10 +96,10 @@ String _suc = ServletUtility.getSuccessMessage(request);
 						<tr>
 							<th width="40"><input type="checkbox"
 								onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
-							<th><%=ms.get("serial.no")%></th>
-							<th><%=ms.get("name.title")%></th>
-							<th><%=ms.get("description.title")%></th>
-							<th><%=ms.get("label.action")%></th>
+							<th>#</th>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -121,7 +115,7 @@ String _suc = ServletUtility.getSuccessMessage(request);
 							<td><%=bean.getDescription()%></td>
 							<td><a href="RoleCtl?id=<%=bean.getId()%>"
 								class="btn btn-sm btn-outline-primary"> <i
-									class="bi bi-pencil"></i> <%=ms.get("link.edit")%>
+									class="bi bi-pencil"></i> Edit
 							</a></td>
 						</tr>
 						<%

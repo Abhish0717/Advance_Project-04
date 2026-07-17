@@ -15,7 +15,7 @@ import com.sunilos.p4.util.JDBCDataSource;
 /**
  * JDBC Implementation of Role Model
  * 
- * @author Abhishish Bhawsar
+ * @author Rays Technologies
  * @version 1.0
  * @Copyright (c) Rays Technologies
  */

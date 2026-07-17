@@ -13,7 +13,7 @@ import com.sunilos.p4.util.DataUtility;
  * Role List functionality Controller. Performs operation for list, search
  * operations of Role
  * 
- * @author Abhishish Bhawsar
+ * @author Rays EdTech
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -32,7 +32,7 @@ public class RoleListCtl extends BaseListCtl<RoleBean, RoleModel> {
 
 	@Override
 	protected String getView() {
-		return ORSView.ROLE_LIST_VIEW;
+		return getView();
 	}
 
 	@Override

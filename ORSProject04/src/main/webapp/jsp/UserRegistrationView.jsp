@@ -1,4 +1,3 @@
-<%@page import="com.sunilos.p4.util.MessageSource"%>
 <%@page import="com.sunilos.p4.ctl.UserRegistrationCtl"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
 <%@page import="java.util.HashMap"%>
@@ -10,12 +9,11 @@
 	scope="request"></jsp:useBean>
 
 <%
-MessageSource ms = MessageSource.getInstance();
 String _suc = ServletUtility.getSuccessMessage(request);
 String _err = ServletUtility.getErrorMessage(request);
 HashMap genderMap = new HashMap();
-genderMap.put("M", ms.get("male.val"));
-genderMap.put("F", ms.get("female.val"));
+genderMap.put("M", "Male");
+genderMap.put("F", "Female");
 %>
 
 <div class="container py-4" style="max-width: 660px;">
@@ -30,8 +28,8 @@ genderMap.put("F", ms.get("female.val"));
 					<i class="bi bi-person-plus-fill"></i>
 				</div>
 			</div>
-			<h5 class="mb-0 fw-bold"><%=ms.get("register.usertitle")%></h5>
-			<p class="mb-0 opacity-75 small mt-1"><%=ms.get("registers.subtitle")%></p>
+			<h5 class="mb-0 fw-bold">User Registration</h5>
+			<p class="mb-0 opacity-75 small mt-1">Create your ORS account</p>
 		</div>
 
 		<div class="card-body px-4 py-4">
@@ -65,19 +63,15 @@ genderMap.put("F", ms.get("female.val"));
 
 				<div class="row g-3 mb-3">
 					<div class="col-md-6">
-						<label class="form-label fw-semibold"><%=ms.get("first.name")%>
-							<span class="text-danger">*</span></label> <input type="text"
-							name="firstName"
-							placeholder="<%=ms.get("register.enterfirstname")%>"
+						<label class="form-label fw-semibold">First Name <span
+							class="text-danger">*</span></label> <input type="text" name="firstName"
 							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getFirstName())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("firstName", request)%></div>
 					</div>
 					<div class="col-md-6">
-						<label class="form-label fw-semibold"><%=ms.get("last.name")%>
-							<span class="text-danger">*</span></label> <input type="text"
-							name="lastName"
-							placeholder="<%=ms.get("register.enterlastname")%>"
+						<label class="form-label fw-semibold">Last Name <span
+							class="text-danger">*</span></label> <input type="text" name="lastName"
 							class="form-control"
 							value="<%=DataUtility.getStringData(bean.getLastName())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("lastName", request)%></div>
@@ -85,9 +79,8 @@ genderMap.put("F", ms.get("female.val"));
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold"><%=ms.get("register.loginid")%><span
+					<label class="form-label fw-semibold">Login ID (Email) <span
 						class="text-danger">*</span></label> <input type="text" name="login"
-						placeholder="<%=ms.get("email.placeholder")%>"
 						class="form-control" placeholder="Must be Email ID"
 						value="<%=DataUtility.getStringData(bean.getLogin())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("login", request)%></div>
@@ -95,19 +88,16 @@ genderMap.put("F", ms.get("female.val"));
 
 				<div class="row g-3 mb-3">
 					<div class="col-md-6">
-						<label class="form-label fw-semibold"><%=ms.get("login.password")%>
-							<span class="text-danger">*</span></label> <input type="password"
-							placeholder="<%=ms.get("login.enterpassword")%>" name="password"
-							class="form-control"
+						<label class="form-label fw-semibold">Password <span
+							class="text-danger">*</span></label> <input type="password"
+							name="password" class="form-control"
 							value="<%=DataUtility.getStringData(bean.getPassword())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("password", request)%></div>
 					</div>
 					<div class="col-md-6">
-						<label class="form-label fw-semibold"><%=ms.get("register.confirmpassword")%><span
+						<label class="form-label fw-semibold">Confirm Password <span
 							class="text-danger">*</span></label> <input type="password"
-							name="confirmPassword"
-							placeholder="<%=ms.get("register.enterconfirmpassword")%>"
-							class="form-control"
+							name="confirmPassword" class="form-control"
 							value="<%=DataUtility.getStringData(bean.getConfirmPassword())%>">
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("confirmPassword", request)%></div>
 					</div>
@@ -115,20 +105,18 @@ genderMap.put("F", ms.get("female.val"));
 
 				<div class="row g-3 mb-3">
 					<div class="col-md-6">
-						<label class="form-label fw-semibold"><%=ms.get("register.gender")%></label>
+						<label class="form-label fw-semibold">Gender</label>
 						<%=HTMLUtility.getList("gender", bean.getGender(), genderMap)%>
-						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("gender", request)%></div>
 					</div>
 					<div class="col-md-6">
-						<label class="form-label fw-semibold"><%=ms.get("register.dob")%></label>
+						<label class="form-label fw-semibold">Date of Birth
+							(mm/dd/yyyy)</label>
 						<div class="input-group">
-							<input type="text" name="dob"
-								placeholder="<%=ms.get("register.selectdob")%>" id="udate"
-								class="form-control" readonly
-								value="<%=DataUtility.getDateString(bean.getDob())%>"> <a
-								class="btn btn-outline-secondary"> <img src="../img/cal.jpg"
-								width="16" height="15" alt="Calendar">
-							</a>
+							<input type="text" name="dob" id="udate" class="form-control"
+								readonly value="<%=DataUtility.getDateString(bean.getDob())%>">
+							<!-- <a class="btn btn-outline-secondary"> <img
+								src="../img/cal.jpg" width="16" height="15" alt="Calendar">
+							</a> -->
 						</div>
 						<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("dob", request)%></div>
 					</div>
@@ -141,22 +129,21 @@ genderMap.put("F", ms.get("female.val"));
 					<button type="submit" name="operation"
 						value="<%=UserRegistrationCtl.OP_SIGN_UP%>"
 						class="btn btn-primary btn-lg w-100">
-						<i class="bi bi-person-check-fill me-2"></i>
-						<%=ms.get("login.signup")%>
+						<i class="bi bi-person-check-fill me-2"></i> Sign Up
 					</button>
 					<%
 					} else {
 					%>
 					<a href="<%=ORSView.LOGIN_CTL%>"
 						class="btn btn-outline-primary btn-lg w-100"> <i
-						class="bi bi-box-arrow-in-right me-2"></i> <%=ms.get("go.login")%>
+						class="bi bi-box-arrow-in-right me-2"></i> Go to Login
 					</a>
 					<%
 					}
 					%>
 					<p class="text-center mt-3 mb-0 small text-muted">
-						<%=ms.get("register.alreadyaccount")%>
-						<a href="<%=ORSView.LOGIN_CTL%>" class="text-primary fw-semibold"><%=ms.get("register.loginhere")%></a>
+						Already have an account? <a href="<%=ORSView.LOGIN_CTL%>"
+							class="text-primary fw-semibold">Login here</a>
 					</p>
 				</div>
 			</form>

@@ -4,7 +4,7 @@ package com.sunilos.p4.exception;
  * DatabaseException is propogated by DAO classes when an unhandled Database
  * exception occurred
  * 
- * @author Abhishish Bhawsar
+ * @author Rays Technologies
  * @version 1.0
  * @Copyright (c) Rays Technologies
  * 

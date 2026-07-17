@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * Class that build Application Email messages
  * 
- * @author Abhishish Bhawsar
+ * @author Rays Technologies
  * @version 1.0
  * @Copyright (c) Rays Technologies
  * 

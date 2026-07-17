@@ -13,7 +13,6 @@ import com.sunilos.p4.model.RoleModel;
 import com.sunilos.p4.model.UserModel;
 import com.sunilos.p4.util.DataUtility;
 import com.sunilos.p4.util.DataValidator;
-import com.sunilos.p4.util.MessageSource;
 import com.sunilos.p4.util.PropertyReader;
 import com.sunilos.p4.util.ServletUtility;
 
@@ -21,7 +20,7 @@ import com.sunilos.p4.util.ServletUtility;
  * * User functionality Controller. Performs operation for add, update and get
  * User
  * 
- * @author Abhishish Bhawsar
+ * @author Rays EdTech
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -41,6 +40,7 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 		} catch (ApplicationException e) {
 			log.error(e);
 		}
+
 	}
 
 	@Override
@@ -48,78 +48,53 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 
 		log.debug("UserCtl Method validate Started");
 
-		MessageSource ms = getMessageSource(request);
 		boolean pass = true;
 
 		String login = request.getParameter("login");
 		String dob = request.getParameter("dob");
-		String password = request.getParameter("password");
 
 		if (DataValidator.isNull(request.getParameter("firstName"))) {
-			request.setAttribute("firstName", PropertyReader.getValue("error.require", ms.get("first.name")));
-			pass = false;
-		} else if (!DataValidator.isName(request.getParameter("firstName"))) {
-			request.setAttribute("firstName", ms.get("error.firstname"));
+			request.setAttribute("firstName", PropertyReader.getValue("error.require", "First Name"));
 			pass = false;
 		}
 
 		if (DataValidator.isNull(request.getParameter("lastName"))) {
-			request.setAttribute("lastName", PropertyReader.getValue("error.require", ms.get("last.name")));
-			pass = false;
-		} else if (!DataValidator.isName(request.getParameter("lastName"))) {
-			request.setAttribute("lastName", ms.get("error.lastname"));
+			request.setAttribute("lastName", PropertyReader.getValue("error.require", "Last Name"));
 			pass = false;
 		}
 
 		if (DataValidator.isNull(login)) {
-			request.setAttribute("login", PropertyReader.getValue("error.require", ms.get("login.userid")));
+			request.setAttribute("login", PropertyReader.getValue("error.require", "Login Id"));
 			pass = false;
 		} else if (!DataValidator.isEmail(login)) {
-			request.setAttribute("login", PropertyReader.getValue("error.email", ms.get("login.userid")));
+			request.setAttribute("login", PropertyReader.getValue("error.email", "Login "));
 			pass = false;
 		}
 
-		if (DataValidator.isNull(password)) {
-			request.setAttribute("password", PropertyReader.getValue("error.require", ms.get("register.password")));
-			pass = false;
-		} else if (!DataValidator.isPasswordLength(password)) {
-			request.setAttribute("password", ms.get("password.error.require"));
-			pass = false;
-		} else if (!DataValidator.isPassword(password)) {
-			request.setAttribute("password", ms.get("password.error.mustrequire"));
+		if (DataValidator.isNull(request.getParameter("password"))) {
+			request.setAttribute("password", PropertyReader.getValue("error.require", "Password"));
 			pass = false;
 		}
 
 		if (DataValidator.isNull(request.getParameter("confirmPassword"))) {
-			request.setAttribute("confirmPassword",
-					PropertyReader.getValue("error.require", ms.get("register.confirmpassword")));
+			request.setAttribute("confirmPassword", PropertyReader.getValue("error.require", "Confirm Password"));
 			pass = false;
 		}
 
-//		if (DataValidator.isNull(request.getParameter("gender"))) {
-//			request.setAttribute("gender", PropertyReader.getValue("error.require", "Gender"));
-//			pass = false;
-//		}
+		if (DataValidator.isNull(request.getParameter("gender"))) {
+			request.setAttribute("gender", PropertyReader.getValue("error.require", "Gender"));
+			pass = false;
+		}
 		if (DataValidator.isNull(dob)) {
-			request.setAttribute("dob", PropertyReader.getValue("error.require", ms.get("dob.title")));
+			request.setAttribute("dob", PropertyReader.getValue("error.require", "Date Of Birth"));
 			pass = false;
 		} else if (!DataValidator.isDate(dob)) {
-			request.setAttribute("dob", PropertyReader.getValue("error.date", ms.get("dob.title")));
+			request.setAttribute("dob", PropertyReader.getValue("error.date", "Date Of Birth"));
 			pass = false;
 		}
-		if (DataValidator.isNull(request.getParameter("mobileNo"))) {
-			request.setAttribute("mobileNo", PropertyReader.getValue("error.require", ms.get("mobile.title")));
-			pass = false;
-		} else if (!DataValidator.isPhoneLength(request.getParameter("mobileNo"))) {
-			request.setAttribute("mobileNo", ms.get("require.mobile"));
-			pass = false;
-		} else if (!DataValidator.isPhoneNo(request.getParameter("mobileNo"))) {
-			request.setAttribute("mobileNo", ms.get("require.mobile.error"));
-			pass = false;
-		}
-		if (!(password).equals(request.getParameter("confirmPassword"))
+		if (!request.getParameter("password").equals(request.getParameter("confirmPassword"))
 				&& !"".equals(request.getParameter("confirmPassword"))) {
-			request.setAttribute(ms.get("business.empty"), request);
+			ServletUtility.setErrorMessage("Confirm  Password  should not be matched.", request);
 			pass = false;
 		}
 
@@ -151,8 +126,6 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 
 		bean.setGender(DataUtility.getString(request.getParameter("gender")));
 
-		bean.setMobileNo(DataUtility.getString(request.getParameter("mobileNo")));
-
 		bean.setDob(DataUtility.getDate(request.getParameter("dob")));
 
 		populateDTO(bean, request);
@@ -164,7 +137,7 @@ public class UserCtl extends BaseCtl<UserBean, UserModel> {
 
 	@Override
 	protected String getView() {
-		return ORSView.USER_VIEW;
+		return getView(null);
 	}
 
 	@Override

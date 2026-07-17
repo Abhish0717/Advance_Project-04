@@ -9,7 +9,7 @@ import com.sunilos.p4.model.BaseModel;
 /**
  * Welcome functionality Controller. Performs operation for Show Welcome page
  * 
- * @author Abhishish Bhawsar
+ * @author Rays EdTech
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -23,7 +23,7 @@ public class WelcomeCtl extends BaseCtl {
 
 	@Override
 	protected String getView() {
-		return ORSView.WELCOME_VIEW;
+		return getView(null);
 	}
 
 	@Override

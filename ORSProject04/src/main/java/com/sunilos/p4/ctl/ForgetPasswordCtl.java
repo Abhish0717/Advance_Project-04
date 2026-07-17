@@ -15,7 +15,6 @@ import com.sunilos.p4.exception.RecordNotFoundException;
 import com.sunilos.p4.model.UserModel;
 import com.sunilos.p4.util.DataUtility;
 import com.sunilos.p4.util.DataValidator;
-import com.sunilos.p4.util.MessageSource;
 import com.sunilos.p4.util.PropertyReader;
 import com.sunilos.p4.util.ServletUtility;
 
@@ -23,7 +22,7 @@ import com.sunilos.p4.util.ServletUtility;
  * Forget Password functionality Controller. Performs operation for Forget
  * Password
  * 
- * @author Abhishish Bhawsar
+ * @author Rays EdTech
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -46,7 +45,7 @@ public class ForgetPasswordCtl extends BaseCtl<UserBean, UserModel> {
 			request.setAttribute("login", PropertyReader.getValue("error.require", "Email Id"));
 			pass = false;
 		} else if (!DataValidator.isEmail(login)) {
-			request.setAttribute("login", PropertyReader.getValue("error.email", "Email Id"));
+			request.setAttribute("login", PropertyReader.getValue("error.email", "Login "));
 			pass = false;
 		}
 		log.debug("ForgetPasswordCtl Method validate Ended");
@@ -79,13 +78,13 @@ public class ForgetPasswordCtl extends BaseCtl<UserBean, UserModel> {
 		log.debug("ForgetPasswordCtl Method doGet Started");
 
 		UserBean bean = populateBean(request);
-MessageSource ms=getMessageSource(request);
+
 		// get model
 		UserModel model = getModel();
 
 		try {
 			model.forgetPassword(bean.getLogin());
-			ServletUtility.setSuccessMessage(ms.get("forget.success"), request);
+			ServletUtility.setSuccessMessage("Password has been sent to your email id.", request);
 		} catch (RecordNotFoundException e) {
 			ServletUtility.setErrorMessage(e.getMessage(), request);
 			log.error(e);

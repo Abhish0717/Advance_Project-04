@@ -11,7 +11,7 @@ import com.sunilos.p4.util.MessageSource;
  * 
  * <ors:message key="key" />
  * 
- * @author Abhishish Bhawsar
+ * @author Sunil Sahu
  *
  */
 public class MessageTag extends TagSupport {
@@ -42,7 +42,6 @@ public class MessageTag extends TagSupport {
 			JspWriter out = pageContext.getOut();
 			out.write(val);
 		} catch (Exception e) {
-			e.printStackTrace();
 			throw new JspException(e);
 		}
 		// Your custom tag logic goes here
