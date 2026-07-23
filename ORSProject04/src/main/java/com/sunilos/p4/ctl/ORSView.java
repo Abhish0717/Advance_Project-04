@@ -3,7 +3,7 @@ package com.sunilos.p4.ctl;
 /**
  * Contains ORS View and Controller URI
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -67,6 +67,7 @@ public interface ORSView {
 	public String MY_PROFILE_CTL = APP_CONTEXT + "/ctl/MyProfileCtl";
 	public String FORGET_PASSWORD_CTL = APP_CONTEXT + "/ForgetPasswordCtl";
 	public String MARKSHEET_MERIT_LIST_CTL = APP_CONTEXT + "/ctl/MarksheetMeritListCtl";
+	public String UPLOAD_PHOTO_CTL = APP_CONTEXT + "/ctl/uploadphoto";
 
 	public String FACULTY_VIEW = PAGE_FOLDER + "/FacultyView.jsp";
 	public String FACULTY_LIST_VIEW = PAGE_FOLDER + "/FacultyListView.jsp";
@@ -90,16 +91,130 @@ public interface ORSView {
 	public String SUBJECT_REPORT_VIEW = "/reports/SubjectListReport.jrxml";
 	public String MARKSHEET_REPORT_VIEW = "/reports/MarksheetListReport.jrxml";
 	public String FACULTY_REPORT_VIEW = "/reports/FacultyListReport.jrxml";
-	
-	
+
+	/*-- ---- Daily Module : New Modules ---- --*/
+	/** Product View JSP */
+	public String PRODUCT_VIEW = PAGE_FOLDER + "/ProductView.jsp";
+	/** Product Controller URL */
+	public String PRODUCT_CTL = APP_CONTEXT + "/ctl/ProductCtl";
+
+	/** Product List JSP */
+	public String PRODUCT_LIST_VIEW = PAGE_FOLDER + "/ProductListView.jsp";
+	/** Product List Controller URL */
+	public String PRODUCT_LIST_CTL = APP_CONTEXT + "/ctl/ProductListCtl";
+
+	/** Product List Controller URL */
+	public String PRODUCT_REPORT_CTL = APP_CONTEXT + "/ctl/ProductReportCtl";
+	/** Product List Controller URL */
+	public String PRODUCT_REPORT_VIEW = "/reports/ProductListReport.jrxml";
+
 	/** Api View JSP */
 	public String API_VIEW = PAGE_FOLDER + "/ApiView.jsp";
 	/** Api Controller URL */
 	public String API_CTL = APP_CONTEXT + "/ctl/ApiCtl";
-	
+
 	/** Api List JSP */
 	public String API_LIST_VIEW = PAGE_FOLDER + "/ApiListView.jsp";
 	/** Api List Controller URL */
 	public String API_LIST_CTL = APP_CONTEXT + "/ctl/ApiListCtl";
 
+	/** Citizen View JSP */
+	public String CITIZEN_VIEW = PAGE_FOLDER + "/CitizenView.jsp";
+	/** Citizen Controller URL */
+	public String CITIZEN_CTL = APP_CONTEXT + "/ctl/CitizenCtl";
+
+	/** Citizen List JSP */
+	public String CITIZEN_LIST_VIEW = PAGE_FOLDER + "/CitizenListView.jsp";
+	/** Citizen List Controller URL */
+	public String CITIZEN_LIST_CTL = APP_CONTEXT + "/ctl/CitizenListCtl";
+
+	/** Hospital View JSP */
+	public String HOSPITAL_VIEW = PAGE_FOLDER + "/HospitalView.jsp";
+	/** Hospital Controller URL */
+	public String HOSPITAL_CTL = APP_CONTEXT + "/ctl/HospitalCtl";
+
+	/** Hospital List JSP */
+	public String HOSPITAL_LIST_VIEW = PAGE_FOLDER + "/HospitalListView.jsp";
+	/** Hospital List Controller URL */
+	public String HOSPITAL_LIST_CTL = APP_CONTEXT + "/ctl/HospitalListCtl";
+
+	/** Payment View JSP */
+	public String PAYMENT_VIEW = PAGE_FOLDER + "/PaymentView.jsp";
+	/** Payment Controller URL */
+	public String PAYMENT_CTL = APP_CONTEXT + "/ctl/PaymentCtl";
+
+	/** Payment List JSP */
+	public String PAYMENT_LIST_VIEW = PAGE_FOLDER + "/PaymentListView.jsp";
+	/** Payment List Controller URL */
+	public String PAYMENT_LIST_CTL = APP_CONTEXT + "/ctl/PaymentListCtl";
+
+	/** Courier View JSP */
+	public String COURIER_VIEW = PAGE_FOLDER + "/CourierView.jsp";
+	/** Courier Controller URL */
+	public String COURIER_CTL = APP_CONTEXT + "/ctl/CourierCtl";
+
+	/** Courier List JSP */
+	public String COURIER_LIST_VIEW = PAGE_FOLDER + "/CourierListView.jsp";
+	/** Courier List Controller URL */
+	public String COURIER_LIST_CTL = APP_CONTEXT + "/ctl/CourierListCtl";
+
+	/** Transaction View JSP */
+	public String TRANSACTION_VIEW = PAGE_FOLDER + "/TransactionView.jsp";
+	/** Transaction Controller URL */
+	public String TRANSACTION_CTL = APP_CONTEXT + "/ctl/TransactionCtl";
+
+	/** Transaction List JSP */
+	public String TRANSACTION_LIST_VIEW = PAGE_FOLDER + "/TransactionListView.jsp";
+	/** Transaction List Controller URL */
+	public String TRANSACTION_LIST_CTL = APP_CONTEXT + "/ctl/TransactionListCtl";
+
+	/** Transaction Report Controller URL */
+	public String TRANSACTION_REPORT_CTL = APP_CONTEXT + "/ctl/TransactionReportCtl";
+	/** Transaction Report View jrxml file */
+	public String TRANSACTION_REPORT_VIEW = "/reports/TransactionListReport.jrxml";
+
+	/** Doctor View JSP */
+	public String DOCTOR_VIEW = PAGE_FOLDER + "/DoctorView.jsp";
+	/** Doctor Controller URL */
+	public String DOCTOR_CTL = APP_CONTEXT + "/ctl/DoctorCtl";
+
+	/** Doctor List JSP */
+	public String DOCTOR_LIST_VIEW = PAGE_FOLDER + "/DoctorListView.jsp";
+	/** Doctor List Controller URL */
+	public String DOCTOR_LIST_CTL = APP_CONTEXT + "/ctl/DoctorListCtl";
+
+	/** Doctor Report Controller URL */
+	public String DOCTOR_REPORT_CTL = APP_CONTEXT + "/ctl/DoctorReportCtl";
+	/** Doctor Report View jrxml file */
+	public String DOCTOR_REPORT_VIEW = "/reports/DoctorReportView.jrxml";
+
+	/** Face Recognition View JSP */
+	public String FACE_RECOGNITION_VIEW = PAGE_FOLDER + "/FaceRecognitionView.jsp";
+	/** Face Recognition Controller URL */
+	public String FACE_RECOGNITION_CTL = APP_CONTEXT + "/ctl/FaceRecognitionCtl";
+
+	/** Face Recognition List JSP */
+	public String FACE_RECOGNITION_LIST_VIEW = PAGE_FOLDER + "/FaceRecognitionListView.jsp";
+	/** Face Recognition List Controller URL */
+	public String FACE_RECOGNITION_LIST_CTL = APP_CONTEXT + "/ctl/FaceRecognitionListCtl";
+
+	/** Face Recognition Report Controller URL */
+	public String FACE_RECOGNITION_REPORT_CTL = APP_CONTEXT + "/ctl/FaceRecognitionReportCtl";
+	/** Face Recognition Report View jrxml file */
+	public String FACE_RECOGNITION_REPORT_VIEW = "/reports/FaceRecognitionReportView.jrxml";
+
+	/** Branch View JSP */
+	public String BRANCH_VIEW = PAGE_FOLDER + "/BranchView.jsp";
+	/** Branch Controller URL */
+	public String BRANCH_CTL = APP_CONTEXT + "/ctl/BranchCtl";
+
+	/** Branch List JSP */
+	public String BRANCH_LIST_VIEW = PAGE_FOLDER + "/BranchListView.jsp";
+	/** Branch List Controller URL */
+	public String BRANCH_LIST_CTL = APP_CONTEXT + "/ctl/BranchListCtl";
+
+	/** Branch Report Controller URL */
+	public String BRANCH_REPORT_CTL = APP_CONTEXT + "/ctl/BranchReportCtl";
+	/** Branch Report View jrxml file */
+	public String BRANCH_REPORT_VIEW = "/reports/BranchReportView.jrxml";
 }

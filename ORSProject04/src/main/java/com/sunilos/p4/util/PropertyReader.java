@@ -2,12 +2,11 @@ package com.sunilos.p4.util;
 
 import java.util.ResourceBundle;
 
-
 /**
  * Read the property values from application properties file using Resource
  * Bundle
  * 
- * @author Rays Technologies
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays Technologies
  * 
@@ -15,8 +14,7 @@ import java.util.ResourceBundle;
 
 public class PropertyReader {
 
-	private static ResourceBundle rb = ResourceBundle
-			.getBundle("com.sunilos.p4.bundle.system");
+	private static ResourceBundle rb = ResourceBundle.getBundle("com.sunilos.p4.bundle.system");
 
 	/**
 	 * Return value of key
@@ -66,13 +64,14 @@ public class PropertyReader {
 		}
 		return msg;
 	}
-    
+
+
 	/**
 	 * Test method
 	 * 
 	 * @param args
 	 */
-	
+
 	public static void main(String[] args) {
 		String[] params = { "Roll No" };
 		System.out.println(PropertyReader.getValue("error.require", params));

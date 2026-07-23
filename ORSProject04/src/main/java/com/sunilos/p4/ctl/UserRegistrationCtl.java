@@ -22,7 +22,7 @@ import com.sunilos.p4.util.ServletUtility;
  * User registration functionality Controller. Performs operation for User
  * Registration
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -147,7 +147,7 @@ public class UserRegistrationCtl extends BaseCtl<UserBean, UserModel> {
 
 	@Override
 	protected String getView() {
-		return getView(null);
+		return ORSView.USER_REGISTRATION_VIEW;
 	}
 
 	@Override

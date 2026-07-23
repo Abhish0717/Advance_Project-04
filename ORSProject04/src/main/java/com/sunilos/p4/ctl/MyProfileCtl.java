@@ -15,6 +15,7 @@ import com.sunilos.p4.bean.UserBean;
 import com.sunilos.p4.model.UserModel;
 import com.sunilos.p4.util.DataUtility;
 import com.sunilos.p4.util.DataValidator;
+import com.sunilos.p4.util.MessageSource;
 import com.sunilos.p4.util.PropertyReader;
 import com.sunilos.p4.util.ServletUtility;
 
@@ -22,7 +23,7 @@ import com.sunilos.p4.util.ServletUtility;
  * My Profile functionality Controller. Performs operation for update your
  * Profile
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -32,6 +33,7 @@ public class MyProfileCtl extends BaseCtl<UserBean, UserModel> {
 
 	public static final String OP_CHANGE_MY_PASSWORD = "ChangePassword";
 
+	private static MessageSource ms = MessageSource.getInstance();
 	private static Logger log = Logger.getLogger(MyProfileCtl.class);
 
 	@Override
@@ -41,6 +43,8 @@ public class MyProfileCtl extends BaseCtl<UserBean, UserModel> {
 
 		boolean pass = true;
 
+		String dob = request.getParameter("dob");
+
 		String op = DataUtility.getString(request.getParameter("operation"));
 
 		if (OP_CHANGE_MY_PASSWORD.equalsIgnoreCase(op) || op == null) {
@@ -48,26 +52,36 @@ public class MyProfileCtl extends BaseCtl<UserBean, UserModel> {
 		}
 
 		if (DataValidator.isNull(request.getParameter("firstName"))) {
-			request.setAttribute("firstName", PropertyReader.getValue("error.require", "First Name"));
+			request.setAttribute("firstName", PropertyReader.getValue("error.require", ms.get("first.name")));
+			pass = false;
+		} else if (!DataValidator.isName(request.getParameter("firstName"))) {
+			request.setAttribute("firstName", ms.get("error.firstname"));
 			pass = false;
 		}
 
 		if (DataValidator.isNull(request.getParameter("lastName"))) {
-			request.setAttribute("lastName", PropertyReader.getValue("error.require", "Last Name"));
+			request.setAttribute("lastName", PropertyReader.getValue("error.require", ms.get("last.name")));
+			pass = false;
+		} else if (!DataValidator.isName(request.getParameter("lastName"))) {
+			request.setAttribute("lastName", ms.get("error.lastname"));
 			pass = false;
 		}
 
-		if (DataValidator.isNull(request.getParameter("gender"))) {
-			request.setAttribute("gender", PropertyReader.getValue("error.require", "Gender"));
-			pass = false;
-		}
 		if (DataValidator.isNull(request.getParameter("mobileNo"))) {
-			request.setAttribute("mobileNo", PropertyReader.getValue("error.require", "MobileNo"));
+			request.setAttribute("mobileNo", PropertyReader.getValue("error.require", ms.get("mobile.title")));
+			pass = false;
+		} else if (!DataValidator.isPhoneLength(request.getParameter("mobileNo"))) {
+			request.setAttribute("mobileNo", ms.get("require.mobile"));
+			pass = false;
+		} else if (!DataValidator.isPhoneNo(request.getParameter("mobileNo"))) {
+			request.setAttribute("mobileNo", ms.get("require.mobile.error"));
 			pass = false;
 		}
-
-		if (DataValidator.isNull(request.getParameter("dob"))) {
-			request.setAttribute("dob", PropertyReader.getValue("error.require", "Date Of Birth"));
+		if (DataValidator.isNull(dob)) {
+			request.setAttribute("dob", PropertyReader.getValue("error.require", ms.get("dob.title")));
+			pass = false;
+		} else if (!DataValidator.isDate(dob)) {
+			request.setAttribute("dob", PropertyReader.getValue("error.date", ms.get("dob.title")));
 			pass = false;
 		}
 
@@ -84,17 +98,24 @@ public class MyProfileCtl extends BaseCtl<UserBean, UserModel> {
 
 		bean.setId(DataUtility.getLong(request.getParameter("id")));
 
-		bean.setLogin(DataUtility.getString(request.getParameter("login")));
+		bean.setRoleId(DataUtility.getLong(request.getParameter("roleId")));
 
 		bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
 
 		bean.setLastName(DataUtility.getString(request.getParameter("lastName")));
 
-		bean.setMobileNo(DataUtility.getString(request.getParameter("mobileNo")));
+		bean.setLogin(DataUtility.getString(request.getParameter("login")));
+
+		bean.setPassword(DataUtility.getString(request.getParameter("password")));
+
+//		bean.setConfirmPassword(DataUtility.getString(request.getParameter("confirmPassword")));
 
 		bean.setGender(DataUtility.getString(request.getParameter("gender")));
 
+		bean.setMobileNo(DataUtility.getString(request.getParameter("mobileNo")));
+
 		bean.setDob(DataUtility.getDate(request.getParameter("dob")));
+
 
 		populateDTO(bean, request);
 
@@ -117,7 +138,7 @@ public class MyProfileCtl extends BaseCtl<UserBean, UserModel> {
 
 		UserModel model = getModel();
 
-		UserBean bean = model.findByPK(id);
+		UserBean bean = model.findByPk(id);
 
 		ServletUtility.setBean(bean, request);
 
@@ -132,13 +153,13 @@ public class MyProfileCtl extends BaseCtl<UserBean, UserModel> {
 		UserModel model = getModel();
 		model.update(bean);
 		ServletUtility.setBean(bean, request);
-		ServletUtility.setSuccessMessage("Data is successfully saved", request);
+		ServletUtility.setSuccessMessage(ms.get("business.save"), request);
 		ServletUtility.forwardPage(getView(), request, response);
 	}
 
 	@Override
 	protected String getView() {
-		return getView(null);
+		return ORSView.MY_PROFILE_VIEW;
 	}
 
 	@Override

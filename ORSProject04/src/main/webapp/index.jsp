@@ -1,9 +1,8 @@
+<%@ taglib uri="http://www.sunilos.com/ors-tags" prefix="ors"%>
 <%@page import="com.sunilos.p4.ctl.ORSView"%>
 <%@page import="com.sunilos.p4.util.DataValidator"%>
-<%@page import="com.sunilos.p4.util.MessageSource"%>
 
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="http://www.sunilos.com/ors-tags" prefix="ors"%>
 
 <%
 String contextPath = request.getContextPath();
@@ -16,8 +15,8 @@ String contextPath = request.getContextPath();
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ORS - Online Result System</title>
+<%-- <ors:message key="login.forgotpassword" /> --%>
+<title><ors:message key="wel.msg" /> - <ors:message key="wel.msg" /></title>
 
 <link rel="icon" href="<%=contextPath%>/img/favicon.ico"
 	type="image/x-icon">
@@ -28,7 +27,7 @@ String contextPath = request.getContextPath();
 
 <!-- Bootstrap Icons -->
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.min.css">		<!-- bootstrap-icons@1.11.3 -->
 
 <!-- Font Awesome -->
 <link rel="stylesheet"
@@ -60,7 +59,7 @@ String contextPath = request.getContextPath();
 	}
 
 	if (DataValidator.isNull(viewName)) {
-		viewName = "jsp/404.jsp";
+		viewName = "jsp/Welcome.jsp";
 	}
 	%>
 

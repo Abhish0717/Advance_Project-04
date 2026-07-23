@@ -4,14 +4,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-public class ProductBean extends BaseBean{
+public class ProductBean extends BaseBean {
 
 	private String productName;
 	private String productCategory;
 	private Date orderDate;
 	private int price;
-	
-	
+
 	public String getProductName() {
 		return productName;
 	}
@@ -46,25 +45,28 @@ public class ProductBean extends BaseBean{
 
 	@Override
 	public String getKey() {
-		return productName;
+		return id + "";
 	}
 
 	@Override
 	public String getValue() {
 		return productName;
 	}
-	
+
 	@Override
-	public void setResultset(ResultSet rs)  {
+	public void setResultset(ResultSet rs) {
+
 		try {
-		super.setResultset(rs);
+			super.setResultset(rs);
 			this.setProductName(rs.getString("name"));
 			this.setProductCategory(rs.getString("category"));
 			this.setOrderDate(rs.getDate("order_date"));
 			this.setPrice(rs.getInt("price"));
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 }

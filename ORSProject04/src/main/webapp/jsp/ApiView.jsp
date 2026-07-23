@@ -19,7 +19,7 @@ String _err = ServletUtility.getErrorMessage(request);
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
 				<i class="bi bi-bookmark-star-fill me-2"></i>
-				<%=bean.getId() > 0 ? "Edit Api" : "Add Api"%>
+				<%=bean.getId() > 0 ? "Edit API" : "Add API"%>
 			</h5>
 		</div>
 
@@ -53,33 +53,37 @@ String _err = ServletUtility.getErrorMessage(request);
 					value="<%=DataUtility.getTimestamp(bean.getModifiedDatetime())%>">
 
 				<div class="mb-3">
-					<label class="form-label fw-semibold">Api Name <span
+					<label class="form-label fw-semibold">API Name <span
 						class="text-danger">*</span></label> <input type="text" name="name"
-						class="form-control" maxlength="100"
+						placeholder="Enter your API Name" class="form-control"
+						maxlength="100"
 						value="<%=DataUtility.getStringData(bean.getApiName())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("name", request)%></div>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label fw-semibold">Version<span
-						class="text-danger">*</span></label> <input type="text"
-						name="version" class="form-control" maxlength="200"
+						class="text-danger">*</span></label> <input type="text" name="version"
+						placeholder="Enter your Version" class="form-control"
+						maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getVersion())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("version", request)%></div>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label fw-semibold">End Point<span
-						class="text-danger">*</span></label> <input type="text"
-						name="end_point" class="form-control" maxlength="200"
+						class="text-danger">*</span></label> <input type="text" name="end_point"
+						placeholder="Enter your End Point" class="form-control"
+						maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getEndPoint())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("end_point", request)%></div>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label fw-semibold">Status<span
-						class="text-danger">*</span></label> <input type="text"
-						name="status" class="form-control" maxlength="200"
+						class="text-danger">*</span></label> <input type="text" name="status"
+						placeholder="Enter your Status" class="form-control"
+						maxlength="200"
 						value="<%=DataUtility.getStringData(bean.getStatus())%>">
 					<div class="text-danger small mt-1"><%=ServletUtility.getErrorMessage("status", request)%></div>
 				</div>
@@ -89,6 +93,20 @@ String _err = ServletUtility.getErrorMessage(request);
 						class="btn btn-primary">
 						<i class="bi bi-save me-1"></i> Save
 					</button>
+					<%
+					if (bean.getId() > 0) {
+					%>
+					<button type="submit" name="operation"
+						value="<%=BaseCtl.OP_DELETE%>" class="btn btn-danger"
+						onclick="return confirm('Delete this user?')">
+						<i class="bi bi-trash me-1"></i> Delete
+					</button>
+					<%
+					}
+					%>
+					<a href="ApiListCtl" class="btn btn-secondary ms-auto"> <i
+						class="bi bi-x-circle me-1"></i> Cancel
+					</a>
 				</div>
 			</form>
 		</div>

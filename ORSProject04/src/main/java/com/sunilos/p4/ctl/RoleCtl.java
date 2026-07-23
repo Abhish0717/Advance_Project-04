@@ -1,21 +1,30 @@
 package com.sunilos.p4.ctl;
 
+import java.io.IOException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
 
+import com.sunilos.p4.bean.BaseBean;
 import com.sunilos.p4.bean.RoleBean;
+import com.sunilos.p4.exception.ApplicationException;
+import com.sunilos.p4.exception.DuplicateRecordException;
 import com.sunilos.p4.model.RoleModel;
 import com.sunilos.p4.util.DataUtility;
 import com.sunilos.p4.util.DataValidator;
 import com.sunilos.p4.util.PropertyReader;
-
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServletRequest;
+import com.sunilos.p4.util.ServletUtility;
 
 /**
  * Role functionality Controller. Performs operation for add, update and get
  * Role
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -70,7 +79,7 @@ public class RoleCtl extends BaseCtl<RoleBean, RoleModel> {
 
 	@Override
 	protected String getView() {
-		return getView(null);
+		return ORSView.ROLE_VIEW;
 	}
 
 	@Override

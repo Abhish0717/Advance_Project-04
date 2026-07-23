@@ -57,7 +57,7 @@ public final class MessageSource {
 	public static void main(String[] args) {
 		MessageSource ms = MessageSource.getInstance();
 		ms.setLocale("hi");
-		String val = ms.get("login.userid1");
+		String val = ms.get("LoginId is required");
 		System.out.println("-->" + val);
 	}
 }

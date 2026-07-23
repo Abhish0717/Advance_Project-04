@@ -63,6 +63,79 @@ h1, h2, h3 {
 }
 
 /* ======================================================
+   SCROLLING
+   ====================================================== */
+/* Scrollable Dropdown */
+.custom-scroll-menu {
+	max-height: 450px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	/* Smooth scrolling */
+	scroll-behavior: smooth;
+	/* Firefox */
+	scrollbar-width: thin;
+	scrollbar-color: #4fc3f7 #1a2e4a;
+}
+
+/* Chrome, Edge, Safari */
+.custom-scroll-menu::-webkit-scrollbar {
+	width: 8px;
+}
+
+.custom-scroll-menu::-webkit-scrollbar-track {
+	background: #1a2e4a;
+	border-radius: 10px;
+}
+
+.custom-scroll-menu::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #4fc3f7, #2196f3);
+	border-radius: 10px;
+	transition: all 0.3s ease;
+}
+
+.custom-scroll-menu::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, #64b5f6, #1976d2);
+}
+
+/* Smooth item hover */
+.custom-scroll-menu .dropdown-item {
+	transition: all 0.25s ease;
+	border-radius: 6px;
+	margin: 2px 6px;
+}
+
+/* .custom-scroll-menu .dropdown-item:hover {
+    background: rgba(79, 195, 247, 0.15);
+    transform: translateX(4px);
+    color: #4fc3f7;
+} */
+
+/* Sticky section headers */
+.custom-scroll-menu .dropdown-header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background: #1a2e4a;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.custom-scroll-menu {
+	position: relative;
+}
+
+.custom-scroll-menu::before, .custom-scroll-menu::after {
+	content: "";
+	position: sticky;
+	left: 0;
+	width: 100%;
+	height: 15px;
+	display: block;
+	pointer-events: none;
+	z-index: 20;
+}
+
+/* ======================================================
    NAVBAR
    ====================================================== */
 .navbar {
@@ -78,6 +151,13 @@ h1, h2, h3 {
 	z-index: 200;
 }
 
+@media ( max-width : 991px) {
+	#mainNav {
+		background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);
+		padding: 10px;
+		border-radius: 0 0 10px 10px;
+	}
+}
 .navbar-brand {
 	display: flex;
 	align-items: center;

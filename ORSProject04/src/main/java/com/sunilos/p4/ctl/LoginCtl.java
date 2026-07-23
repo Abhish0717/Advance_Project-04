@@ -23,11 +23,10 @@ import com.sunilos.p4.util.ServletUtility;
 /**
  * Login functionality Controller. Performs operation for Login
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
-
 @WebServlet("/LoginCtl")
 public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 
@@ -51,10 +50,7 @@ public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 		String login = request.getParameter("login");
 
 		if (DataValidator.isNull(login)) {
-			// request.setAttribute("login", PropertyReader.getValue("error.require", "Login
-			// Id"));
-			// request.setAttribute("login", PropertyReader.getValue("error.require", "Login
-			// Id"));
+//			request.setAttribute("login", PropertyReader.getValue("error.require", "LoginId"));
 			request.setAttribute("login", ms.get("valid.required"));
 			pass = false;
 		} else if (!DataValidator.isEmail(login)) {
@@ -62,9 +58,8 @@ public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 			pass = false;
 		}
 		if (DataValidator.isNull(request.getParameter("password"))) {
-			// request.setAttribute("password", PropertyReader.getValue("error.require",
-			// "Password"));
-			request.setAttribute("password", ms.get("valid.required"));
+			request.setAttribute("password", PropertyReader.getValue("error.require", "Password"));
+//			request.setAttribute("password", ms.get("valid.required"));
 			pass = false;
 		}
 
@@ -91,6 +86,8 @@ public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		MessageSource ms = getMessageSource(request);
+
 		String msg = request.getParameter(BaseCtl.MSG_ERROR);
 
 		if (msg != null) {
@@ -100,8 +97,10 @@ public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 		HttpSession session = request.getSession(false);
 
 		if (request.getParameter("operation") != null) {
-			session.invalidate();
-			ServletUtility.setSuccessMessage("user logout successfully", request);
+			if (session != null) {
+				session.invalidate();
+				ServletUtility.setSuccessMessage(ms.get("logout.success"), request);
+			}
 		}
 
 		super.doGet(request, response);
@@ -137,22 +136,20 @@ public class LoginCtl extends BaseCtl<UserBean, UserModel> {
 
 		long rollId = bean.getRoleId();
 		RoleModel role = new RoleModel();
-		RoleBean rolebean = role.findByPK(rollId);
+		RoleBean rolebean = role.findByPk(rollId);
 		if (rolebean != null) {
 			session.setAttribute("role", rolebean.getName());
 		} else {
 			session.setAttribute("role", "invalid role id " + rollId);
 		}
 
-		ServletUtility.forwardPage(ORSView.WELCOME_VIEW, request, response);
+		ServletUtility.redirect(ORSView.WELCOME_CTL, request, response);
 
 	}
 
 	@Override
 	protected String getView() {
-		System.out.println("------------------------------>");
-		System.out.println(MessageSource.getInstance().get("login.userid"));
-		return getView(null);
+		return ORSView.LOGIN_VIEW;
 	}
 
 	@Override

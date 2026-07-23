@@ -13,7 +13,7 @@ import com.sunilos.p4.util.DataUtility;
  * User List functionality Controller. Performs operation for list, search and
  * delete operations of User
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -51,7 +51,7 @@ public class UserListCtl extends BaseListCtl<UserBean, UserModel> {
 
 	@Override
 	protected String getView() {
-		return getView(null);
+		return ORSView.USER_LIST_VIEW;
 	}
 
 	@Override

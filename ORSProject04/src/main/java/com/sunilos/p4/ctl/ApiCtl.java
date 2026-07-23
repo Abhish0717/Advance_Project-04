@@ -44,7 +44,7 @@ public class ApiCtl extends BaseCtl<ApiBean, ApiModel> {
 	protected ApiBean populateBean(HttpServletRequest request) {
 
 		ApiBean bean = new ApiBean();
-
+		bean.setId(DataUtility.getLong(request.getParameter("id")));
 		bean.setApiName(DataUtility.getString(request.getParameter("name")));
 		bean.setVersion(DataUtility.getString(request.getParameter("version")));
 		bean.setEndPoint(DataUtility.getString(request.getParameter("end_point")));
@@ -63,15 +63,18 @@ public class ApiCtl extends BaseCtl<ApiBean, ApiModel> {
 	@Override
 	protected String getView(String op) {
 
-		if (OP_CANCEL.equalsIgnoreCase(op)) {
+		if (OP_CANCEL.equalsIgnoreCase(op) || OP_DELETE.equalsIgnoreCase(op)) {
+			return ORSView.API_LIST_CTL;
+
+		} else if (OP_RESET.equalsIgnoreCase(op)) {
 			return ORSView.API_CTL;
+		} else {
+			return ORSView.API_VIEW;
 		}
-		return ORSView.API_VIEW;
 	}
 
 	@Override
 	protected ApiModel getModel() {
-		// TODO Auto-generated method stub
 		return new ApiModel();
 	}
 

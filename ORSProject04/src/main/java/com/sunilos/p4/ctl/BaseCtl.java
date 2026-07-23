@@ -1,11 +1,7 @@
 package com.sunilos.p4.ctl;
 
 import java.io.IOException;
-
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
@@ -19,11 +15,16 @@ import com.sunilos.p4.util.DataValidator;
 import com.sunilos.p4.util.MessageSource;
 import com.sunilos.p4.util.ServletUtility;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 /**
  * Base controller class of project. It contain (1) Generic operations (2)
  * Generic constants (3) Generic work flow
  * 
- * @author Rays EdTech
+ * @author Abhishish Bhawsar
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
@@ -32,6 +33,7 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 
 	public static final String OP_SAVE = "Save";
 	public static final String OP_CANCEL = "Cancel";
+	public static final String OP_RESET = "Reset";
 	public static final String OP_DELETE = "Delete";
 	public static final String OP_LIST = "List";
 	public static final String OP_SEARCH = "Search";
@@ -135,6 +137,8 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 		// Load the necessary preloaded data for displaying in an HTML form
 		preload(request);
 		getMessageSource(request);
+		
+		MessageSource ms = getMessageSource(request);
 
 		String op = DataUtility.getString(request.getParameter("operation"));
 
@@ -142,10 +146,8 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 		if (OP_CANCEL.equalsIgnoreCase(op)) {
 			ServletUtility.redirect(getView(op), request, response);
 			return;
-		} else if (OP_DELETE.equalsIgnoreCase(op) && !(this instanceof BaseListCtl)) {
-			// Handle Delete operation
-			doDelete(request, response);
-			return;
+		} else if (OP_RESET.equalsIgnoreCase(op)) {
+			ServletUtility.forwardPage(getView(op), request, response);
 		}
 
 		BaseBean bean = populateBean(request);
@@ -160,9 +162,17 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 		try {
 			super.service(request, response);
 		} catch (DuplicateRecordException e) {
-			// Handle if any duplicate record exception
 			ServletUtility.setBean(bean, request);
 			ServletUtility.setErrorMessage(e.getMessage(), request);
+			ServletUtility.forwardPage(getView(), request, response);
+		} catch (ApplicationException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage() + " ============== database is down ===================");
+			ServletUtility.setPageNo(1, request);
+			ServletUtility.setPageSize(10, request);
+			ServletUtility.setList(new ArrayList<BaseBean>(), request);
+			request.setAttribute("nextList", new ArrayList<BaseBean>());
+			ServletUtility.setErrorMessage(ms.get("database.server"), request);
 			ServletUtility.forwardPage(getView(), request, response);
 		}
 
@@ -181,7 +191,7 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 		long id = DataUtility.getLong(request.getParameter("id"));
 
 		if (id > 0 || op != null) {
-			BaseBean bean = getModel().findByPK(id);
+			BaseBean bean = getModel().findByPk(id);
 			ServletUtility.setBean(bean, request);
 		}
 
@@ -197,23 +207,22 @@ public abstract class BaseCtl<B extends BaseBean, M extends BaseModel> extends H
 			throws ServletException, IOException {
 
 		log.debug("CollegeCtl Method doGet Started");
-
+		MessageSource ms = getMessageSource(request);
 		String op = DataUtility.getString(request.getParameter("operation"));
 
 		// get model
 
 		long id = DataUtility.getLong(request.getParameter("id"));
-
 		B bean = populateBean(request);
 
 		// If primary key does exist then update the record of save the record
 		if (id > 0) {
 			getModel().update(bean);
-			ServletUtility.setSuccessMessage("Data is successfully updated", request);
+			ServletUtility.setSuccessMessage(ms.get("business.update"), request);
 		} else {
 			long pk = getModel().add(bean);
-			ServletUtility.setSuccessMessage("Data is successfully saved", request);
-			bean.setId(pk);
+			bean.setId(0L);
+			ServletUtility.setSuccessMessage(ms.get("business.save"), request);
 		}
 		ServletUtility.setBean(bean, request);
 		ServletUtility.forwardPage(getView(), request, response);

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+    http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+    name="FaceRecognitionReport"
+    pageWidth="842"
+    pageHeight="595"
+    orientation="Landscape"
+    columnWidth="782"
+    leftMargin="30"
+    rightMargin="30"
+    topMargin="20"
+    bottomMargin="20">
+
+    <parameter name="reportTitle" class="java.lang.String">
+        <defaultValueExpression><![CDATA["Face Recognition Report"]]></defaultValueExpression>
+    </parameter>
+
+    <!-- Fields -->
+    <field name="id" class="java.lang.Long"/>
+    <field name="faceCode" class="java.lang.String"/>
+    <field name="userName" class="java.lang.String"/>
+    <field name="imagePath" class="java.lang.String"/>
+    <field name="status" class="java.lang.String"/>
+
+    <!-- ================= TITLE ================= -->
+
+    <title>
+        <band height="60">
+
+            <rectangle>
+                <reportElement x="0" y="0" width="782" height="50"
+                    backcolor="#1565C0" forecolor="#1565C0"/>
+                <graphicElement>
+                    <pen lineWidth="0"/>
+                </graphicElement>
+            </rectangle>
+
+            <staticText>
+                <reportElement x="0" y="5" width="782" height="40"
+                    forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Face Recognition Report]]></text>
+            </staticText>
+
+        </band>
+    </title>
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <pageHeader>
+        <band height="20">
+
+            <staticText>
+                <reportElement x="0" y="0" width="391" height="20"
+                    forecolor="#666666"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Online Result System]]></text>
+            </staticText>
+
+            <textField pattern="dd-MM-yyyy HH:mm">
+                <reportElement x="391" y="0" width="391" height="20"
+                    forecolor="#666666"/>
+                <textElement textAlignment="Right"
+                    verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </pageHeader>
+
+    <!-- ================= COLUMN HEADER ================= -->
+
+    <columnHeader>
+        <band height="28">
+
+            <rectangle>
+                <reportElement x="0" y="0" width="782" height="28"
+                    backcolor="#0D2137" forecolor="#0D2137"/>
+                <graphicElement>
+                    <pen lineWidth="0"/>
+                </graphicElement>
+            </rectangle>
+
+            <staticText>
+                <reportElement x="0" y="0" width="40" height="28"
+                    forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[#]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="40" y="0" width="60" height="28"
+                    forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[ID]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="100" y="0" width="140" height="28"
+                    forecolor="#FFFFFF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Face Code]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="240" y="0" width="180" height="28"
+                    forecolor="#FFFFFF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[User Name]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="420" y="0" width="250" height="28"
+                    forecolor="#FFFFFF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Image Path]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="670" y="0" width="112" height="28"
+                    forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Status]]></text>
+            </staticText>
+
+        </band>
+    </columnHeader>
+
+    <!-- ================= DETAIL ================= -->
+
+    <detail>
+        <band height="24">
+
+            <rectangle>
+                <reportElement x="0" y="0" width="782" height="24"
+                    backcolor="#EEF2F7" forecolor="#EEF2F7">
+                    <printWhenExpression><![CDATA[$V{REPORT_COUNT}%2==0]]></printWhenExpression>
+                </reportElement>
+                <graphicElement>
+                    <pen lineWidth="0"/>
+                </graphicElement>
+            </rectangle>
+
+            <textField>
+                <reportElement x="0" y="0" width="40" height="24"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="40" y="0" width="60" height="24"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="100" y="0" width="140" height="24"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{faceCode}]]></textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="240" y="0" width="180" height="24"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{userName}]]></textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="420" y="0" width="250" height="24"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{imagePath}]]></textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="670" y="0" width="112" height="24"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="9"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </detail>
+
+    <!-- ================= PAGE FOOTER ================= -->
+
+    <pageFooter>
+        <band height="22">
+
+            <line>
+                <reportElement x="0" y="0" width="782" height="1"
+                    forecolor="#CCCCCC"/>
+            </line>
+
+            <staticText>
+                <reportElement x="0" y="4" width="391" height="16"
+                    forecolor="#888888"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Online Result System - Face Recognition Report]]></text>
+            </staticText>
+
+            <textField>
+                <reportElement x="391" y="4" width="200" height="16"
+                    forecolor="#888888"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </pageFooter>
+
+    <!-- ================= SUMMARY ================= -->
+
+    <summary>
+        <band height="35">
+
+            <line>
+                <reportElement x="0" y="5" width="782" height="1"
+                    forecolor="#CCCCCC"/>
+            </line>
+
+            <textField>
+                <reportElement x="0" y="12" width="400" height="20"
+                    forecolor="#1565C0"/>
+                <textElement>
+                    <font size="10" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Total Records : " + $V{REPORT_COUNT}]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </summary>
+
+</jasperReport>
