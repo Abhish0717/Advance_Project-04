@@ -137,6 +137,10 @@ public interface ORSView {
 	public String HOSPITAL_LIST_VIEW = PAGE_FOLDER + "/HospitalListView.jsp";
 	/** Hospital List Controller URL */
 	public String HOSPITAL_LIST_CTL = APP_CONTEXT + "/ctl/HospitalListCtl";
+	/** Hospital Report Controller URL */
+	public String HOSPITAL_REPORT_CTL = APP_CONTEXT + "/ctl/HospitalReportCtl";
+	/** Hospital Report View jrxml file */
+	public String HOSPITAL_REPORT_VIEW = "/reports/HospitalListReport.jrxml";
 
 	/** Payment View JSP */
 	public String PAYMENT_VIEW = PAGE_FOLDER + "/PaymentView.jsp";

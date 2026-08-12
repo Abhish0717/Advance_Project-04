@@ -3,7 +3,6 @@ package com.sunilos.p4.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import com.sunilos.p4.bean.PaymentBean;
 import com.sunilos.p4.bean.BranchBean;
 import com.sunilos.p4.exception.ApplicationException;
 import com.sunilos.p4.exception.DuplicateRecordException;

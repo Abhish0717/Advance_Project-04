@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+    http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+    name="HospitalListReport"
+    pageWidth="595"
+    pageHeight="842"
+    columnWidth="555"
+    leftMargin="20"
+    rightMargin="20"
+    topMargin="20"
+    bottomMargin="20">
+
+    <!-- Bean Fields -->
+    <field name="id" class="java.lang.Long"/>
+    <field name="patientName" class="java.lang.String"/>
+    <field name="doctorName" class="java.lang.String"/>
+    <field name="disease" class="java.lang.String"/>
+    <field name="roomNumber" class="java.lang.Integer"/>
+
+
+    <!-- Title -->
+    <title>
+        <band height="55">
+
+            <rectangle>
+                <reportElement x="0" y="0" width="555" height="45"
+                    backcolor="#1565C0"/>
+                <graphicElement>
+                    <pen lineWidth="0"/>
+                </graphicElement>
+            </rectangle>
+
+            <staticText>
+                <reportElement x="0" y="4" width="555" height="37"
+                    forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Hospital List Report]]></text>
+            </staticText>
+
+        </band>
+    </title>
+
+
+    <!-- Page Header -->
+    <pageHeader>
+        <band height="18">
+
+            <staticText>
+                <reportElement x="0" y="0" width="250" height="18"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Online Result System]]></text>
+            </staticText>
+
+            <textField pattern="dd-MM-yyyy HH:mm">
+                <reportElement x="305" y="0" width="250" height="18"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+
+        </band>
+    </pageHeader>
+
+
+    <!-- Column Header -->
+    <columnHeader>
+        <band height="25">
+
+            <rectangle>
+                <reportElement x="0" y="0" width="555" height="25"
+                    mode="Opaque"
+                    backcolor="#0D2137"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+
+
+            <!-- # -->
+            <staticText>
+                <reportElement x="0" y="0" width="30" height="25"
+                    forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[#]]></text>
+            </staticText>
+
+
+            <!-- ID -->
+            <staticText>
+                <reportElement x="30" y="0" width="40" height="25"
+                    forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[ID]]></text>
+            </staticText>
+
+
+            <!-- Patient Name -->
+            <staticText>
+                <reportElement x="70" y="0" width="150" height="25"
+                    forecolor="#FFFFFF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Patient Name]]></text>
+            </staticText>
+
+
+            <!-- Doctor Name -->
+            <staticText>
+                <reportElement x="220" y="0" width="150" height="25"
+                    forecolor="#FFFFFF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Doctor Name]]></text>
+            </staticText>
+
+
+            <!-- Disease -->
+            <staticText>
+                <reportElement x="370" y="0" width="115" height="25"
+                    forecolor="#FFFFFF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Disease]]></text>
+            </staticText>
+
+
+            <!-- Room Number -->
+            <staticText>
+                <reportElement x="485" y="0" width="70" height="25"
+                    forecolor="#FFFFFF"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Room No.]]></text>
+            </staticText>
+
+        </band>
+    </columnHeader>
+
+
+    <!-- Detail -->
+    <detail>
+        <band height="22">
+
+            <!-- Alternate Row Background -->
+            <rectangle>
+                <reportElement x="0" y="0" width="555" height="22"
+                    backcolor="#F5F7FA">
+                    <printWhenExpression>
+                        <![CDATA[$V{REPORT_COUNT}%2==0]]>
+                    </printWhenExpression>
+                </reportElement>
+
+                <graphicElement>
+                    <pen lineWidth="0"/>
+                </graphicElement>
+            </rectangle>
+
+
+            <!-- Serial Number -->
+            <textField>
+                <reportElement x="0" y="0" width="30" height="22"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle"/>
+                <textFieldExpression>
+                    <![CDATA[$V{REPORT_COUNT}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- ID -->
+            <textField>
+                <reportElement x="30" y="0" width="40" height="22"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle"/>
+                <textFieldExpression>
+                    <![CDATA[$F{id}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Patient Name -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="70" y="0" width="150" height="22"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$F{patientName}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Doctor Name -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="220" y="0" width="150" height="22"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$F{doctorName}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Disease -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="370" y="0" width="115" height="22"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$F{disease}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Room Number -->
+            <textField>
+                <reportElement x="485" y="0" width="70" height="22"/>
+                <textElement textAlignment="Center"
+                    verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$F{roomNumber}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </detail>
+
+
+    <!-- Footer -->
+    <pageFooter>
+        <band height="20">
+
+            <line>
+                <reportElement x="0" y="0" width="555" height="1"/>
+            </line>
+
+            <staticText>
+                <reportElement x="0" y="3" width="300" height="15"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Online Result System - Hospital List Report]]></text>
+            </staticText>
+
+            <textField>
+                <reportElement x="350" y="3" width="205" height="15"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Page " + $V{PAGE_NUMBER}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </pageFooter>
+
+
+    <!-- Summary -->
+    <summary>
+        <band height="25">
+
+            <line>
+                <reportElement x="0" y="2" width="555" height="1"/>
+            </line>
+
+            <textField>
+                <reportElement x="0" y="6" width="250" height="18"/>
+                <textElement>
+                    <font size="9" isBold="true"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Total Hospitals : " + $V{REPORT_COUNT}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </summary>
+
+</jasperReport>

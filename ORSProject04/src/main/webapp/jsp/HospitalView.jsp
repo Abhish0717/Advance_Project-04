@@ -18,7 +18,7 @@ String _err = ServletUtility.getErrorMessage(request);
 		<div class="card-header text-white border-0 py-3 px-4"
 			style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 			<h5 class="mb-0 fw-bold">
-				<i class="bi bi-hospital-fill me-2"></i>
+				<i class="bi bi-hospital me-2"></i>
 				<%=bean.getId() > 0 ? "Edit Hospital Record" : "Add Hospital Record"%>
 			</h5>
 		</div>

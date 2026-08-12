@@ -17,7 +17,6 @@ import com.sunilos.p4.util.DataUtility;
  * @version 1.0
  * @Copyright (c) Rays EdTech
  */
-
 @WebServlet("/ctl/UserListCtl")
 public class UserListCtl extends BaseListCtl<UserBean, UserModel> {
 
