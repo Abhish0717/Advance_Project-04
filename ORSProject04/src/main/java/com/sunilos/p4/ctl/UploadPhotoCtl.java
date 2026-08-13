@@ -133,7 +133,7 @@ public class UploadPhotoCtl extends HttpServlet {
 
 		if (part == null || part.getSize() == 0) {
 			ServletUtility.setErrorMessage("Photo is required", request);
-			ServletUtility.forwardPage(getView(), request, response);
+			ServletUtility.forwardPage(view, request, response);
 			return;
 		}
 
@@ -197,9 +197,4 @@ public class UploadPhotoCtl extends HttpServlet {
 			response.sendRedirect("UserCtl?id=" + id);
 		}
 	}
-
-	public String getView() {
-		return ORSView.USER_VIEW;
-	}
-
 }

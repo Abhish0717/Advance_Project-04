@@ -290,8 +290,8 @@ String firstName = loggedIn ? currentUser.getFirstName() : "Guest";
 					<div class="fs-1 mb-2" style="color: green;">
 						<i class="bi bi-person-bounding-box"></i>
 					</div>
-					<h6 class="fw-bold mb-1">Face Recognition</h6>
-					<p class="text-muted small mb-0">View Face Recognition Data</p>
+					<h6 class="fw-bold mb-1"><%=ms.get("face.title")%></h6>
+					<p class="text-muted small mb-0"><%=ms.get("face.subtitle")%></p>
 				</div>
 			</a>
 		</div>

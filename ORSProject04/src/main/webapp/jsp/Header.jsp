@@ -464,18 +464,16 @@ String displayName = loggedIn ? userBean.getFirstName() + " (" + session.getAttr
 						<!-- Face Recognition -->
 						<li>
 							<h6 class="dropdown-header text-uppercase text-info small">
-								<i class="bi bi-person-bounding-box me-1"></i>Face Recognition
+								<i class="bi bi-person-bounding-box me-1"></i><%=ms.get("face.title")%>
 							</h6>
 						</li>
 						<li><a class="dropdown-item"
 							href="<%=ORSView.FACE_RECOGNITION_CTL%>"> <i
-								class="bi bi-plus-circle me-2 text-success"></i> Add Face
-								Recognition
+								class="bi bi-plus-circle me-2 text-success"></i> <%=ms.get("face.subtitle")%>
 						</a></li>
 						<li><a class="dropdown-item"
 							href="<%=ORSView.FACE_RECOGNITION_LIST_CTL%>"> <i
-								class="bi bi-person-bounding-box me-2 text-primary"></i> Face
-								Recognition List
+								class="bi bi-person-bounding-box me-2 text-primary"></i> <%=ms.get("face.list")%>
 						</a></li>
 
 						<li><hr class="dropdown-divider border-secondary"></li>

@@ -34,16 +34,22 @@ genderMap.put("F", ms.get("female.val"));
 			<%
 			if (_suc != null && !_suc.isEmpty()) {
 			%>
-			<div class="alert alert-success py-2">
-				<i class="bi bi-check-circle-fill me-2"></i><%=_suc%></div>
+			<div class="alert alert-success alert-dismissible py-2">
+				<i class="bi bi-check-circle-fill me-2"></i><%=_suc%>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+			</div>
 			<%
 			}
 			%>
 			<%
 			if (_err != null && !_err.isEmpty()) {
 			%>
-			<div class="alert alert-danger py-2">
-				<i class="bi bi-exclamation-triangle-fill me-2"></i><%=_err%></div>
+			<div class="alert alert-danger alert-dismissible py-2">
+				<i class="bi bi-exclamation-triangle-fill me-2"></i><%=_err%>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+			</div>
 			<%
 			}
 			%>
@@ -59,9 +65,10 @@ genderMap.put("F", ms.get("female.val"));
 				<form action="<%=ORSView.UPLOAD_PHOTO_CTL%>" method="POST"
 					enctype="multipart/form-data"
 					class="d-flex align-items-center gap-2">
-					<input type="hidden" name="id" value="<%=bean.getId()%>"> <input
-						type="file" name="photo" class="form-control form-control-sm"
-						accept="image/*">
+					<input type="hidden" name="view"
+						value="<%=ORSView.MY_PROFILE_VIEW%>"><input type="hidden"
+						name="id" value="<%=bean.getId()%>"> <input type="file"
+						name="photo" class="form-control form-control-sm" accept="image/*">
 					<button type="submit"
 						class="btn btn-sm btn-outline-primary text-nowrap">
 						<i class="bi bi-upload me-1"></i>
