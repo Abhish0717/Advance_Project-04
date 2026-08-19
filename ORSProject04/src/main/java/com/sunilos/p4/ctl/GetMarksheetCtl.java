@@ -39,10 +39,11 @@ public class GetMarksheetCtl extends BaseCtl<MarksheetBean, MarksheetModel> {
 		if (DataValidator.isNull(request.getParameter("rollNo"))) {
 			request.setAttribute("rollNo", PropertyReader.getValue("error.require", "Roll Number"));
 			pass = false;
-		} else if (!DataValidator.isRollNo(request.getParameter("rollNo"))) {
-			request.setAttribute("rollNo", ms.get("invalid.roll"));
-			pass = false;
-		}
+		} 
+//		else if (!DataValidator.isRollNo(request.getParameter("rollNo"))) {
+//			request.setAttribute("rollNo", ms.get("invalid.roll"));
+//			pass = false;
+//		}
 		return pass;
 	}
 
