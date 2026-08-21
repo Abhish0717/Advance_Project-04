@@ -16,7 +16,7 @@ import com.sunilos.p4.exception.DatabaseException;
  * 
  */
 
-public class JDBCDataSource {
+public final class JDBCDataSource {
 
 	/**
 	 * JDBC Database connection pool ( DCP )
