@@ -245,7 +245,6 @@ public class UserModel extends BaseModel<UserBean> {
 		log.debug("Service lock End");
 		return flag;
 	}
-
 	/**
 	 * Get User Roles
 	 * 

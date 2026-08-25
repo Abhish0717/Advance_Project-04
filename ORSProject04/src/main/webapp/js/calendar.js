@@ -23,7 +23,6 @@ function LogPosition(evt) {
 		LEFT = event.screenX;
 		TOP = event.screenY - 10;
 	}
-
 }
 
 function getCalendar(CONTROL) {
